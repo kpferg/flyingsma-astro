@@ -2,15 +2,122 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Southern Maine Aviation</title>
-	</head>
-	<BaseLayout title="SMA">
-		<h1 class="text-5xl">Southern Maine Aviation</h1>
-	</BaseLayout>
-</html>
+<BaseLayout title="Southern Maine Aviation">
+	<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+		<!-- Hero Section -->
+		<div class="container mx-auto px-4 py-12 md:py-20">
+			<div class="text-center mb-12 md:mb-16">
+				<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 tracking-tight">
+					Welcome to
+					<span class="block text-blue-600 mt-2">Southern Maine Aviation</span>
+				</h1>
+				<p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+					Choose your path to the skies
+				</p>
+			</div>
+
+			<!-- Split Choice Cards -->
+			<div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+				<!-- Flight School Card (Left) -->
+				<a href="/flight-school" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+					<!-- Left-Directional Background Gradient -->
+					<div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600"></div>
+					
+					<!-- Left-Side Accent Border -->
+					<div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-400 shadow-lg"></div>
+					
+					<!-- Content -->
+					<div class="relative p-8 md:p-12 h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
+						<div>
+							<!-- Icon -->
+							<div class="mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+								<svg class="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+								</svg>
+							</div>
+							
+							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+								Flight School
+							</h2>
+							<p class="text-blue-100 text-lg md:text-xl mb-6 leading-relaxed">
+								Learn To Fly Today!
+							</p>
+							<p class="text-blue-50 text-base md:text-lg leading-relaxed">
+								Whether you are a beginner or advanced, just starting out on your aviation journey or looking to enhance your skills, we can work with you to create the perfect program.
+							</p>
+						</div>
+
+						<!-- CTA Button -->
+						<div class="mt-8">
+							<span class="inline-flex items-center text-lg md:text-xl font-semibold group-hover:-translate-x-2 transition-transform duration-300">
+								<svg class="mr-2 w-6 h-6 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+								</svg>
+								Start Your Journey
+							</span>
+							<div class="mt-2 text-sm text-blue-200">
+								Call or Text: <span class="font-semibold">207-569-4017</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Hover Effect Overlay -->
+					<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+				</a>
+
+				<!-- FBO/Maintenance Card (Right) -->
+				<a href="/fbo-maintenance" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+					<!-- Right-Directional Background Gradient -->
+					<div class="absolute inset-0 bg-gradient-to-l from-slate-800 to-slate-700"></div>
+					
+					<!-- Right-Side Accent Border -->
+					<div class="absolute right-0 top-0 bottom-0 w-2 bg-slate-400 shadow-lg"></div>
+
+					<!-- Content -->
+					<div class="relative p-8 md:p-12 h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
+						<div>
+							<!-- Icon -->
+							<div class="mb-6 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+								<svg class="w-16 h-16 md:w-20 md:h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+								</svg>
+							</div>
+
+							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+								FBO & Maintenance
+							</h2>
+							<p class="text-slate-300 text-lg md:text-xl mb-6 leading-relaxed">
+								We're Here For You!
+							</p>
+							<p class="text-slate-200 text-base md:text-lg leading-relaxed">
+								Full-service FBO providing corporate arrivals, aircraft maintenance, storage, and service for General Aviation and corporate aircraft, including Air Force One!
+							</p>
+						</div>
+
+						<!-- CTA Button -->
+						<div class="mt-8">
+							<span class="inline-flex items-center text-lg md:text-xl font-semibold group-hover:translate-x-2 transition-transform duration-300">
+								Explore Services
+								<svg class="ml-2 w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+								</svg>
+							</span>
+							<div class="mt-2 text-sm text-slate-300">
+								Desk Phone: <span class="font-semibold">207-324-8919</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Hover Effect Overlay -->
+					<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+				</a>
+			</div>
+
+			<!-- Additional Info Section -->
+			<div class="mt-16 md:mt-20 text-center">
+				
+			</div>
+		</div>
+	</div>
+</BaseLayout>
