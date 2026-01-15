@@ -1,8 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ServicesSection from "../components/sections/ServicesSection.astro";
+import NewsSection from "../components/sections/NewsSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
+import OrganizationSchema from "../components/seo/OrganizationSchema.astro";
+import WebsiteSchema from "../components/seo/WebsiteSchema.astro";
+import site from "../data/site.json";
 ---
 
 <BaseLayout title="Southern Maine Aviation">
+	<OrganizationSchema slot="head" />
+	<WebsiteSchema slot="head" />
 	<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
 		<!-- Hero Section -->
 		<div class="container mx-auto px-4 py-12 md:py-20">
@@ -22,10 +30,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				<a href="/flight-school" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
 					<!-- Left-Directional Background Gradient -->
 					<div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600"></div>
-					
+
 					<!-- Left-Side Accent Border -->
 					<div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-400 shadow-lg"></div>
-					
+
 					<!-- Content -->
 					<div class="relative p-8 md:p-12 h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
 						<div>
@@ -35,7 +43,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
 								</svg>
 							</div>
-							
+
 							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
 								Flight School
 							</h2>
@@ -56,7 +64,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 								Start Your Journey
 							</span>
 							<div class="mt-2 text-sm text-blue-200">
-								Call or Text: <span class="font-semibold">207-569-4017</span>
+								Call or Text: <span class="font-semibold">{site.contact.flight.phone}</span>
 							</div>
 						</div>
 					</div>
@@ -66,10 +74,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				</a>
 
 				<!-- FBO/Maintenance Card (Right) -->
-				<a href="/fbo-maintenance" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+				<a href="/services" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
 					<!-- Right-Directional Background Gradient -->
 					<div class="absolute inset-0 bg-gradient-to-l from-slate-800 to-slate-700"></div>
-					
+
 					<!-- Right-Side Accent Border -->
 					<div class="absolute right-0 top-0 bottom-0 w-2 bg-slate-400 shadow-lg"></div>
 
@@ -104,7 +112,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 								</svg>
 							</span>
 							<div class="mt-2 text-sm text-slate-300">
-								Desk Phone: <span class="font-semibold">207-324-8919</span>
+								Desk Phone: <span class="font-semibold">{site.contact.fbo.phone}</span>
 							</div>
 						</div>
 					</div>
@@ -113,11 +121,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 					<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 				</a>
 			</div>
-
-			<!-- Additional Info Section -->
-			<div class="mt-16 md:mt-20 text-center">
-				
-			</div>
 		</div>
 	</div>
+
+	<!-- Services Section -->
+	<ServicesSection
+		title="At Your Service"
+		description="We offer a full range of services for General Aviation and corporate aircraft, plus an active flight training program. The FBO offers free computer usage and Wi-Fi, as well as a comfortable lounge and beverages for purchase."
+	/>
+
+	<!-- News Section -->
+	<NewsSection limit={3} />
+
+	<!-- Contact Section -->
+	<ContactSection variant="split" />
 </BaseLayout>

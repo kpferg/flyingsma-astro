@@ -1,0 +1,59 @@
+---
+import { getContentfulInstructors } from '../../lib/contentful';
+import InstructorCard from '../ui/InstructorCard.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  variant?: 'default' | 'compact' | 'detailed';
+  limit?: number;
+  columns?: 2 | 3 | 4;
+}
+
+const {
+  title = 'Meet Our Instructors',
+  description = 'Our experienced team of flight instructors are here to help you achieve your aviation goals.',
+  variant = 'default',
+  limit,
+  columns = 3
+} = Astro.props;
+
+// Fetch instructors from Contentful
+let instructors = await getContentfulInstructors();
+
+if (limit) {
+  instructors = instructors.slice(0, limit);
+}
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4'
+};
+---
+
+<section class="py-16 bg-white" id="instructors">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
+    </div>
+
+    {instructors.length > 0 ? (
+      <div class={`grid gap-6 ${gridCols[columns]}`}>
+        {instructors.map((instructor) => (
+          <InstructorCard
+            name={instructor.name}
+            availability={instructor.availability}
+            description={instructor.description}
+            image={instructor.image}
+            image2={instructor.image2}
+            variant={variant}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-center text-gray-500">Instructor information is being updated. Please check back soon.</p>
+    )}
+  </div>
+</section>

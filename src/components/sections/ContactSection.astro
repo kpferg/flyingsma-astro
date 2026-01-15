@@ -1,0 +1,167 @@
+---
+import site from '../../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  showMap?: boolean;
+  variant?: 'default' | 'split' | 'compact';
+}
+
+const {
+  title = "Let's Get In Touch!",
+  description = "Ready to start flying with us? That's great! Give us a call or send us an email and we will get back to you soon!",
+  showMap = true,
+  variant = 'default'
+} = Astro.props;
+
+const { contact, address, hours, maps } = site;
+---
+
+<section class="py-16 bg-gray-50" id="contact">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
+    </div>
+
+    <div class={`grid gap-8 ${variant === 'split' && showMap ? 'lg:grid-cols-2' : 'max-w-4xl mx-auto'}`}>
+      <!-- Contact Information -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="grid gap-6 sm:grid-cols-2">
+          <!-- FBO Contact -->
+          <div class="p-4 bg-blue-50 rounded-lg">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 class="ml-3 font-semibold text-gray-900">FBO Inquiries</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">{contact.fbo.description}</p>
+            <p class="text-gray-700">
+              <a href={`tel:${contact.fbo.phone}`} class="text-blue-600 hover:text-blue-800 font-medium">
+                {contact.fbo.phone}
+              </a>
+            </p>
+            <p class="text-gray-600 text-sm">
+              <a href={`mailto:${contact.fbo.email}`} class="hover:text-blue-600">
+                {contact.fbo.email}
+              </a>
+            </p>
+          </div>
+
+          <!-- Flight Training Contact -->
+          <div class="p-4 bg-green-50 rounded-lg">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </div>
+              <h3 class="ml-3 font-semibold text-gray-900">Flight Training</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">{contact.flight.description}</p>
+            <p class="text-gray-700">
+              <span class="text-sm text-gray-500">{contact.flight.label}:</span>
+              <a href={`tel:${contact.flight.phone}`} class="text-green-600 hover:text-green-800 font-medium ml-1">
+                {contact.flight.phone}
+              </a>
+            </p>
+            <p class="text-gray-600 text-sm">
+              <a href={`mailto:${contact.flight.email}`} class="hover:text-green-600">
+                {contact.flight.email}
+              </a>
+            </p>
+          </div>
+
+          <!-- Maintenance Contact -->
+          <div class="p-4 bg-orange-50 rounded-lg">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="ml-3 font-semibold text-gray-900">Maintenance</h3>
+            </div>
+            <p class="text-gray-700">
+              <a href={`tel:${contact.maintenance.phone}`} class="text-orange-600 hover:text-orange-800 font-medium">
+                {contact.maintenance.phone}
+              </a>
+            </p>
+            <p class="text-gray-600 text-sm">
+              <a href={`mailto:${contact.maintenance.email}`} class="hover:text-orange-600">
+                {contact.maintenance.email}
+              </a>
+            </p>
+          </div>
+
+          <!-- Location & Hours -->
+          <div class="p-4 bg-gray-100 rounded-lg">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="ml-3 font-semibold text-gray-900">Location & Hours</h3>
+            </div>
+            <p class="text-gray-700">{address.street1}</p>
+            <p class="text-gray-700">{address.city}, {address.state} {address.zip}</p>
+            <p class="text-gray-600 text-sm mt-2">{hours.display}</p>
+            <p class="text-gray-500 text-xs italic">{hours.altDisplay}</p>
+          </div>
+        </div>
+
+        <!-- After Hours -->
+        {contact.afterHours && (
+          <div class="mt-6 p-4 bg-red-50 border border-red-100 rounded-lg">
+            <h4 class="font-semibold text-red-800 mb-1">After Hours Emergency</h4>
+            <p class="text-red-700">
+              <a href={`tel:${contact.afterHours.phone}`} class="hover:text-red-900 font-medium">
+                {contact.afterHours.phone}
+              </a>
+              <span class="text-red-600 text-sm ml-2">({contact.afterHours.name})</span>
+            </p>
+            <p class="text-red-600 text-xs mt-1">{contact.afterHours.rate}</p>
+          </div>
+        )}
+      </div>
+
+      <!-- Map -->
+      {showMap && variant === 'split' && (
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full min-h-[400px]">
+          <iframe
+            src={maps.embedUrl}
+            width="100%"
+            height="100%"
+            style="border:0; min-height: 400px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Southern Maine Aviation Location"
+          ></iframe>
+        </div>
+      )}
+    </div>
+
+    {showMap && variant !== 'split' && (
+      <div class="mt-8 bg-white rounded-xl shadow-lg overflow-hidden max-w-4xl mx-auto">
+        <iframe
+          src={maps.embedUrl}
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Southern Maine Aviation Location"
+        ></iframe>
+      </div>
+    )}
+  </div>
+</section>

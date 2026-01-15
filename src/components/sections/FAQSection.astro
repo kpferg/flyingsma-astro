@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import FAQ from '../ui/FAQ.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Filter by category */
+  category?: string;
+  /** Limit number of items */
+  limit?: number;
+  /** Group by category */
+  grouped?: boolean;
+}
+
+const {
+  title = 'Frequently Asked Questions',
+  description = 'Find answers to common questions about learning to fly.',
+  category,
+  limit,
+  grouped = false
+} = Astro.props;
+
+const faqCollection = await getCollection('faq');
+
+let faqItems = faqCollection
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((item) => ({
+    question: item.data.question,
+    answer: item.data.answer,
+    category: item.data.category,
+  }));
+
+// Filter by category if specified
+if (category) {
+  faqItems = faqItems.filter((item) => item.category === category);
+}
+
+// Limit items if specified
+if (limit) {
+  faqItems = faqItems.slice(0, limit);
+}
+---
+
+<FAQ
+  items={faqItems}
+  title={title}
+  description={description}
+  grouped={grouped}
+  allowMultiple={true}
+/>

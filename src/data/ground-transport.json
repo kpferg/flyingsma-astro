@@ -1,0 +1,30 @@
+{
+  "rentalCars": [
+    {
+      "name": "Enterprise",
+      "phone": "207-324-8122"
+    },
+    {
+      "name": "Hertz",
+      "phone": "207-324-7368"
+    },
+    {
+      "name": "Avis",
+      "phone": "207-874-7501"
+    }
+  ],
+  "taxis": [
+    {
+      "name": "Frontline Taxi",
+      "operator": "William \"Bucky\" Collins owner operator",
+      "description": "7 passenger Dodge Caravans",
+      "phone": "207-490-1214"
+    },
+    {
+      "name": "J&M Taxi",
+      "operator": "Mark Bshara owner operator",
+      "description": "7 passenger Dodge Caravans",
+      "phone": "207-490-2222"
+    }
+  ]
+}

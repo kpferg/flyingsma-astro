@@ -1,0 +1,14 @@
+---
+/**
+ * Base Schema Component
+ * Outputs JSON-LD structured data in a script tag
+ */
+
+interface Props {
+  data: Record<string, unknown>;
+}
+
+const { data } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

@@ -1,0 +1,127 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+  category?: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  title?: string;
+  description?: string;
+  /** Group items by category */
+  grouped?: boolean;
+  /** Allow multiple items to be open at once */
+  allowMultiple?: boolean;
+}
+
+const { items, title, description, grouped = false, allowMultiple = false } = Astro.props;
+
+// Group items by category if needed
+const groupedItems = grouped
+  ? items.reduce((acc, item) => {
+      const category = item.category || 'General';
+      if (!acc[category]) acc[category] = [];
+      acc[category].push(item);
+      return acc;
+    }, {} as Record<string, FAQItem[]>)
+  : { '': items };
+---
+
+<section class="faq-section" data-allow-multiple={allowMultiple}>
+  {(title || description) && (
+    <div class="text-center mb-10">
+      {title && (
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      )}
+      {description && (
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
+      )}
+    </div>
+  )}
+
+  <div class="space-y-8">
+    {Object.entries(groupedItems).map(([category, categoryItems]) => (
+      <div>
+        {grouped && category && (
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 capitalize">
+            {category.replace(/-/g, ' ')}
+          </h3>
+        )}
+        <div class="space-y-3">
+          {categoryItems.map((item, index) => (
+            <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+              <button
+                class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                aria-expanded="false"
+                data-index={index}
+              >
+                <span class="font-medium text-gray-900 pr-4">{item.question}</span>
+                <svg
+                  class="faq-icon w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-content hidden">
+                <div class="px-6 pb-4 text-gray-600 leading-relaxed whitespace-pre-line">
+                  {item.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq-item.open .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item.open .faq-toggle {
+    background-color: rgb(249 250 251);
+  }
+
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .faq-item.open .faq-content {
+    max-height: 1000px;
+    display: block;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-section').forEach((section) => {
+    const allowMultiple = section.getAttribute('data-allow-multiple') === 'true';
+    const toggles = section.querySelectorAll('.faq-toggle');
+
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('.faq-item');
+        const isOpen = item?.classList.contains('open');
+
+        // Close other items if not allowing multiple
+        if (!allowMultiple && !isOpen) {
+          section.querySelectorAll('.faq-item.open').forEach((openItem) => {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        // Toggle current item
+        item?.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  });
+</script>

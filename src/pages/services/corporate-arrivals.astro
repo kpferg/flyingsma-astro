@@ -1,0 +1,238 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import lodging from "../../data/lodging.json";
+import restaurants from "../../data/restaurants.json";
+import catering from "../../data/catering.json";
+import groundTransport from "../../data/ground-transport.json";
+import site from "../../data/site.json";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Services', url: 'https://www.flyingsma.com/services/' },
+  { name: 'Corporate Arrivals', url: 'https://www.flyingsma.com/services/corporate-arrivals/' },
+];
+---
+
+<BaseLayout title="Corporate Arrivals" description="Full-service corporate arrival services at Southern Maine Aviation. Ground transportation, lodging, catering, and more.">
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<ServiceSchema
+		slot="head"
+		name="Corporate Arrival Services"
+		description="Full-service corporate arrival services including ground transportation, lodging arrangements, catering, and concierge services for corporate aircraft."
+		url="https://www.flyingsma.com/services/corporate-arrivals/"
+		serviceType="FBO Services"
+	/>
+	<!-- Page Header -->
+	<section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">Corporate Arrivals</h1>
+			<p class="text-xl text-slate-300 max-w-2xl mx-auto">
+				We can make sure everything you need is here waiting upon your arrival
+			</p>
+		</div>
+	</section>
+
+	<!-- Intro Section -->
+	<section class="py-12 bg-white">
+		<div class="container mx-auto px-4 max-w-4xl">
+			<div class="bg-blue-50 rounded-xl p-8 text-center">
+				<h2 class="text-2xl font-bold text-gray-900 mb-4">After Hours Service Available</h2>
+				<p class="text-gray-700 mb-4">
+					After hours available on request, <strong>$90/hour</strong>, with a 2-hour minimum.
+				</p>
+				<div class="flex flex-wrap justify-center gap-6 text-sm">
+					<div>
+						<span class="text-gray-500">Business Hours:</span>
+						<a href={`tel:${site.contact.fbo.phone}`} class="ml-2 text-blue-600 font-semibold hover:underline">
+							{site.contact.fbo.phone}
+						</a>
+					</div>
+					<div>
+						<span class="text-gray-500">After Hours:</span>
+						<a href={`tel:${site.contact.afterHours.phone}`} class="ml-2 text-blue-600 font-semibold hover:underline">
+							{site.contact.afterHours.phone}
+						</a>
+						<span class="text-gray-500 ml-1">({site.contact.afterHours.name})</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Lodging Section -->
+	<section class="py-12 bg-gray-50" id="lodging">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-10">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">Area Lodging</h2>
+				<p class="text-gray-600">Convenient accommodations near the airport with pilot discounts</p>
+			</div>
+
+			<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+				{lodging.map((hotel) => (
+					<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+						<div class="p-6">
+							<h3 class="text-xl font-bold text-gray-900 mb-2">{hotel.name}</h3>
+							<p class="text-sm text-blue-600 mb-3">{hotel.description}</p>
+							<div class="space-y-2 text-sm text-gray-600">
+								<p class="whitespace-pre-line">{hotel.address}</p>
+								<p>
+									<a href={`tel:${hotel.phone}`} class="text-blue-600 hover:underline font-medium">
+										{hotel.phone}
+									</a>
+								</p>
+								{hotel.pricing && (
+									<p class="text-green-600 font-medium">{hotel.pricing}</p>
+								)}
+							</div>
+						</div>
+						{hotel.mapsEmbedUrl && (
+							<div class="h-48">
+								<iframe
+									src={hotel.mapsEmbedUrl}
+									width="100%"
+									height="100%"
+									style="border:0;"
+									allowfullscreen=""
+									loading="lazy"
+									referrerpolicy="no-referrer-when-downgrade"
+									title={`Map to ${hotel.name}`}
+								></iframe>
+							</div>
+						)}
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Dining Section -->
+	<section class="py-12 bg-white" id="restaurants">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-10">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">Area Dining</h2>
+				<p class="text-gray-600">Local restaurants and dining options</p>
+			</div>
+
+			<div class="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto">
+				{restaurants.map((restaurant) => (
+					<a
+						href={restaurant.url}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+					>
+						<div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+							<svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold text-gray-900">{restaurant.name}</h3>
+							{restaurant.note && (
+								<p class="text-sm text-gray-500">{restaurant.note}</p>
+							)}
+						</div>
+						<svg class="w-4 h-4 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+						</svg>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Catering Section -->
+	<section class="py-12 bg-gray-50" id="catering">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-10">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">Catering Services</h2>
+				<p class="text-gray-600">We can arrange catering for your crew and passengers</p>
+			</div>
+
+			<div class="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto">
+				{catering.map((caterer) => (
+					<div class="flex items-center p-4 bg-white rounded-lg shadow">
+						<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
+							<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+							</svg>
+						</div>
+						<div>
+							<h3 class="font-semibold text-gray-900">{caterer.name}</h3>
+							<a href={`tel:${caterer.phone}`} class="text-sm text-blue-600 hover:underline">
+								{caterer.phone}
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Ground Transportation Section -->
+	<section class="py-12 bg-white" id="ground-transportation">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-10">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">Ground Transportation</h2>
+				<p class="text-gray-600">Getting around once you get here</p>
+			</div>
+
+			<div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+				<!-- Rental Cars -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+						<svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+						</svg>
+						Rental Cars
+					</h3>
+					<div class="space-y-3">
+						{groundTransport.rentalCars.map((rental) => (
+							<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+								<span class="font-medium text-gray-900">{rental.name}</span>
+								<a href={`tel:${rental.phone}`} class="text-blue-600 hover:underline">
+									{rental.phone}
+								</a>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<!-- Taxis -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+						<svg class="w-6 h-6 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+						</svg>
+						Taxi Services
+					</h3>
+					<div class="space-y-3">
+						{groundTransport.taxis.map((taxi) => (
+							<div class="p-4 bg-gray-50 rounded-lg">
+								<div class="flex items-center justify-between mb-1">
+									<span class="font-medium text-gray-900">{taxi.name}</span>
+									<a href={`tel:${taxi.phone}`} class="text-blue-600 hover:underline">
+										{taxi.phone}
+									</a>
+								</div>
+								<p class="text-sm text-gray-500">{taxi.operator}</p>
+								<p class="text-sm text-gray-500">{taxi.description}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<ContactSection
+		title="Ready to Plan Your Arrival?"
+		description="Contact us to arrange all the services you need for a smooth arrival."
+		variant="default"
+		showMap={true}
+	/>
+</BaseLayout>

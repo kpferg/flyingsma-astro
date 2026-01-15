@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import { getContentfulNews } from "../../lib/contentful";
+
+// Fetch all news from Contentful
+const news = await getContentfulNews();
+
+const formatDate = (date: Date) => {
+	return new Intl.DateTimeFormat('en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	}).format(date);
+};
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'News', url: 'https://www.flyingsma.com/news/' },
+];
+---
+
+<BaseLayout title="News & Events" description="Stay up to date with the latest news and events from Southern Maine Aviation.">
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<!-- Page Header -->
+	<section class="bg-gradient-to-br from-blue-900 to-slate-900 text-white py-16">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">News & Events</h1>
+			<p class="text-xl text-blue-200 max-w-2xl mx-auto">
+				Stay up to date with the latest happenings at Southern Maine Aviation
+			</p>
+		</div>
+	</section>
+
+	<!-- News Grid -->
+	<section class="py-16 bg-gray-50">
+		<div class="container mx-auto px-4">
+			{news.length > 0 ? (
+				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+					{news.map((item) => (
+						<article class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+							{item.image && (
+								<div class="h-48 overflow-hidden">
+									<img
+										src={item.image}
+										alt={item.headline}
+										class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+										loading="lazy"
+									/>
+								</div>
+							)}
+							<div class="p-6">
+								<time class="text-sm text-gray-500" datetime={item.updatedAt.toISOString()}>
+									{formatDate(item.updatedAt)}
+								</time>
+								<h2 class="text-xl font-bold text-gray-900 mt-2 mb-3">
+									{item.headline}
+								</h2>
+								{item.description && (
+									<p class="text-gray-600 mb-4 line-clamp-3">{item.description}</p>
+								)}
+								<div class="flex flex-wrap gap-3">
+									{item.buttonText && item.buttonAction && (
+										<a
+											href={item.buttonAction}
+											target={item.buttonTarget === '_blank' ? '_blank' : undefined}
+											rel={item.buttonTarget === '_blank' ? 'noopener noreferrer' : undefined}
+											class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+										>
+											{item.buttonText}
+											<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+											</svg>
+										</a>
+									)}
+									{item.document && (
+										<a
+											href={item.document}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center text-gray-600 hover:text-gray-800 font-medium"
+										>
+											<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+											</svg>
+											Download PDF
+										</a>
+									)}
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			) : (
+				<div class="text-center py-12">
+					<p class="text-gray-500 text-lg">No news articles found.</p>
+					<a href="/" class="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
+						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+						</svg>
+						Back to Home
+					</a>
+				</div>
+			)}
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.line-clamp-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>

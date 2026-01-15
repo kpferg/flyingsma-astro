@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "logo": "/images/logo/SMALogo.png",
+    "alt": "Southern Maine Aviation"
+  },
+  "main": [
+    {
+      "label": "News",
+      "href": "/news"
+    },
+    {
+      "label": "Services",
+      "children": [
+        { "label": "All Services", "href": "/services" },
+        { "label": "Corporate Arrivals", "href": "/services/corporate-arrivals" },
+        { "label": "Scenic Flights", "href": "/services/scenic-flights" },
+        { "label": "Aircraft Maintenance", "href": "/services/maintenance" }
+      ]
+    },
+    {
+      "label": "Flight School",
+      "href": "/flight-school"
+    },
+    {
+      "label": "Multi-Engine",
+      "href": "/flight-school/multi-engine"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "external": [
+    {
+      "label": "Scheduling for Current Customers",
+      "href": "https://app.flightschedulepro.com/Account/Login/186067",
+      "icon": "fa-calendar-alt",
+      "newTab": true
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+---
+/**
+ * Organization/LocalBusiness Schema
+ * Provides structured data about Southern Maine Aviation
+ */
+
+import Schema from './Schema.astro';
+import site from '../../data/site.json';
+
+interface Props {
+  type?: 'Organization' | 'LocalBusiness';
+}
+
+const { type = 'LocalBusiness' } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': type,
+  '@id': 'https://www.flyingsma.com/#organization',
+  name: site.name,
+  description: site.description,
+  url: 'https://www.flyingsma.com',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://www.flyingsma.com/images/sma-logo.png',
+  },
+  image: 'https://www.flyingsma.com/images/sma-hero.jpg',
+  telephone: site.contact.fbo.phone,
+  email: site.contact.fbo.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street1,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 43.401089,
+    longitude: -70.710601,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '07:00',
+      closes: '17:00',
+    },
+  ],
+  sameAs: [
+    site.social.facebook,
+  ].filter(Boolean),
+  priceRange: '$$',
+  currenciesAccepted: 'USD',
+  paymentAccepted: 'Cash, Credit Card',
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 43.401089,
+      longitude: -70.710601,
+    },
+    geoRadius: '100 mi',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Aviation Services',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Flight Training',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Private Pilot Training',
+              description: 'Learn to fly with our experienced instructors',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Instrument Rating',
+              description: 'Advance your skills with instrument flight training',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Multi-Engine Rating',
+              description: 'Get certified to fly multi-engine aircraft',
+            },
+          },
+        ],
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Scenic Flights',
+          description: 'Experience the beauty of Southern Maine from above',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Aircraft Maintenance',
+          description: 'Full-service aircraft maintenance and inspections',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'FBO Services',
+          description: 'Fuel, hangar, and concierge services for transient aircraft',
+        },
+      },
+    ],
+  },
+};
+---
+
+<Schema data={schema} />

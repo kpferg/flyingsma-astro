@@ -1,0 +1,50 @@
+---
+/**
+ * Service Schema
+ * Provides structured data for individual services
+ */
+
+import Schema from './Schema.astro';
+import site from '../../data/site.json';
+
+interface Props {
+  name: string;
+  description: string;
+  image?: string;
+  url: string;
+  provider?: string;
+  areaServed?: string;
+  serviceType?: string;
+}
+
+const {
+  name,
+  description,
+  image,
+  url,
+  provider = site.name,
+  areaServed = 'Southern Maine',
+  serviceType,
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: name,
+  description: description,
+  image: image || 'https://www.flyingsma.com/images/sma-hero.jpg',
+  url: url,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: provider,
+    '@id': 'https://www.flyingsma.com/#organization',
+  },
+  areaServed: {
+    '@type': 'Place',
+    name: areaServed,
+  },
+  ...(serviceType && { serviceType }),
+};
+---
+
+<Schema data={schema} />

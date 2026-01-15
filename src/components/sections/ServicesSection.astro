@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import ServiceCard from '../ui/ServiceCard.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  variant?: 'default' | 'compact' | 'featured';
+  limit?: number;
+  columns?: 2 | 3 | 4;
+}
+
+const {
+  title = 'At Your Service',
+  description = 'We offer a full range of services for General Aviation and corporate aircraft, plus an active flight training program.',
+  variant = 'featured',
+  limit,
+  columns = 4
+} = Astro.props;
+
+const servicesCollection = await getCollection('services');
+let services = servicesCollection
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((service) => ({
+    title: service.data.title,
+    description: service.data.description,
+    icon: service.data.icon,
+    href: service.data.href || `/services/${service.slug}`,
+  }));
+
+if (limit) {
+  services = services.slice(0, limit);
+}
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4'
+};
+---
+
+<section class="py-16 bg-gray-50" id="services">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
+    </div>
+
+    <div class={`grid gap-6 ${gridCols[columns]}`}>
+      {services.map((service) => (
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          icon={service.icon}
+          href={service.href}
+          variant={variant}
+        />
+      ))}
+    </div>
+  </div>
+</section>

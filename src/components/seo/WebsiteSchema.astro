@@ -1,0 +1,31 @@
+---
+/**
+ * Website Schema
+ * Provides structured data about the website itself
+ */
+
+import Schema from './Schema.astro';
+import site from '../../data/site.json';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://www.flyingsma.com/#website',
+  url: 'https://www.flyingsma.com',
+  name: site.name,
+  description: site.description,
+  publisher: {
+    '@id': 'https://www.flyingsma.com/#organization',
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://www.flyingsma.com/?s={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<Schema data={schema} />

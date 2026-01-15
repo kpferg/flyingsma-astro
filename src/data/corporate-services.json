@@ -1,0 +1,53 @@
+{
+  "headline": "Corporate Arrival Services",
+  "description": "After hours available on request, $90/hour, with a 2-hour minimum.",
+  "contact": {
+    "businessHours": {
+      "phone": "207-324-8919",
+      "label": "during business hours"
+    },
+    "afterHours": {
+      "phone": "207-651-9308",
+      "label": "after hours emergency",
+      "contact": "Mark Damuth - General Manager"
+    }
+  },
+  "services": [
+    {
+      "icon": "fa-dollar-sign",
+      "title": "Fees",
+      "description": "Reasonable rates on aviation services.",
+      "href": "#fees"
+    },
+    {
+      "icon": "fa-utensils-alt",
+      "title": "Dining",
+      "description": "Area dining options.",
+      "href": "#restaurants"
+    },
+    {
+      "icon": "fa-gas-pump",
+      "title": "Fuel",
+      "description": "High quality aviation grade fuel options.",
+      "href": "#fuel"
+    },
+    {
+      "icon": "fa-bed",
+      "title": "Lodging",
+      "description": "Area lodging.",
+      "href": "#lodging"
+    },
+    {
+      "icon": "fa-taxi",
+      "title": "Transportation",
+      "description": "Getting around once you get here.",
+      "href": "#ground-transportation"
+    },
+    {
+      "icon": "fa-wrench",
+      "title": "Maintenance",
+      "description": "Our award-winning mechanics can help give you the peace of mind that comes from knowing that your aircraft is in top notch condition and has been inspected thoroughly and professionally.",
+      "href": "#aircraft-maintenance"
+    }
+  ]
+}

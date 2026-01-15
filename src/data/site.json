@@ -1,0 +1,62 @@
+{
+  "name": "Southern Maine Aviation",
+  "title": "Southern Maine Aviation",
+  "description": "Flight Training, Instruction and Services in Southern Maine, Scenic Flights, Learn to Fly, Multi-engine, Sanford, Maine, New England",
+  "favicon": "favicon_1.0.ico",
+  "baseUrl": "/",
+  "contact": {
+    "fbo": {
+      "label": "Desk Phone",
+      "phone": "207-324-8919",
+      "email": "fly@flyingsma.com",
+      "description": "For all FBO Inquiries, including corporate arrivals, accounting, or aircraft maintenance"
+    },
+    "flight": {
+      "label": "Call or Text",
+      "phone": "207-569-4017",
+      "email": "flightdept@flyingsma.com",
+      "description": "For all flight training or flight related questions, aircraft rentals and scheduling, scenic and discovery flights"
+    },
+    "maintenance": {
+      "label": "Maintenance",
+      "phone": "207-324-8919",
+      "email": "mx@flyingsma.com"
+    },
+    "afterHours": {
+      "phone": "207-651-9308",
+      "name": "Mark Damuth - General Manager",
+      "rate": "$90/hour, with a 2-hour minimum"
+    }
+  },
+  "address": {
+    "street1": "199 Airport Road",
+    "street2": "",
+    "city": "Sanford",
+    "state": "Maine",
+    "zip": "04073",
+    "full": "199 Airport Road, Sanford, Maine 04073"
+  },
+  "hours": {
+    "regular": "7 AM - 5 PM",
+    "summer": "7 AM - 7 PM (Memorial Day - Labor Day)",
+    "display": "Open 7 days a week from 7 AM to 5 PM",
+    "altDisplay": "Open until 7 PM Memorial Day - Labor Day"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/SouthernMaineAviation/",
+    "instagram": ""
+  },
+  "maps": {
+    "address": "Southern Maine Aviation, 199 Airport Rd, Sanford, ME 04073, USA",
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2898.8488587129677!2d-70.71279048432662!3d43.40108837671419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb2b440a2eb5a67%3A0xa3a092f530c9d102!2sSouthern+Maine+Aviation!5e0!3m2!1sen!2spe!4v1525538071837"
+  },
+  "externalLinks": {
+    "scheduling": "https://app.flightschedulepro.com/Account/Login/186067"
+  },
+  "footer": {
+    "copyright": {
+      "name": "Southern Maine Aviation LLC",
+      "year": "2024"
+    }
+  }
+}

@@ -1,0 +1,156 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ServiceCard from "../../components/ui/ServiceCard.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import corporateServices from "../../data/corporate-services.json";
+import site from "../../data/site.json";
+
+const servicesCollection = await getCollection('services');
+const services = servicesCollection
+	.sort((a, b) => a.data.order - b.data.order)
+	.map((service) => ({
+		slug: service.slug,
+		title: service.data.title,
+		description: service.data.description,
+		icon: service.data.icon,
+		href: service.data.href || `/services/${service.slug}`,
+	}));
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Services', url: 'https://www.flyingsma.com/services/' },
+];
+---
+
+<BaseLayout title="Services" description="Full-service FBO offering corporate arrivals, flight training, scenic flights, and aircraft maintenance in Sanford, Maine.">
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<!-- Page Header -->
+	<section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+			<p class="text-xl text-slate-300 max-w-2xl mx-auto">
+				Full-service FBO providing everything you need for General Aviation and corporate aircraft
+			</p>
+		</div>
+	</section>
+
+	<!-- Services Overview -->
+	<section class="py-16 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">What We Offer</h2>
+				<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+					We offer a full range of services for General Aviation and corporate aircraft, plus an active flight training program. The FBO offers free computer usage and Wi-Fi, as well as a comfortable lounge and beverages for purchase.
+				</p>
+			</div>
+
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+				{services.map((service) => (
+					<ServiceCard
+						title={service.title}
+						description={service.description}
+						icon={service.icon}
+						href={service.href}
+						variant="featured"
+					/>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Corporate Services Grid -->
+	<section class="py-16 bg-gray-50" id="corporate-services">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">{corporateServices.headline}</h2>
+				<p class="text-gray-600 max-w-2xl mx-auto">
+					{corporateServices.description}
+				</p>
+				<div class="mt-4 space-y-1 text-sm text-gray-500">
+					<p>
+						Call <a href={`tel:${corporateServices.contact.businessHours.phone}`} class="text-blue-600 hover:underline font-medium">{corporateServices.contact.businessHours.phone}</a> {corporateServices.contact.businessHours.label}
+					</p>
+					<p>
+						Call <a href={`tel:${corporateServices.contact.afterHours.phone}`} class="text-blue-600 hover:underline font-medium">{corporateServices.contact.afterHours.phone}</a> {corporateServices.contact.afterHours.label} for {corporateServices.contact.afterHours.contact}
+					</p>
+				</div>
+			</div>
+
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{corporateServices.services.map((service) => (
+					<ServiceCard
+						title={service.title}
+						description={service.description}
+						icon={service.icon}
+						href={service.href}
+						variant="default"
+					/>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- FBO Amenities -->
+	<section class="py-16 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">FBO Amenities</h2>
+				<p class="text-gray-600 max-w-2xl mx-auto">
+					Our comfortable facilities are designed with pilots and passengers in mind
+				</p>
+			</div>
+
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-4xl mx-auto">
+				<div class="text-center p-6">
+					<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+						</svg>
+					</div>
+					<h3 class="font-semibold text-gray-900">Free Wi-Fi</h3>
+					<p class="text-sm text-gray-500 mt-1">High-speed internet access</p>
+				</div>
+
+				<div class="text-center p-6">
+					<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+						</svg>
+					</div>
+					<h3 class="font-semibold text-gray-900">Computer Access</h3>
+					<p class="text-sm text-gray-500 mt-1">Free computer usage</p>
+				</div>
+
+				<div class="text-center p-6">
+					<div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+						</svg>
+					</div>
+					<h3 class="font-semibold text-gray-900">Comfortable Lounge</h3>
+					<p class="text-sm text-gray-500 mt-1">Relax before your flight</p>
+				</div>
+
+				<div class="text-center p-6">
+					<div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+						<svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+						</svg>
+					</div>
+					<h3 class="font-semibold text-gray-900">Beverages</h3>
+					<p class="text-sm text-gray-500 mt-1">Available for purchase</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<ContactSection
+		title="Questions About Our Services?"
+		description="Contact us to learn more about how we can serve your aviation needs."
+		variant="default"
+		showMap={false}
+	/>
+</BaseLayout>

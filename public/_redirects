@@ -1,0 +1,37 @@
+# Netlify redirects file
+# Redirects from old Hugo site URLs to new Astro URLs
+# Note: Netlify's Pretty URLs handles trailing slash variations automatically
+
+# Flight School / Fly section
+/pages/redbird_simulator.html    /flight-school    301
+/pages/our_instructors.html      /flight-school#instructors    301
+/pages/flight_training.html      /flight-school    301
+/pages/our_fleet.html            /flight-school    301
+/pages/pricing.html              /flight-school    301
+/pages/accelerated_courses.html  /flight-school    301
+/pages/pilot_accomplishments.html /flight-school   301
+/fly                             /flight-school    301
+
+# Corporate Arrivals
+/pages/airport_FBO.html          /services/corporate-arrivals    301
+/pages/FBO_Service_Fees.html     /services/corporate-arrivals#fees    301
+/corporate-arrivals              /services/corporate-arrivals    301
+
+# Scenic Flights
+/pages/scenic_flights.html       /services/scenic-flights    301
+/pages/discovery_flights.html    /services/scenic-flights    301
+/scenic-flights                  /services/scenic-flights    301
+
+# Home / Contact
+/pages/contact_us.html           /contact    301
+/pages/events.html               /news       301
+
+# Maintenance
+/pages/maintenance.html          /services/maintenance    301
+/aircraft-maintenance            /services/maintenance    301
+
+# Multi-engine
+/multi-engine                    /flight-school/multi-engine    301
+
+# Handle old dashboard URL
+/dashboard                       /    301
