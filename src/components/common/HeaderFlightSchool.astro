@@ -1,0 +1,191 @@
+---
+import site from '../../data/site.json';
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-blue-600">
+  <nav class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo & Brand -->
+      <a href="/flight-school" class="flex items-center gap-3">
+        <img
+          src="/images/logo/SMALogo.png"
+          alt="Southern Maine Aviation"
+          class="h-10 w-auto"
+        />
+        <div class="hidden sm:block">
+          <span class="text-sm text-gray-500">Southern Maine Aviation</span>
+          <span class="block text-lg font-semibold text-blue-600 -mt-1">Flight School</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        <!-- Primary Links -->
+        <a href="/flight-school" class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors">
+          Training
+        </a>
+        <a href="/flight-school/scenic-flights" class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors">
+          Scenic Flights
+        </a>
+        <a href="/flight-school/contact" class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors">
+          Contact
+        </a>
+
+        <!-- More Dropdown -->
+        <div class="relative group">
+          <button class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors flex items-center gap-1">
+            More
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute right-0 mt-1 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pt-2">
+            <div class="bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 py-1">
+              <a href="/flight-school/multi-engine" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                Multi-Engine Training
+              </a>
+              <a href="/flight-school/news" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                News
+              </a>
+              <div class="border-t border-gray-100 my-1"></div>
+              <a
+                href="https://app.flightschedulepro.com/Account/Login/186067"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Scheduling
+              </a>
+              <a
+                href="https://flight-release-sma.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                Flight Release
+              </a>
+              <div class="border-t border-gray-100 my-1"></div>
+              <a href="/services" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50">
+                Switch to FBO Services →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call Button -->
+        <a
+          href={`tel:${site.contact.flight.phone}`}
+          class="ml-3 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span class="hidden lg:inline">{site.contact.flight.phone}</span>
+          <span class="lg:hidden">Call</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        id="mobile-menu-button-fs"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6 menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="hidden md:hidden pb-4" id="mobile-menu-fs">
+      <div class="pt-4 border-t border-gray-100 space-y-1">
+        <a href="/flight-school" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">
+          Flight Training
+        </a>
+        <a href="/flight-school/scenic-flights" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">
+          Scenic Flights
+        </a>
+        <a href="/flight-school/multi-engine" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">
+          Multi-Engine
+        </a>
+        <a href="/flight-school/news" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">
+          News
+        </a>
+        <a href="/flight-school/contact" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium">
+          Contact
+        </a>
+
+        <div class="pt-3 mt-3 border-t border-gray-100 space-y-1">
+          <a
+            href="https://app.flightschedulepro.com/Account/Login/186067"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-3 py-2 text-blue-600 hover:bg-blue-50 rounded-md font-medium"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Scheduling
+          </a>
+          <a
+            href="https://flight-release-sma.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-3 py-2 text-blue-600 hover:bg-blue-50 rounded-md font-medium"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Flight Release
+          </a>
+        </div>
+
+        <div class="pt-3 mt-3 border-t border-gray-100">
+          <a
+            href={`tel:${site.contact.flight.phone}`}
+            class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call: {site.contact.flight.phone}
+          </a>
+        </div>
+
+        <div class="pt-3 mt-3 border-t border-gray-100">
+          <a href="/services" class="block px-3 py-2 text-gray-500 hover:text-gray-700 text-sm">
+            Switch to FBO Services →
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button-fs');
+  const mobileMenu = document.getElementById('mobile-menu-fs');
+  const menuIcon = mobileMenuButton?.querySelector('.menu-icon');
+  const closeIcon = mobileMenuButton?.querySelector('.close-icon');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuIcon?.classList.toggle('hidden');
+      closeIcon?.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+</script>

@@ -306,6 +306,57 @@ export async function getContentfulFleet(): Promise<ContentfulAircraft[]> {
 }
 
 /**
+ * Fuel prices from Contentful
+ */
+export interface ContentfulFuelPrices {
+  jetAFullService: number | null;
+  jetASelfService: number | null;
+  avgasFullService: number | null;
+  avgasSelfService: number | null;
+  mogasSelfService: number | null;
+  updatedAt: Date;
+}
+
+/**
+ * Fetch fuel prices from Contentful CMS
+ * Uses a specific entry ID for fuel prices
+ */
+export async function getContentfulFuelPrices(): Promise<ContentfulFuelPrices | null> {
+  const FUEL_ENTRY_ID = '4lhawuLvFfPQRZ9eGC7uiH';
+
+  try {
+    const url = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT}/entries/${FUEL_ENTRY_ID}?access_token=${ACCESS_TOKEN}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Contentful API error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    const fields = data.fields as {
+      jetAFullService?: number;
+      jetASelfService?: number;
+      avgasFullService?: number;
+      avgasSelfService?: number;
+      mogasSelfService?: number;
+    };
+
+    return {
+      jetAFullService: fields.jetAFullService ?? null,
+      jetASelfService: fields.jetASelfService ?? null,
+      avgasFullService: fields.avgasFullService ?? null,
+      avgasSelfService: fields.avgasSelfService ?? null,
+      mogasSelfService: fields.mogasSelfService ?? null,
+      updatedAt: new Date(data.sys.updatedAt),
+    };
+  } catch (error) {
+    console.error('Failed to fetch fuel prices from Contentful:', error);
+    return null;
+  }
+}
+
+/**
  * Check if Contentful is configured
  */
 export function isContentfulConfigured(): boolean {

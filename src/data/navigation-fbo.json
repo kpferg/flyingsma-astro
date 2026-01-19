@@ -1,0 +1,14 @@
+{
+  "brand": {
+    "logo": "/images/logo/SMALogo.png",
+    "alt": "Southern Maine Aviation - FBO Services"
+  },
+  "main": [
+    { "label": "Services", "href": "/services" },
+    { "label": "Corporate Arrivals", "href": "/services/corporate-arrivals" },
+    { "label": "Maintenance", "href": "/services/maintenance" },
+    { "label": "News", "href": "/services/news" },
+    { "label": "Contact", "href": "/services/contact" }
+  ],
+  "external": []
+}

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FlightSchoolLayout from "../../layouts/FlightSchoolLayout.astro";
 import ContactSection from "../../components/sections/ContactSection.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import ServiceSchema from "../../components/seo/ServiceSchema.astro";
@@ -12,7 +12,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Multi-Engine Training" description="Multi-engine flight training now available at Southern Maine Aviation. Learn to fly twin-engine aircraft.">
+<FlightSchoolLayout title="Multi-Engine Training" description="Multi-engine flight training now available at Southern Maine Aviation. Learn to fly twin-engine aircraft.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<ServiceSchema
 		slot="head"
@@ -200,4 +200,4 @@ const breadcrumbs = [
 		variant="default"
 		showMap={false}
 	/>
-</BaseLayout>
+</FlightSchoolLayout>

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FlightSchoolLayout from "../../layouts/FlightSchoolLayout.astro";
 import ContactSection from "../../components/sections/ContactSection.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import ServiceSchema from "../../components/seo/ServiceSchema.astro";
@@ -12,7 +12,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Scenic Flights" description="Experience the beauty of Maine from the air with a scenic flight from Southern Maine Aviation.">
+<FlightSchoolLayout title="Scenic Flights" description="Experience the beauty of Maine from the air with a scenic flight from Southern Maine Aviation.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<ServiceSchema
 		slot="head"
@@ -149,4 +149,4 @@ const breadcrumbs = [
 		variant="default"
 		showMap={false}
 	/>
-</BaseLayout>
+</FlightSchoolLayout>

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FBOLayout from "../../layouts/FBOLayout.astro";
 import ServiceCard from "../../components/ui/ServiceCard.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import corporateServices from "../../data/corporate-services.json";
@@ -23,7 +23,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Services" description="Full-service FBO offering corporate arrivals, flight training, scenic flights, and aircraft maintenance in Sanford, Maine.">
+<FBOLayout title="Services" description="Full-service FBO offering corporate arrivals, flight training, scenic flights, and aircraft maintenance in Sanford, Maine.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
@@ -145,6 +145,305 @@ const breadcrumbs = [
 		</div>
 	</section>
 
+	<!-- Fuel Section -->
+	<section class="py-16 bg-gradient-to-br from-green-800 to-green-900 text-white" id="fuel">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold mb-4">Fuel</h2>
+				<p class="text-green-200 max-w-3xl mx-auto">
+					Southern Maine Aviation has full service Jet A and 100LL during business hours, plus self service for Jet A, Avgas, and Mogas at all hours. The self-serve pumps for Avgas and Jet A are on the main ramp on the northeast side. The self-serve Mogas is on the west side next to the Big Blue Hangar on taxiway C.
+				</p>
+				<p class="text-green-300 mt-4">
+					After-hours services are available upon request (call <a href={`tel:${site.contact.afterHours.phone}`} class="underline hover:text-white">{site.contact.afterHours.phone}</a>).
+				</p>
+			</div>
+
+			<div class="max-w-2xl mx-auto" id="fuel-prices-container">
+				<!-- Loading State -->
+				<div id="fuel-loading" class="text-center py-8">
+					<div class="inline-block w-8 h-8 border-4 border-green-300 border-t-transparent rounded-full animate-spin"></div>
+					<p class="text-green-200 mt-4">Loading current fuel prices...</p>
+				</div>
+
+				<!-- Prices Table (hidden until loaded) -->
+				<div id="fuel-table" class="hidden">
+					<div class="bg-white/10 backdrop-blur rounded-xl overflow-hidden">
+						<table class="w-full">
+							<thead>
+								<tr class="border-b border-white/20">
+									<th class="px-6 py-4 text-left text-green-200 font-semibold">Fuel Type</th>
+									<th class="px-6 py-4 text-center text-green-200 font-semibold">Full-Service</th>
+									<th class="px-6 py-4 text-center text-green-200 font-semibold">Self-Service</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="border-b border-white/10">
+									<td class="px-6 py-4 font-medium">Jet A (premix)</td>
+									<td class="px-6 py-4 text-center text-xl font-bold" id="jet-a-full">—</td>
+									<td class="px-6 py-4 text-center text-xl font-bold" id="jet-a-self">—</td>
+								</tr>
+								<tr class="border-b border-white/10">
+									<td class="px-6 py-4 font-medium">Avgas 100LL</td>
+									<td class="px-6 py-4 text-center text-xl font-bold" id="avgas-full">—</td>
+									<td class="px-6 py-4 text-center text-xl font-bold" id="avgas-self">—</td>
+								</tr>
+								<tr>
+									<td class="px-6 py-4 font-medium">Mogas (91-oct. ethanol free)</td>
+									<td class="px-6 py-4 text-center text-gray-400">N/A</td>
+									<td class="px-6 py-4 text-center text-xl font-bold" id="mogas-self">—</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="text-center text-green-300 text-sm mt-4" id="fuel-updated"></p>
+				</div>
+
+				<!-- Error State (hidden by default) -->
+				<div id="fuel-error" class="hidden text-center text-green-200">
+					<p>Fuel prices are temporarily unavailable. Please call for current pricing.</p>
+				</div>
+			</div>
+
+			<div class="max-w-2xl mx-auto mt-8 text-center space-y-4">
+				<p class="text-green-200">
+					We also offer <strong class="text-white">Phillips 66 Partners-Into-Plane</strong> contract fuel.
+				</p>
+				<p class="text-green-200">
+					Check out our fuel prices and other information on
+					<a
+						href="http://www.airnav.com/airport/KSFM"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="underline hover:text-white"
+					>
+						AirNav - KSFM
+					</a>
+				</p>
+				<p class="text-xs text-green-400 mt-6 italic">
+					Please note: Sold or dispensed Avgas is intended for aviation use ONLY, pursuant to The Clean Air Act (CAA), Section 211(k)5.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		async function loadFuelPrices() {
+			const FUEL_API_URL = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master/entries/4lhawuLvFfPQRZ9eGC7uiH?access_token=hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+
+			const loadingEl = document.getElementById('fuel-loading');
+			const tableEl = document.getElementById('fuel-table');
+			const errorEl = document.getElementById('fuel-error');
+
+			try {
+				const response = await fetch(FUEL_API_URL);
+				if (!response.ok) throw new Error('Failed to fetch');
+
+				const data = await response.json();
+				const fields = data.fields;
+
+				const formatPrice = (price: number | undefined) => {
+					if (price === undefined || price === null) return '—';
+					return price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+				};
+
+				// Update prices
+				const jetAFull = document.getElementById('jet-a-full');
+				const jetASelf = document.getElementById('jet-a-self');
+				const avgasFull = document.getElementById('avgas-full');
+				const avgasSelf = document.getElementById('avgas-self');
+				const mogasSelf = document.getElementById('mogas-self');
+				const updatedEl = document.getElementById('fuel-updated');
+
+				if (jetAFull) jetAFull.textContent = formatPrice(fields.jetAFullService);
+				if (jetASelf) jetASelf.textContent = formatPrice(fields.jetASelfService);
+				if (avgasFull) avgasFull.textContent = formatPrice(fields.avgasFullService);
+				if (avgasSelf) avgasSelf.textContent = formatPrice(fields.avgasSelfService);
+				if (mogasSelf) mogasSelf.textContent = formatPrice(fields.mogasSelfService);
+
+				if (updatedEl && data.sys?.updatedAt) {
+					const date = new Date(data.sys.updatedAt);
+					updatedEl.textContent = `Prices updated: ${date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`;
+				}
+
+				// Show table, hide loading
+				loadingEl?.classList.add('hidden');
+				tableEl?.classList.remove('hidden');
+			} catch (error) {
+				console.error('Failed to load fuel prices:', error);
+				loadingEl?.classList.add('hidden');
+				errorEl?.classList.remove('hidden');
+			}
+		}
+
+		// Load fuel prices when the page loads
+		loadFuelPrices();
+	</script>
+
+	<!-- Fees Section -->
+	<section class="py-16 bg-slate-800 text-white" id="fees">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold mb-4">Fees</h2>
+				<p class="text-slate-300 max-w-2xl mx-auto">
+					Transparent pricing for all our services
+				</p>
+				<p class="text-green-400 font-semibold mt-4 text-lg">No Landing Fees</p>
+			</div>
+
+			<div class="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
+				<!-- Overnight Parking -->
+				<div class="bg-slate-700/50 rounded-xl p-6">
+					<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+						</svg>
+						City of Sanford Overnight Parking
+					</h3>
+					<div class="space-y-2">
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Single Engine or Helicopter (Piston)</span>
+							<span class="font-semibold">$8.00</span>
+						</div>
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Multi Engine Piston</span>
+							<span class="font-semibold">$12.00</span>
+						</div>
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Turbo Prop</span>
+							<span class="font-semibold">$30.00</span>
+						</div>
+						<div class="flex justify-between py-2">
+							<span class="text-slate-300">Jets</span>
+							<span class="font-semibold">$45.00</span>
+						</div>
+					</div>
+					<p class="text-sm text-slate-400 mt-4 italic">
+						One night transient parking waived with fuel purchase (piston only)
+					</p>
+				</div>
+
+				<!-- Handling Fees -->
+				<div class="bg-slate-700/50 rounded-xl p-6">
+					<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+						</svg>
+						Handling Fees
+					</h3>
+					<div class="space-y-2">
+						<div class="flex justify-between items-start py-2 border-b border-slate-600">
+							<span class="text-slate-300">Turbo Prop</span>
+							<div class="text-right">
+								<span class="font-semibold">$100.00</span>
+								<p class="text-xs text-green-400">waived for 75 gal fuel purchase</p>
+							</div>
+						</div>
+						<div class="flex justify-between items-start py-2 border-b border-slate-600">
+							<span class="text-slate-300">Light Jets</span>
+							<div class="text-right">
+								<span class="font-semibold">$150.00</span>
+								<p class="text-xs text-green-400">waived for 100 gal fuel purchase</p>
+							</div>
+						</div>
+						<div class="flex justify-between items-start py-2 border-b border-slate-600">
+							<span class="text-slate-300">Small Jets</span>
+							<div class="text-right">
+								<span class="font-semibold">$175.00</span>
+								<p class="text-xs text-green-400">waived for 200 gal fuel purchase</p>
+							</div>
+						</div>
+						<div class="flex justify-between items-start py-2 border-b border-slate-600">
+							<span class="text-slate-300">Midsize Jets</span>
+							<div class="text-right">
+								<span class="font-semibold">$225.00</span>
+								<p class="text-xs text-green-400">waived for 400 gal fuel purchase</p>
+							</div>
+						</div>
+						<div class="flex justify-between items-start py-2">
+							<span class="text-slate-300">Large Jets</span>
+							<div class="text-right">
+								<span class="font-semibold">$375.00</span>
+								<p class="text-xs text-green-400">waived for 750 gal fuel purchase</p>
+							</div>
+						</div>
+					</div>
+					<p class="text-sm text-green-400 mt-4 font-medium">
+						Fuel Discount: $0.50 off retail for 1000+ gallon purchase
+					</p>
+				</div>
+
+				<!-- Other Fees -->
+				<div class="bg-slate-700/50 rounded-xl p-6">
+					<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						Other Fees
+					</h3>
+					<div class="space-y-2">
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Line Labor</span>
+							<span class="font-semibold">$60/hour</span>
+						</div>
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Line After Hours</span>
+							<span class="font-semibold">$90/hour</span>
+						</div>
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Lav Service</span>
+							<span class="font-semibold">$65.00</span>
+						</div>
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Oxygen Top Off</span>
+							<span class="font-semibold">$90.00</span>
+						</div>
+						<div class="flex justify-between py-2">
+							<span class="text-slate-300">GPU Start (per hour)</span>
+							<span class="font-semibold">$65.00</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Hangar Space -->
+				<div class="bg-slate-700/50 rounded-xl p-6">
+					<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+						</svg>
+						Hangar Space
+					</h3>
+					<div class="space-y-2">
+						<div class="flex justify-between py-2 border-b border-slate-600">
+							<span class="text-slate-300">Piston Single Engine</span>
+							<span class="font-semibold">$25.00/night</span>
+						</div>
+						<div class="flex justify-between py-2">
+							<span class="text-slate-300">Piston Twin Engine</span>
+							<span class="font-semibold">$40.00/night</span>
+						</div>
+					</div>
+					<div class="mt-4 pt-4 border-t border-slate-600 space-y-1 text-sm text-slate-400">
+						<p>* Multiple day discount for 3+ days</p>
+						<p>* Monthly hangar rates available</p>
+						<p>* Currently no hangar space for turbo props or jet aircraft</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center mt-10">
+				<a
+					href="/services/contact"
+					class="inline-flex items-center px-6 py-3 bg-white text-slate-800 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
+				>
+					Contact for Custom Quotes
+					<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
 	<!-- Contact & News Links -->
 	<section class="py-16 bg-white">
 		<div class="container mx-auto px-4">
@@ -216,4 +515,4 @@ const breadcrumbs = [
 			</div>
 		</div>
 	</section>
-</BaseLayout>
+</FBOLayout>

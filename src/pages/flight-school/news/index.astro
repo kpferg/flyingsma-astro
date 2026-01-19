@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import FlightSchoolLayout from "../../../layouts/FlightSchoolLayout.astro";
 import BreadcrumbSchema from "../../../components/seo/BreadcrumbSchema.astro";
 import { getContentfulNews } from "../../../lib/contentful";
 
@@ -21,7 +21,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Flight School News" description="Stay up to date with the latest news and events from Southern Maine Aviation's Flight School.">
+<FlightSchoolLayout title="Flight School News" description="Stay up to date with the latest news and events from Southern Maine Aviation's Flight School.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
@@ -117,7 +117,7 @@ const breadcrumbs = [
 			</a>
 		</div>
 	</section>
-</BaseLayout>
+</FlightSchoolLayout>
 
 <style>
 	.line-clamp-3 {

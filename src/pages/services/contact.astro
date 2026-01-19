@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FBOLayout from "../../layouts/FBOLayout.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import site from "../../data/site.json";
 
@@ -10,7 +10,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Contact FBO Services" description="Get in touch with Southern Maine Aviation's FBO for corporate arrivals, maintenance, fuel, and other services.">
+<FBOLayout title="Contact FBO Services" description="Get in touch with Southern Maine Aviation's FBO for corporate arrivals, maintenance, fuel, and other services.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
@@ -244,4 +244,4 @@ const breadcrumbs = [
 			</a>
 		</div>
 	</section>
-</BaseLayout>
+</FBOLayout>

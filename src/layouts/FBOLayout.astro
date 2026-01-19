@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import HeaderFBO from '../components/common/HeaderFBO.astro';
+import FooterFBO from '../components/common/FooterFBO.astro';
+import Analytics from '../components/common/Analytics.astro';
+import GTMNoScript from '../components/common/GTMNoScript.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'FBO Services',
+  description = 'Full-service FBO providing corporate arrivals, aircraft maintenance, fuel, and storage for General Aviation and corporate aircraft.',
+  image,
+  noindex = false
+} = Astro.props;
+
+const fullTitle = `${title} | ${site.name} FBO`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyingsma.com');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <title>{fullTitle}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href={`/${site.favicon}`} />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={`${site.name} FBO`} />
+    {image && <meta property="og:image" content={image} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {image && <meta name="twitter:image" content={image} />}
+
+    <!-- Analytics -->
+    <Analytics />
+
+    <!-- Additional head content via slot -->
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <GTMNoScript />
+
+    <HeaderFBO />
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <FooterFBO />
+
+    <!-- Additional scripts via slot -->
+    <slot name="scripts" />
+  </body>
+</html>

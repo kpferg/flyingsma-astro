@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FBOLayout from "../../layouts/FBOLayout.astro";
 import ContactSection from "../../components/sections/ContactSection.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import ServiceSchema from "../../components/seo/ServiceSchema.astro";
@@ -12,7 +12,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Aircraft Maintenance" description="Professional aircraft maintenance services at Southern Maine Aviation. Annual inspections, repairs, and more.">
+<FBOLayout title="Aircraft Maintenance" description="Professional aircraft maintenance services at Southern Maine Aviation. Annual inspections, repairs, and more.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<ServiceSchema
 		slot="head"
@@ -206,4 +206,4 @@ const breadcrumbs = [
 		variant="default"
 		showMap={false}
 	/>
-</BaseLayout>
+</FBOLayout>

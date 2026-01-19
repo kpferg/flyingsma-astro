@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import FlightSchoolLayout from "../../layouts/FlightSchoolLayout.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import site from "../../data/site.json";
 
@@ -10,7 +10,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title="Contact Flight Training" description="Get in touch with Southern Maine Aviation's Flight Department for flight training, discovery flights, and aircraft rentals.">
+<FlightSchoolLayout title="Contact Flight Training" description="Get in touch with Southern Maine Aviation's Flight Department for flight training, discovery flights, and aircraft rentals.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
@@ -235,4 +235,4 @@ const breadcrumbs = [
 			</a>
 		</div>
 	</section>
-</BaseLayout>
+</FlightSchoolLayout>

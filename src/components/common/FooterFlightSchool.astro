@@ -1,0 +1,120 @@
+---
+import site from '../../data/site.json';
+
+const { contact, address, hours, social, footer } = site;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-blue-900 text-white mt-auto">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Contact Information -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Flight Department</h3>
+        <div class="space-y-3 text-blue-100">
+          <p>
+            {contact.flight.label}:
+            <a href={`tel:${contact.flight.phone}`} class="hover:text-white transition-colors font-semibold">
+              {contact.flight.phone}
+            </a>
+          </p>
+          <p>
+            Email:
+            <a href={`mailto:${contact.flight.email}`} class="hover:text-white transition-colors">
+              {contact.flight.email}
+            </a>
+          </p>
+        </div>
+
+        <!-- Social Links -->
+        <div class="mt-6 flex gap-4">
+          {social.facebook && (
+            <a
+              href={social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+              aria-label="Facebook"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          )}
+        </div>
+      </div>
+
+      <!-- Hours & Location -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Hours & Location</h3>
+        <div class="space-y-3 text-blue-100">
+          <p>Open 7 days a week</p>
+          <p>{hours.regular}</p>
+          <p class="italic text-sm">{hours.altDisplay}</p>
+          <div class="mt-4">
+            <p class="font-semibold text-white mb-1">Address</p>
+            <p>{address.street1}</p>
+            <p>{address.city}, {address.state} {address.zip}</p>
+            <a
+              href={`https://maps.google.com/?q=${encodeURIComponent(address.full)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-300 hover:text-white mt-2 inline-flex items-center transition-colors"
+            >
+              Get directions
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <div class="space-y-2">
+          <a href="/flight-school" class="block text-blue-100 hover:text-white transition-colors">Flight Training</a>
+          <a href="/flight-school/multi-engine" class="block text-blue-100 hover:text-white transition-colors">Multi-Engine</a>
+          <a href="/flight-school/scenic-flights" class="block text-blue-100 hover:text-white transition-colors">Scenic Flights</a>
+          <a href="/news" class="block text-blue-100 hover:text-white transition-colors">News</a>
+          <a href="/contact" class="block text-blue-100 hover:text-white transition-colors">Contact</a>
+          <a
+            href="https://app.flightschedulepro.com/Account/Login/186067"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-blue-100 hover:text-white transition-colors"
+          >
+            Scheduling
+          </a>
+        </div>
+
+        <!-- Switch to FBO -->
+        <div class="mt-6 pt-6 border-t border-blue-800">
+          <p class="text-sm text-blue-200 mb-2">Looking for FBO services?</p>
+          <a href="/services" class="inline-flex items-center text-white hover:text-blue-200 font-medium transition-colors">
+            Visit FBO Services
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200">
+      <p>&copy; Copyright {currentYear} {footer.copyright.name}. All rights reserved.</p>
+      <p class="mt-2 text-sm">
+        Created by
+        <a
+          href="http://greenhopperdesign.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#5cb85c] hover:opacity-80 transition-opacity"
+        >
+          Green Hopper Design
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
