@@ -7,16 +7,16 @@
       "label": "during business hours"
     },
     "afterHours": {
-      "phone": "207-651-9308",
+      "phone": "207-800-0000",
       "label": "after hours emergency",
-      "contact": "Mark Damuth - General Manager"
+      "contact": "Brian Westover"
     }
   },
   "services": [
     {
       "icon": "fa-dollar-sign",
       "title": "Fees",
-      "description": "Reasonable rates on aviation services.",
+      "description": "Limited Hangar Space Available for piston/helicopters. Please inquire with Brian at 207-324-8919.",
       "href": "#fees"
     },
     {
@@ -46,7 +46,7 @@
     {
       "icon": "fa-wrench",
       "title": "Maintenance",
-      "description": "Our award-winning mechanics can help give you the peace of mind that comes from knowing that your aircraft is in top notch condition and has been inspected thoroughly and professionally.",
+      "description": "Our experienced mechanics can help give you the peace of mind that comes from knowing that your aircraft is in top notch condition and has been inspected thoroughly and professionally.",
       "href": "#aircraft-maintenance"
     }
   ]

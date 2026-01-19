@@ -5,34 +5,29 @@
   },
   "main": [
     {
-      "label": "News",
-      "href": "/news"
+      "label": "Flight School",
+      "children": [
+        { "label": "Flight Training", "href": "/flight-school" },
+        { "label": "Multi-Engine", "href": "/flight-school/multi-engine" },
+        { "label": "News", "href": "/news" },
+        { "label": "Contact", "href": "/contact" }
+      ]
     },
     {
-      "label": "Services",
+      "label": "FBO Services",
       "children": [
         { "label": "All Services", "href": "/services" },
         { "label": "Corporate Arrivals", "href": "/services/corporate-arrivals" },
         { "label": "Scenic Flights", "href": "/services/scenic-flights" },
-        { "label": "Aircraft Maintenance", "href": "/services/maintenance" }
+        { "label": "Aircraft Maintenance", "href": "/services/maintenance" },
+        { "label": "News", "href": "/services/news" },
+        { "label": "Contact", "href": "/services/contact" }
       ]
-    },
-    {
-      "label": "Flight School",
-      "href": "/flight-school"
-    },
-    {
-      "label": "Multi-Engine",
-      "href": "/flight-school/multi-engine"
-    },
-    {
-      "label": "Contact",
-      "href": "/contact"
     }
   ],
   "external": [
     {
-      "label": "Scheduling for Current Customers",
+      "label": "Scheduling",
       "href": "https://app.flightschedulepro.com/Account/Login/186067",
       "icon": "fa-calendar-alt",
       "newTab": true

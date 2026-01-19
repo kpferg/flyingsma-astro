@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
-import { getContentfulNews } from "../../lib/contentful";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BreadcrumbSchema from "../../../components/seo/BreadcrumbSchema.astro";
+import { getContentfulNews } from "../../../lib/contentful";
 
 // Fetch all news from Contentful
 const news = await getContentfulNews();
@@ -16,19 +16,19 @@ const formatDate = (date: Date) => {
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://www.flyingsma.com/' },
-  { name: 'Flight School', url: 'https://www.flyingsma.com/flight-school/' },
-  { name: 'News', url: 'https://www.flyingsma.com/news/' },
+  { name: 'FBO Services', url: 'https://www.flyingsma.com/services/' },
+  { name: 'News', url: 'https://www.flyingsma.com/services/news/' },
 ];
 ---
 
-<BaseLayout title="Flight School News" description="Stay up to date with the latest news and events from Southern Maine Aviation's Flight School.">
+<BaseLayout title="FBO News" description="Stay up to date with the latest news from Southern Maine Aviation's FBO services.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
-	<section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
+	<section class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-16">
 		<div class="container mx-auto px-4 text-center">
-			<h1 class="text-4xl md:text-5xl font-bold mb-4">Flight School News</h1>
-			<p class="text-xl text-blue-200 max-w-2xl mx-auto">
-				Stay up to date with the latest happenings at our flight school
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">FBO News</h1>
+			<p class="text-xl text-slate-300 max-w-2xl mx-auto">
+				Stay up to date with the latest happenings at our FBO
 			</p>
 		</div>
 	</section>
@@ -66,7 +66,7 @@ const breadcrumbs = [
 											href={item.buttonAction}
 											target={item.buttonTarget === '_blank' ? '_blank' : undefined}
 											rel={item.buttonTarget === '_blank' ? 'noopener noreferrer' : undefined}
-											class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+											class="inline-flex items-center text-slate-600 hover:text-slate-800 font-medium"
 										>
 											{item.buttonText}
 											<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,11 +95,11 @@ const breadcrumbs = [
 			) : (
 				<div class="text-center py-12">
 					<p class="text-gray-500 text-lg">No news articles found.</p>
-					<a href="/flight-school" class="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
+					<a href="/services" class="inline-flex items-center mt-4 text-slate-600 hover:text-slate-800">
 						<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 						</svg>
-						Back to Flight School
+						Back to FBO Services
 					</a>
 				</div>
 			)}
@@ -109,11 +109,11 @@ const breadcrumbs = [
 	<!-- Back Link -->
 	<section class="py-8 bg-white">
 		<div class="container mx-auto px-4 text-center">
-			<a href="/flight-school" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+			<a href="/services" class="inline-flex items-center text-slate-600 hover:text-slate-800 font-medium">
 				<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 				</svg>
-				Back to Flight School
+				Back to FBO Services
 			</a>
 		</div>
 	</section>

@@ -6,25 +6,19 @@
     },
     {
       "name": "Hertz",
-      "phone": "207-324-7368"
+      "phone": "207-797-7156"
     },
     {
       "name": "Avis",
-      "phone": "207-874-7501"
+      "phone": "207-576-4963"
     }
   ],
   "taxis": [
     {
-      "name": "Frontline Taxi",
-      "operator": "William \"Bucky\" Collins owner operator",
-      "description": "7 passenger Dodge Caravans",
-      "phone": "207-490-1214"
-    },
-    {
-      "name": "J&M Taxi",
-      "operator": "Mark Bshara owner operator",
-      "description": "7 passenger Dodge Caravans",
-      "phone": "207-490-2222"
+      "name": "Franman Taxi",
+      "operator": "",
+      "description": "Local taxi service",
+      "phone": "603-312-0782"
     }
   ]
 }
