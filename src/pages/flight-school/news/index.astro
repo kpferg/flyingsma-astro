@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
-import { getContentfulNews } from "../../lib/contentful";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BreadcrumbSchema from "../../../components/seo/BreadcrumbSchema.astro";
+import { getContentfulNews } from "../../../lib/contentful";
 
 // Fetch all news from Contentful
 const news = await getContentfulNews();

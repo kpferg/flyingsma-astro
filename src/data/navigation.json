@@ -8,7 +8,9 @@
       "label": "Flight School",
       "children": [
         { "label": "Flight Training", "href": "/flight-school" },
+        { "label": "Scenic Flights", "href": "/flight-school/scenic-flights" },
         { "label": "Multi-Engine", "href": "/flight-school/multi-engine" },
+        { "label": "Flight Release", "href": "https://flight-release-sma.netlify.app/", "newTab": true },
         { "label": "News", "href": "/news" },
         { "label": "Contact", "href": "/contact" }
       ]
@@ -18,7 +20,6 @@
       "children": [
         { "label": "All Services", "href": "/services" },
         { "label": "Corporate Arrivals", "href": "/services/corporate-arrivals" },
-        { "label": "Scenic Flights", "href": "/services/scenic-flights" },
         { "label": "Aircraft Maintenance", "href": "/services/maintenance" },
         { "label": "News", "href": "/services/news" },
         { "label": "Contact", "href": "/services/contact" }
