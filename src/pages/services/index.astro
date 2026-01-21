@@ -23,7 +23,7 @@ const breadcrumbs = [
 ];
 ---
 
-<FBOLayout title="Services" description="Full-service FBO offering corporate arrivals, flight training, scenic flights, and aircraft maintenance in Sanford, Maine.">
+<FBOLayout title="FBO Services" description="Full-service FBO offering corporate arrivals, aircraft maintenance, fuel, and pilot amenities in Sanford, Maine.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="relative text-white py-20 md:py-28 overflow-hidden">
@@ -49,11 +49,11 @@ const breadcrumbs = [
 			<div class="text-center mb-12">
 				<h2 class="text-3xl font-bold text-gray-900 mb-4">What We Offer</h2>
 				<p class="text-lg text-gray-600 max-w-2xl mx-auto">
-					We offer a full range of services for General Aviation and corporate aircraft, plus an active flight training program. The FBO offers free computer usage and Wi-Fi, as well as a comfortable lounge and beverages for purchase.
+					We offer a full range of services for General Aviation and corporate aircraft. The FBO offers free computer usage and Wi-Fi, as well as a comfortable lounge and beverages for purchase.
 				</p>
 			</div>
 
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+			<div class="grid gap-6 md:grid-cols-2">
 				{services.map((service) => (
 					<ServiceCard
 						title={service.title}
