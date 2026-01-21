@@ -4,6 +4,7 @@ import HeaderFlightSchool from '../components/common/HeaderFlightSchool.astro';
 import FooterFlightSchool from '../components/common/FooterFlightSchool.astro';
 import Analytics from '../components/common/Analytics.astro';
 import GTMNoScript from '../components/common/GTMNoScript.astro';
+import ScrollToTop from '../components/common/ScrollToTop.astro';
 import site from '../data/site.json';
 
 interface Props {
@@ -76,6 +77,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyi
     </main>
 
     <FooterFlightSchool />
+
+    <ScrollToTop />
 
     <!-- Additional scripts via slot -->
     <slot name="scripts" />

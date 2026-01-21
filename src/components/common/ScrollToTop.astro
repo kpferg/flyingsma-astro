@@ -1,0 +1,47 @@
+---
+// Scroll to top button - appears when user scrolls down
+---
+
+<button
+  id="scroll-to-top"
+  class="fixed bottom-6 right-6 z-50 p-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+  aria-label="Scroll to top"
+>
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
+
+<style>
+  #scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+
+<script>
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+  // Show/hide button based on scroll position
+  function toggleScrollButton() {
+    if (window.scrollY > 300) {
+      scrollToTopBtn?.classList.add('visible');
+    } else {
+      scrollToTopBtn?.classList.remove('visible');
+    }
+  }
+
+  // Scroll to top when clicked
+  scrollToTopBtn?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Listen for scroll events
+  window.addEventListener('scroll', toggleScrollButton, { passive: true });
+
+  // Check initial state
+  toggleScrollButton();
+</script>
