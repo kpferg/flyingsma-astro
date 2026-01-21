@@ -11,8 +11,8 @@
         { "label": "Scenic Flights", "href": "/flight-school/scenic-flights" },
         { "label": "Multi-Engine", "href": "/flight-school/multi-engine" },
         { "label": "Flight Release", "href": "https://flight-release-sma.netlify.app/", "newTab": true },
-        { "label": "News", "href": "/news" },
-        { "label": "Contact", "href": "/contact" }
+        { "label": "News", "href": "/flight-school/news" },
+        { "label": "Contact", "href": "/flight-school/contact" }
       ]
     },
     {
