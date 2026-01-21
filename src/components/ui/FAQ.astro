@@ -13,9 +13,13 @@ interface Props {
   grouped?: boolean;
   /** Allow multiple items to be open at once */
   allowMultiple?: boolean;
+  /** Color variant */
+  variant?: 'light' | 'dark';
 }
 
-const { items, title, description, grouped = false, allowMultiple = false } = Astro.props;
+const { items, title, description, grouped = false, allowMultiple = false, variant = 'light' } = Astro.props;
+
+const isDark = variant === 'dark';
 
 // Group items by category if needed
 const groupedItems = grouped
@@ -28,14 +32,14 @@ const groupedItems = grouped
   : { '': items };
 ---
 
-<section class="faq-section" data-allow-multiple={allowMultiple}>
+<section class="faq-section" data-allow-multiple={allowMultiple} data-variant={variant}>
   {(title || description) && (
     <div class="text-center mb-10">
       {title && (
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+        <h2 class={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>
       )}
       {description && (
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
+        <p class={`text-lg max-w-2xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>
       )}
     </div>
   )}
@@ -44,21 +48,21 @@ const groupedItems = grouped
     {Object.entries(groupedItems).map(([category, categoryItems]) => (
       <div>
         {grouped && category && (
-          <h3 class="text-xl font-semibold text-gray-800 mb-4 capitalize">
+          <h3 class={`text-xl font-semibold mb-4 capitalize ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
             {category.replace(/-/g, ' ')}
           </h3>
         )}
         <div class="space-y-3">
           {categoryItems.map((item, index) => (
-            <div class="faq-item border border-gray-200 rounded-lg overflow-hidden bg-white">
+            <div class={`faq-item border rounded-lg overflow-hidden ${isDark ? 'border-gray-600 bg-white/10' : 'border-gray-200 bg-white'}`}>
               <button
-                class="faq-toggle w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                class={`faq-toggle w-full px-6 py-4 text-left flex items-center justify-between transition-colors ${isDark ? 'hover:bg-white/5' : 'hover:bg-gray-50'}`}
                 aria-expanded="false"
                 data-index={index}
               >
-                <span class="font-medium text-gray-900 pr-4">{item.question}</span>
+                <span class={`font-medium pr-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.question}</span>
                 <svg
-                  class="faq-icon w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300"
+                  class={`faq-icon w-5 h-5 flex-shrink-0 transition-transform duration-300 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -67,7 +71,7 @@ const groupedItems = grouped
                 </svg>
               </button>
               <div class="faq-content hidden">
-                <div class="px-6 pb-4 text-gray-600 leading-relaxed whitespace-pre-line">
+                <div class={`px-6 pt-2 pb-5 leading-relaxed whitespace-pre-line ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                   {item.answer}
                 </div>
               </div>
@@ -84,8 +88,14 @@ const groupedItems = grouped
     transform: rotate(180deg);
   }
 
-  .faq-item.open .faq-toggle {
+  /* Light mode: light gray background when open */
+  .faq-section[data-variant="light"] .faq-item.open .faq-toggle {
     background-color: rgb(249 250 251);
+  }
+
+  /* Dark mode: slightly lighter background when open */
+  .faq-section[data-variant="dark"] .faq-item.open .faq-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .faq-content {

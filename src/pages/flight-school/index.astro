@@ -294,18 +294,28 @@ const breadcrumbs = [
 		</div>
 	</section>
 
+	<!-- News Section -->
+	<NewsSection
+		title="Flight School News"
+		description="Stay up to date with the latest happenings at our flight school."
+		limit={3}
+		showViewAll={true}
+		background="dark"
+	/>
+
 	<!-- Instructors Section -->
 	<InstructorsSection
 		title="Meet Our Instructors"
 		description="Our experienced team of flight instructors are dedicated to helping you achieve your aviation goals."
-		variant="default"
 		columns={4}
+		variant="light"
 	/>
 
 	<!-- Fleet Section -->
 	<FleetSection
 		title="Our Fleet"
 		description="We maintain a diverse fleet of well-equipped aircraft for all your training needs."
+		variant="darker"
 	/>
 
 	<!-- FAQ Section -->
@@ -313,14 +323,7 @@ const breadcrumbs = [
 		title="Common Questions"
 		description="Answers to frequently asked questions about learning to fly."
 		grouped={false}
-	/>
-
-	<!-- News Section -->
-	<NewsSection
-		title="Flight School News"
-		description="Stay up to date with the latest happenings at our flight school."
-		limit={3}
-		showViewAll={true}
+		background="dark"
 	/>
 
 	<!-- Contact & Map Section -->

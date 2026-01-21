@@ -11,6 +11,8 @@ interface Props {
   limit?: number;
   /** Group by category */
   grouped?: boolean;
+  /** Background variant */
+  background?: 'light' | 'gray' | 'dark' | 'darker';
 }
 
 const {
@@ -18,7 +20,8 @@ const {
   description = 'Find answers to common questions about learning to fly.',
   category,
   limit,
-  grouped = false
+  grouped = false,
+  background = 'light'
 } = Astro.props;
 
 const faqCollection = await getCollection('faq');
@@ -40,12 +43,26 @@ if (category) {
 if (limit) {
   faqItems = faqItems.slice(0, limit);
 }
+
+const bgClasses = {
+  light: 'bg-white',
+  gray: 'bg-gray-50',
+  dark: 'bg-[#444444]',
+  darker: 'bg-[#222222]'
+};
+
+const isDark = background === 'dark' || background === 'darker';
 ---
 
-<FAQ
-  items={faqItems}
-  title={title}
-  description={description}
-  grouped={grouped}
-  allowMultiple={true}
-/>
+<section class={`py-16 ${bgClasses[background]}`}>
+  <div class="container mx-auto px-4 max-w-4xl">
+    <FAQ
+      items={faqItems}
+      title={title}
+      description={description}
+      grouped={grouped}
+      allowMultiple={true}
+      variant={isDark ? 'dark' : 'light'}
+    />
+  </div>
+</section>
