@@ -1,11 +1,7 @@
 ---
-import { getContentfulInstructors } from '../../lib/contentful';
-import InstructorCard from '../ui/InstructorCard.astro';
-
 interface Props {
   title?: string;
   description?: string;
-  variant?: 'default' | 'compact' | 'detailed';
   limit?: number;
   columns?: 2 | 3 | 4;
 }
@@ -13,17 +9,9 @@ interface Props {
 const {
   title = 'Meet Our Instructors',
   description = 'Our experienced team of flight instructors are here to help you achieve your aviation goals.',
-  variant = 'default',
   limit,
   columns = 3
 } = Astro.props;
-
-// Fetch instructors from Contentful
-let instructors = await getContentfulInstructors();
-
-if (limit) {
-  instructors = instructors.slice(0, limit);
-}
 
 const gridCols = {
   2: 'md:grid-cols-2',
@@ -39,21 +27,112 @@ const gridCols = {
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">{description}</p>
     </div>
 
-    {instructors.length > 0 ? (
-      <div class={`grid gap-6 ${gridCols[columns]}`}>
-        {instructors.map((instructor) => (
-          <InstructorCard
-            name={instructor.name}
-            availability={instructor.availability}
-            description={instructor.description}
-            image={instructor.image}
-            image2={instructor.image2}
-            variant={variant}
-          />
-        ))}
-      </div>
-    ) : (
-      <p class="text-center text-gray-500">Instructor information is being updated. Please check back soon.</p>
-    )}
+    <!-- Loading State -->
+    <div id="instructors-loading" class="text-center py-12">
+      <div class="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+      <p class="text-gray-500 mt-4">Loading instructors...</p>
+    </div>
+
+    <!-- Instructors Grid (hidden until loaded) -->
+    <div id="instructors-grid" class={`hidden grid gap-6 ${gridCols[columns]}`} data-limit={limit || ''}>
+    </div>
+
+    <!-- Error State -->
+    <div id="instructors-error" class="hidden text-center text-gray-500">
+      <p>Instructor information is being updated. Please check back soon.</p>
+    </div>
   </div>
 </section>
+
+<script>
+  const CONTENTFUL_BASE = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master';
+  const ACCESS_TOKEN = 'hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+
+  async function loadInstructors() {
+    const loadingEl = document.getElementById('instructors-loading');
+    const gridEl = document.getElementById('instructors-grid');
+    const errorEl = document.getElementById('instructors-error');
+    const limit = gridEl?.dataset.limit ? parseInt(gridEl.dataset.limit) : null;
+
+    try {
+      const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=instructor&order=fields.order`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch');
+
+      const data = await response.json();
+      const assets = data.includes?.Asset || [];
+
+      const getAssetUrl = (assetRef: { sys: { id: string } } | undefined) => {
+        if (!assetRef) return null;
+        const asset = assets.find((a: { sys: { id: string } }) => a.sys.id === assetRef.sys.id);
+        return asset ? `https:${asset.fields.file.url}` : null;
+      };
+
+      let instructors = data.items.map((item: any) => ({
+        name: item.fields.name || 'Unknown',
+        availability: item.fields.availability,
+        description: item.fields.description || '',
+        image: getAssetUrl(item.fields.image) || '',
+        image2: getAssetUrl(item.fields.image2),
+      }));
+
+      if (limit) {
+        instructors = instructors.slice(0, limit);
+      }
+
+      if (instructors.length === 0) {
+        loadingEl?.classList.add('hidden');
+        errorEl?.classList.remove('hidden');
+        return;
+      }
+
+      // Render instructors
+      if (gridEl) {
+        gridEl.innerHTML = instructors.map((instructor: any) => `
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+            <div class="relative h-64 overflow-hidden bg-gray-100">
+              ${instructor.image ? `
+                <img
+                  src="${instructor.image}"
+                  alt="${instructor.name}"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                ${instructor.image2 ? `
+                  <img
+                    src="${instructor.image2}"
+                    alt="${instructor.name} - alternate"
+                    class="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    loading="lazy"
+                  />
+                ` : ''}
+              ` : `
+                <div class="w-full h-full flex items-center justify-center">
+                  <svg class="w-24 h-24 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+              `}
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">${instructor.name}</h3>
+              ${instructor.availability ? `
+                <p class="text-sm font-medium text-blue-600 mb-3">${instructor.availability}</p>
+              ` : ''}
+              <p class="text-gray-600 text-sm leading-relaxed">${instructor.description}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      loadingEl?.classList.add('hidden');
+      gridEl?.classList.remove('hidden');
+    } catch (error) {
+      console.error('Failed to load instructors:', error);
+      loadingEl?.classList.add('hidden');
+      errorEl?.classList.remove('hidden');
+    }
+  }
+
+  loadInstructors();
+</script>

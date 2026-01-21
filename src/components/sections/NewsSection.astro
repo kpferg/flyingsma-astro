@@ -1,30 +1,24 @@
 ---
-import { getContentfulNews } from '../../lib/contentful';
-
 interface Props {
   title?: string;
   description?: string;
   limit?: number;
   showViewAll?: boolean;
+  viewAllLink?: string;
+  variant?: 'flight-school' | 'fbo';
 }
 
 const {
   title = 'News & Events',
   description,
   limit = 3,
-  showViewAll = true
+  showViewAll = true,
+  viewAllLink = '/news',
+  variant = 'flight-school'
 } = Astro.props;
 
-// Fetch news from Contentful
-const news = await getContentfulNews(limit);
-
-const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }).format(date);
-};
+const linkColor = variant === 'fbo' ? 'text-slate-600 hover:text-slate-800' : 'text-blue-600 hover:text-blue-800';
+const buttonBg = variant === 'fbo' ? 'bg-slate-700 hover:bg-slate-800' : 'bg-blue-600 hover:bg-blue-700';
 ---
 
 <section class="py-16 bg-white" id="news">
@@ -36,71 +30,37 @@ const formatDate = (date: Date) => {
       )}
     </div>
 
-    {news.length > 0 ? (
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {news.map((item) => (
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
-            {item.image && (
-              <div class="h-48 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.headline}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </div>
-            )}
-            <div class="p-6">
-              <time class="text-sm text-gray-500" datetime={item.updatedAt.toISOString()}>
-                {formatDate(item.updatedAt)}
-              </time>
-              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">
-                {item.headline}
-              </h3>
-              {item.description && (
-                <p class="text-gray-600 mb-4 line-clamp-3">{item.description}</p>
-              )}
-              <div class="flex flex-wrap gap-3">
-                {item.buttonText && item.buttonAction && (
-                  <a
-                    href={item.buttonAction}
-                    target={item.buttonTarget === '_blank' ? '_blank' : undefined}
-                    rel={item.buttonTarget === '_blank' ? 'noopener noreferrer' : undefined}
-                    class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-                  >
-                    {item.buttonText}
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                )}
-                {item.document && (
-                  <a
-                    href={item.document}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center text-gray-600 hover:text-gray-800 font-medium"
-                  >
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Download
-                  </a>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    ) : (
-      <p class="text-center text-gray-500">No news articles found.</p>
-    )}
+    <!-- Loading State -->
+    <div id="news-loading" class="text-center py-12">
+      <div class={`inline-block w-8 h-8 border-4 border-t-transparent rounded-full animate-spin ${variant === 'fbo' ? 'border-slate-600' : 'border-blue-600'}`}></div>
+      <p class="text-gray-500 mt-4">Loading news...</p>
+    </div>
 
-    {showViewAll && news.length >= limit && (
-      <div class="text-center mt-10">
+    <!-- News Grid (hidden until loaded) -->
+    <div
+      id="news-grid"
+      class="hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+      data-limit={limit}
+      data-link-color={linkColor}
+    >
+    </div>
+
+    <!-- Empty State -->
+    <div id="news-empty" class="hidden text-center text-gray-500">
+      <p>No news articles found.</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="news-error" class="hidden text-center text-gray-500">
+      <p>News is temporarily unavailable. Please check back soon.</p>
+    </div>
+
+    <!-- View All Button (hidden until loaded, shown if there are items) -->
+    {showViewAll && (
+      <div id="news-view-all" class="hidden text-center mt-10">
         <a
-          href="/news"
-          class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          href={viewAllLink}
+          class={`inline-flex items-center px-6 py-3 ${buttonBg} text-white font-semibold rounded-lg transition-colors`}
         >
           View All News
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,3 +80,155 @@ const formatDate = (date: Date) => {
     overflow: hidden;
   }
 </style>
+
+<script>
+  const CONTENTFUL_BASE = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master';
+  const ACCESS_TOKEN = 'hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+
+  // Convert rich text to plain text
+  function richTextToPlainText(richText: any): string {
+    if (!richText?.content) return '';
+
+    return richText.content
+      .map((node: any) => {
+        if (!node.content) return '';
+        return node.content
+          .map((item: any) => {
+            if (item.nodeType === 'text') {
+              return item.value || '';
+            }
+            if (item.nodeType === 'hyperlink' && item.content?.[0]) {
+              return item.content[0].value || '';
+            }
+            return '';
+          })
+          .join('');
+      })
+      .join('\n\n');
+  }
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(date);
+  }
+
+  async function loadNews() {
+    const loadingEl = document.getElementById('news-loading');
+    const gridEl = document.getElementById('news-grid');
+    const emptyEl = document.getElementById('news-empty');
+    const errorEl = document.getElementById('news-error');
+    const viewAllEl = document.getElementById('news-view-all');
+
+    const limit = gridEl?.dataset.limit ? parseInt(gridEl.dataset.limit) : 3;
+    const linkColor = gridEl?.dataset.linkColor || 'text-blue-600 hover:text-blue-800';
+
+    try {
+      const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=news-events&order=-sys.updatedAt`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch');
+
+      const data = await response.json();
+      const assets = data.includes?.Asset || [];
+
+      const getAssetUrl = (assetRef: { sys: { id: string } } | undefined) => {
+        if (!assetRef) return null;
+        const asset = assets.find((a: { sys: { id: string } }) => a.sys.id === assetRef.sys.id);
+        return asset ? `https:${asset.fields.file.url}` : null;
+      };
+
+      let news = data.items.map((item: any) => ({
+        headline: item.fields.headline || 'Untitled',
+        description: richTextToPlainText(item.fields.description),
+        image: getAssetUrl(item.fields.image),
+        document: getAssetUrl(item.fields.document),
+        buttonText: item.fields.buttonText,
+        buttonAction: item.fields.buttonAction,
+        buttonTarget: item.fields.buttonTarget,
+        updatedAt: item.sys.updatedAt,
+      }));
+
+      const totalCount = news.length;
+      news = news.slice(0, limit);
+
+      if (news.length === 0) {
+        loadingEl?.classList.add('hidden');
+        emptyEl?.classList.remove('hidden');
+        return;
+      }
+
+      // Render news
+      if (gridEl) {
+        gridEl.innerHTML = news.map((item: any) => `
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+            ${item.image ? `
+              <div class="h-48 overflow-hidden">
+                <img
+                  src="${item.image}"
+                  alt="${item.headline}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ` : ''}
+            <div class="p-6">
+              <time class="text-sm text-gray-500" datetime="${item.updatedAt}">
+                ${formatDate(item.updatedAt)}
+              </time>
+              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">
+                ${item.headline}
+              </h3>
+              ${item.description ? `
+                <p class="text-gray-600 mb-4 line-clamp-3">${item.description}</p>
+              ` : ''}
+              <div class="flex flex-wrap gap-3">
+                ${item.buttonText && item.buttonAction ? `
+                  <a
+                    href="${item.buttonAction}"
+                    ${item.buttonTarget === '_blank' ? 'target="_blank" rel="noopener noreferrer"' : ''}
+                    class="inline-flex items-center ${linkColor} font-medium"
+                  >
+                    ${item.buttonText}
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                ` : ''}
+                ${item.document ? `
+                  <a
+                    href="${item.document}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-gray-600 hover:text-gray-800 font-medium"
+                  >
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Download
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+
+      loadingEl?.classList.add('hidden');
+      gridEl?.classList.remove('hidden');
+
+      // Show view all button if there are more items than displayed
+      if (viewAllEl && totalCount >= limit) {
+        viewAllEl.classList.remove('hidden');
+      }
+    } catch (error) {
+      console.error('Failed to load news:', error);
+      loadingEl?.classList.add('hidden');
+      errorEl?.classList.remove('hidden');
+    }
+  }
+
+  loadNews();
+</script>
