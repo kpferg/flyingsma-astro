@@ -6,20 +6,39 @@ import ContactSection from "../components/sections/ContactSection.astro";
 import OrganizationSchema from "../components/seo/OrganizationSchema.astro";
 import WebsiteSchema from "../components/seo/WebsiteSchema.astro";
 import site from "../data/site.json";
+
+// Available hero images
+const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+
+// Randomly select an image on each page load
+const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+const heroImagePath = `/images/hero/${randomHeroImage}`;
 ---
 
 <BaseLayout title="Southern Maine Aviation">
 	<OrganizationSchema slot="head" />
 	<WebsiteSchema slot="head" />
-	<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-		<!-- Hero Section -->
-		<div class="container mx-auto px-4 py-12 md:py-20">
+	<div class="min-h-screen relative">
+		<!-- Background Image with Overlay -->
+		<div 
+			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
+			style={`background-image: url('${heroImagePath}');`}
+			aria-hidden="true"
+		></div>
+		
+		<!-- Dark Overlay for Readability -->
+		<div class="fixed inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 -z-10" aria-hidden="true"></div>
+		
+		<!-- Content Layer -->
+		<div class="relative z-10">
+			<!-- Hero Section -->
+			<div class="container mx-auto px-4 py-12 md:py-20">
 			<div class="text-center mb-12 md:mb-16">
-				<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 tracking-tight">
+				<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
 					Welcome to
-					<span class="block text-blue-600 mt-2">Southern Maine Aviation</span>
+					<span class="block text-blue-300 mt-2 drop-shadow-md">Southern Maine Aviation</span>
 				</h1>
-				<p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+				<p class="text-xl md:text-2xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
 					Choose your path to the skies
 				</p>
 			</div>
@@ -122,6 +141,6 @@ import site from "../data/site.json";
 				</a>
 			</div>
 		</div>
+		</div>
 	</div>
-	
 </BaseLayout>
