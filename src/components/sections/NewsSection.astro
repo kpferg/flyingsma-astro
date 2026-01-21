@@ -165,14 +165,14 @@ const buttonBg = variant === 'fbo' ? 'bg-slate-700 hover:bg-slate-800' : 'bg-blu
         gridEl.innerHTML = news.map((item: any) => `
           <article class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
             ${item.image ? `
-              <div class="h-48 overflow-hidden">
+              <a href="${item.image}" target="_blank" rel="noopener noreferrer" class="block overflow-hidden bg-gray-100">
                 <img
                   src="${item.image}"
                   alt="${item.headline}"
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
-              </div>
+              </a>
             ` : ''}
             <div class="p-6">
               <time class="text-sm text-gray-500" datetime="${item.updatedAt}">

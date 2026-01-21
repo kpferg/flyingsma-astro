@@ -22,16 +22,24 @@ const breadcrumbs = [
 		serviceType="Aircraft Maintenance"
 	/>
 	<!-- Page Header -->
-	<section class="bg-gradient-to-br from-orange-900 to-orange-800 text-white py-20">
-		<div class="container mx-auto px-4 text-center">
-			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Aircraft Maintenance</h1>
-			<p class="text-xl md:text-2xl text-orange-200 max-w-3xl mx-auto mb-8">
+	<section class="relative text-white py-20 md:py-28 overflow-hidden">
+		<!-- Background Image -->
+		<div
+			class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+			style="background-image: url('/images/maintenance/maintenance1.jpg');"
+		></div>
+		<!-- Gradient Overlay for readability -->
+		<div class="absolute inset-0 bg-gradient-to-br from-orange-900/90 via-orange-900/80 to-orange-800/85"></div>
+
+		<div class="container mx-auto px-4 text-center relative z-10">
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Aircraft Maintenance</h1>
+			<p class="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto mb-8 drop-shadow">
 				Our experienced mechanics give you peace of mind knowing your aircraft is in top-notch condition
 			</p>
 			<div class="flex flex-wrap justify-center gap-4">
 				<a
 					href={`tel:${site.contact.fbo.phone}`}
-					class="inline-flex items-center px-8 py-4 bg-white text-orange-900 font-semibold rounded-lg hover:bg-orange-50 transition-colors"
+					class="inline-flex items-center px-8 py-4 bg-white text-orange-900 font-semibold rounded-lg hover:bg-orange-50 transition-colors shadow-lg"
 				>
 					<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
