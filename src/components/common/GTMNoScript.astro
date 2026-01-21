@@ -4,17 +4,13 @@
  *
  * Include this component immediately after the opening <body> tag.
  */
-
-const gtmId = import.meta.env.GOOGLE_TAG_MANAGER_ID;
 ---
 
-{gtmId && (
-  <noscript>
-    <iframe
-      src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-      height="0"
-      width="0"
-      style="display:none;visibility:hidden"
-    ></iframe>
-  </noscript>
-)}
+<noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-MBBK54R"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+  ></iframe>
+</noscript>

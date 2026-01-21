@@ -46,7 +46,7 @@ const heroImagePath = `/images/hero/${randomHeroImage}`;
 			<!-- Split Choice Cards -->
 			<div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
 				<!-- Flight School Card (Left) -->
-				<a href="/flight-school" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+				<a href="/flight-school" id="cta-flight-school" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
 					<!-- Left-Directional Background Gradient -->
 					<div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600"></div>
 
@@ -93,7 +93,7 @@ const heroImagePath = `/images/hero/${randomHeroImage}`;
 				</a>
 
 				<!-- FBO/Maintenance Card (Right) -->
-				<a href="/services" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+				<a href="/services" id="cta-fbo-services" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
 					<!-- Right-Directional Background Gradient -->
 					<div class="absolute inset-0 bg-gradient-to-l from-slate-800 to-slate-700"></div>
 
@@ -143,4 +143,27 @@ const heroImagePath = `/images/hero/${randomHeroImage}`;
 		</div>
 		</div>
 	</div>
+
+	<script>
+		// Track clicks on main landing page CTAs
+		document.getElementById('cta-flight-school')?.addEventListener('click', () => {
+			if (typeof gtag === 'function') {
+				gtag('event', 'subsite_selection', {
+					'event_category': 'Navigation',
+					'event_label': 'Flight Training',
+					'value': 1
+				});
+			}
+		});
+
+		document.getElementById('cta-fbo-services')?.addEventListener('click', () => {
+			if (typeof gtag === 'function') {
+				gtag('event', 'subsite_selection', {
+					'event_category': 'Navigation',
+					'event_label': 'FBO Services',
+					'value': 1
+				});
+			}
+		});
+	</script>
 </BaseLayout>
