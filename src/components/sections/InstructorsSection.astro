@@ -106,19 +106,19 @@ const textClasses = {
       if (gridEl) {
         gridEl.innerHTML = instructors.map((instructor: any) => `
           <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
-            <div class="relative h-64 overflow-hidden bg-gray-100">
+            <div class="relative h-64 overflow-hidden bg-gray-100 ${instructor.image2 ? 'cursor-pointer instructor-image-toggle' : ''}">
               ${instructor.image ? `
                 <img
                   src="${instructor.image}"
                   alt="${instructor.name}"
-                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  class="instructor-img-primary w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 ${instructor.image2 ? `
                   <img
                     src="${instructor.image2}"
                     alt="${instructor.name} - alternate"
-                    class="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    class="instructor-img-alt absolute inset-0 w-full h-full object-cover object-center opacity-0 group-hover:opacity-100 transition-all duration-500"
                     loading="lazy"
                   />
                 ` : ''}
@@ -139,6 +139,13 @@ const textClasses = {
             </div>
           </div>
         `).join('');
+
+        // Add click handlers for image toggle on mobile
+        gridEl.querySelectorAll('.instructor-image-toggle').forEach((container) => {
+          container.addEventListener('click', () => {
+            container.classList.toggle('showing-alt');
+          });
+        });
       }
 
       loadingEl?.classList.add('hidden');
@@ -152,3 +159,13 @@ const textClasses = {
 
   loadInstructors();
 </script>
+
+<style>
+  /* Toggle alternate image on click (for mobile) */
+  .instructor-image-toggle.showing-alt .instructor-img-primary {
+    opacity: 0;
+  }
+  .instructor-image-toggle.showing-alt .instructor-img-alt {
+    opacity: 1;
+  }
+</style>
