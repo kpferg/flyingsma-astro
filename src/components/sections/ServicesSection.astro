@@ -25,7 +25,7 @@ let services = servicesCollection
     title: service.data.title,
     description: service.data.description,
     icon: service.data.icon,
-    href: service.data.href || `/services/${service.slug}`,
+    href: service.data.href || `/fbo-services/${service.slug}`,
   }));
 
 if (limit) {

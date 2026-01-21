@@ -3,7 +3,7 @@ title: Corporate Arrivals
 description: We can make sure everything you need is here waiting upon your arrival.
 icon: fa-briefcase
 order: 1
-href: /services/corporate-arrivals
+href: /fbo-services/corporate-arrivals
 ---
 
 We can make sure everything you need is here waiting upon your arrival. Our full-service FBO offers comprehensive support for corporate aircraft operations.

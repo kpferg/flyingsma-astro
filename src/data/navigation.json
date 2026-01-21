@@ -18,11 +18,11 @@
     {
       "label": "FBO Services",
       "children": [
-        { "label": "All Services", "href": "/services" },
-        { "label": "Corporate Arrivals", "href": "/services/corporate-arrivals" },
-        { "label": "Aircraft Maintenance", "href": "/services/maintenance" },
-        { "label": "News", "href": "/services/news" },
-        { "label": "Contact", "href": "/services/contact" }
+        { "label": "All Services", "href": "/fbo-services" },
+        { "label": "Corporate Arrivals", "href": "/fbo-services/corporate-arrivals" },
+        { "label": "Aircraft Maintenance", "href": "/fbo-services/maintenance" },
+        { "label": "News", "href": "/fbo-services/news" },
+        { "label": "Contact", "href": "/fbo-services/contact" }
       ]
     }
   ],

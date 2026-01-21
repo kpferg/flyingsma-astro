@@ -18,12 +18,12 @@ const services = servicesCollection
 		title: service.data.title,
 		description: service.data.description,
 		icon: service.data.icon,
-		href: service.data.href || `/services/${service.slug}`,
+		href: service.data.href || `/fbo-services/${service.slug}`,
 	}));
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://www.flyingsma.com/' },
-  { name: 'Services', url: 'https://www.flyingsma.com/services/' },
+  { name: 'FBO Services', url: 'https://www.flyingsma.com/fbo-services/' },
 ];
 ---
 
@@ -429,7 +429,7 @@ const breadcrumbs = [
 
 			<div class="text-center mt-10">
 				<a
-					href="/services/contact"
+					href="/fbo-services/contact"
 					class="inline-flex items-center px-6 py-3 bg-white text-slate-800 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
 				>
 					Contact for Custom Quotes
@@ -755,7 +755,7 @@ const breadcrumbs = [
 		<div class="container mx-auto px-4">
 			<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 				<!-- Contact Card -->
-				<a href="/services/contact" class="group bg-white rounded-xl p-8 hover:bg-slate-50 transition-colors shadow-sm">
+				<a href="/fbo-services/contact" class="group bg-white rounded-xl p-8 hover:bg-slate-50 transition-colors shadow-sm">
 					<div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-slate-200 transition-colors">
 						<i class="fa-solid fa-phone text-slate-700 text-2xl"></i>
 					</div>
@@ -770,7 +770,7 @@ const breadcrumbs = [
 				</a>
 
 				<!-- News Card -->
-				<a href="/services/news" class="group bg-white rounded-xl p-8 hover:bg-slate-50 transition-colors shadow-sm">
+				<a href="/fbo-services/news" class="group bg-white rounded-xl p-8 hover:bg-slate-50 transition-colors shadow-sm">
 					<div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-slate-200 transition-colors">
 						<i class="fa-solid fa-newspaper text-slate-700 text-2xl"></i>
 					</div>
