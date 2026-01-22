@@ -81,9 +81,7 @@ const isDark = background === 'dark' || background === 'darker';
           class={`inline-flex items-center px-6 py-3 ${buttonBg} text-white font-semibold rounded-lg transition-colors`}
         >
           View All News
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
+          <i class="fa-solid fa-chevron-right ml-2"></i>
         </a>
       </div>
     )}
@@ -210,9 +208,7 @@ const isDark = background === 'dark' || background === 'darker';
                     class="inline-flex items-center ${linkColor} font-medium"
                   >
                     ${item.buttonText}
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                    <i class="fa-solid fa-chevron-right ml-1"></i>
                   </a>
                 ` : ''}
                 ${item.document ? `
@@ -222,9 +218,7 @@ const isDark = background === 'dark' || background === 'darker';
                     rel="noopener noreferrer"
                     class="inline-flex items-center text-gray-600 hover:text-gray-800 font-medium"
                   >
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+                    <i class="fa-solid fa-file-pdf mr-1"></i>
                     Download
                   </a>
                 ` : ''}
