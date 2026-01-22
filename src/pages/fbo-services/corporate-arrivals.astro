@@ -125,9 +125,7 @@ const breadcrumbs = [
 						class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
 					>
 						<div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-							<svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-							</svg>
+							<i class="fa-solid fa-utensils text-orange-600"></i>
 						</div>
 						<div>
 							<h3 class="font-semibold text-gray-900">{restaurant.name}</h3>
@@ -135,9 +133,7 @@ const breadcrumbs = [
 								<p class="text-sm text-gray-500">{restaurant.note}</p>
 							)}
 						</div>
-						<svg class="w-4 h-4 ml-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-						</svg>
+						<i class="fa-solid fa-arrow-up-right-from-square text-sm ml-auto text-gray-400"></i>
 					</a>
 				))}
 			</div>
@@ -156,9 +152,7 @@ const breadcrumbs = [
 				{catering.map((caterer) => (
 					<div class="flex items-center p-4 bg-white rounded-lg shadow">
 						<div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-4">
-							<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
-							</svg>
+							<i class="fa-solid fa-plate-utensils text-green-600"></i>
 						</div>
 						<div>
 							<h3 class="font-semibold text-gray-900">{caterer.name}</h3>
@@ -184,9 +178,7 @@ const breadcrumbs = [
 				<!-- Rental Cars -->
 				<div>
 					<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-						<svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-						</svg>
+						<i class="fa-solid fa-car text-blue-600 text-xl mr-2"></i>
 						Rental Cars
 					</h3>
 					<div class="space-y-3">
@@ -204,9 +196,7 @@ const breadcrumbs = [
 				<!-- Taxis -->
 				<div>
 					<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-						<svg class="w-6 h-6 mr-2 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-						</svg>
+						<i class="fa-solid fa-taxi text-yellow-600 text-xl mr-2"></i>
 						Taxi Services
 					</h3>
 					<div class="space-y-3">
