@@ -9,25 +9,25 @@ import site from "../data/site.json";
 
 // Available hero images
 const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
-
-// Randomly select an image on each page load
-const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
-const heroImagePath = `/images/hero/${randomHeroImage}`;
 ---
 
 <BaseLayout title="Southern Maine Aviation">
 	<OrganizationSchema slot="head" />
 	<WebsiteSchema slot="head" />
-	<div class="min-h-screen relative">
+	<!-- Preload all hero images for instant display -->
+	{heroImages.map((image) => (
+		<link slot="head" rel="preload" as="image" href={`/images/hero/${image}`} />
+	))}
+	<div class="min-h-screen relative bg-sky-950 z-10">
 		<!-- Background Image with Overlay -->
 		<div 
-			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
-			style={`background-image: url('${heroImagePath}');`}
+			id="hero-background"
+			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 opacity-0 transition-opacity duration-500"
 			aria-hidden="true"
 		></div>
 		
 		<!-- Dark Overlay for Readability -->
-		<div class="fixed inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 -z-10" aria-hidden="true"></div>
+		<div class="fixed inset-0 bg-gradient-to-b from-black/85 via-black/40 to-black/60 -z-10" aria-hidden="true"></div>
 		
 		<!-- Content Layer -->
 		<div class="relative z-10">
@@ -136,6 +136,27 @@ const heroImagePath = `/images/hero/${randomHeroImage}`;
 	</div>
 
 	<script>
+		// Randomly select hero image on each page load (client-side)
+		// Images are preloaded, so this will be instant
+		const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+		const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+		const heroBackground = document.getElementById('hero-background');
+		if (heroBackground) {
+			// Create new image object to ensure it's loaded before switching
+			const img = new Image();
+			img.src = `/images/hero/${randomHeroImage}`;
+			img.onload = () => {
+				heroBackground.style.backgroundImage = `url('/images/hero/${randomHeroImage}')`;
+				// Fade in the image once loaded
+				heroBackground.style.opacity = '1';
+			};
+			// If image is already cached (from preload), show it immediately
+			if (img.complete) {
+				heroBackground.style.backgroundImage = `url('/images/hero/${randomHeroImage}')`;
+				heroBackground.style.opacity = '1';
+			}
+		}
+
 		// Track clicks on main landing page CTAs
 		document.getElementById('cta-flight-school')?.addEventListener('click', () => {
 			if (typeof gtag === 'function') {
