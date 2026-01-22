@@ -78,7 +78,7 @@ const textClasses = {
               }
               if (item.nodeType === 'hyperlink' && item.content?.[0] && item.data?.uri) {
                 const linkText = item.content[0].value || '';
-                return `<a href="${item.data.uri}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">${linkText}</a>`;
+                return `<a href="${item.data.uri}" target="_blank" rel="noopener noreferrer" class="text-sky-600 hover:underline">${linkText}</a>`;
               }
               return '';
             })
@@ -153,7 +153,7 @@ const textClasses = {
               ${aircraft.pricing ? `
                 <div class="pt-4 border-t border-gray-100">
                   <span class="text-sm text-gray-500">Pricing:</span>
-                  <span class="ml-2 font-semibold text-blue-600">${aircraft.pricing}</span>
+                  <span class="ml-2 font-semibold text-sky-600">${aircraft.pricing}</span>
                 </div>
               ` : ''}
             </div>

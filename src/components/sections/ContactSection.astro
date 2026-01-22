@@ -30,21 +30,21 @@ const { contact, address, hours, maps } = site;
       <div class="bg-white rounded-xl shadow-lg p-8">
         <div class="grid gap-6 sm:grid-cols-2">
           <!-- FBO Contact -->
-          <div class="p-4 bg-blue-50 rounded-lg">
+          <div class="p-4 bg-sky-50 rounded-lg">
             <div class="flex items-center mb-3">
-              <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              <div class="w-10 h-10 bg-sky-600 rounded-full flex items-center justify-center">
                 <i class="fa-solid fa-building text-white"></i>
               </div>
               <h3 class="ml-3 font-semibold text-gray-900">FBO Inquiries</h3>
             </div>
             <p class="text-sm text-gray-600 mb-2">{contact.fbo.description}</p>
             <p class="text-gray-700">
-              <a href={`tel:${contact.fbo.phone}`} class="text-blue-600 hover:text-blue-800 font-medium">
+              <a href={`tel:${contact.fbo.phone}`} class="text-sky-600 hover:text-sky-800 font-medium">
                 {contact.fbo.phone}
               </a>
             </p>
             <p class="text-gray-600 text-sm">
-              <a href={`mailto:${contact.fbo.email}`} class="hover:text-blue-600">
+              <a href={`mailto:${contact.fbo.email}`} class="hover:text-sky-600">
                 {contact.fbo.email}
               </a>
             </p>

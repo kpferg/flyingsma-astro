@@ -51,7 +51,7 @@ const displaySlides = single ? [slides[0]] : slides;
 
         <!-- Gradient fallback if no image -->
         {!slide.image && (
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-sky-900 via-sky-800 to-slate-900"></div>
         )}
 
         <!-- Content -->
@@ -64,7 +64,7 @@ const displaySlides = single ? [slides[0]] : slides;
           </p>
           <a
             href={slide.buttonAction}
-            class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            class="inline-block px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             {slide.buttonText}
           </a>

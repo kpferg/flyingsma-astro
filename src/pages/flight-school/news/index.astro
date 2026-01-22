@@ -12,10 +12,10 @@ const breadcrumbs = [
 <FlightSchoolLayout title="Flight School News" description="Stay up to date with the latest news and events from Southern Maine Aviation's Flight School.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
-	<section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
+	<section class="bg-gradient-to-br from-slate-900 to-sky-800 text-white py-16">
 		<div class="container mx-auto px-4 text-center">
 			<h1 class="text-4xl md:text-5xl font-bold mb-4">Flight School News</h1>
-			<p class="text-xl text-blue-200 max-w-2xl mx-auto">
+			<p class="text-xl text-sky-200 max-w-2xl mx-auto">
 				Stay up to date with the latest happenings at our flight school
 			</p>
 		</div>
@@ -37,7 +37,7 @@ const breadcrumbs = [
 			<!-- Empty State -->
 			<div id="news-empty" class="hidden text-center py-12">
 				<p class="text-gray-500 text-lg">No news articles found.</p>
-				<a href="/flight-school" class="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
+				<a href="/flight-school" class="inline-flex items-center mt-4 text-sky-600 hover:text-sky-800">
 					<i class="fa-solid fa-chevron-left mr-2"></i>
 					Back to Flight School
 				</a>
@@ -46,7 +46,7 @@ const breadcrumbs = [
 			<!-- Error State -->
 			<div id="news-error" class="hidden text-center py-12">
 				<p class="text-gray-500 text-lg">News is temporarily unavailable. Please check back soon.</p>
-				<a href="/flight-school" class="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800">
+				<a href="/flight-school" class="inline-flex items-center mt-4 text-sky-600 hover:text-sky-800">
 					<i class="fa-solid fa-chevron-left mr-2"></i>
 					Back to Flight School
 				</a>
@@ -57,7 +57,7 @@ const breadcrumbs = [
 	<!-- Back Link -->
 	<section class="py-8 bg-white">
 		<div class="container mx-auto px-4 text-center">
-			<a href="/flight-school" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+			<a href="/flight-school" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
 				<i class="fa-solid fa-chevron-left mr-2"></i>
 				Back to Flight School
 			</a>
@@ -175,7 +175,7 @@ const breadcrumbs = [
 									<a
 										href="${item.buttonAction}"
 										${item.buttonTarget === '_blank' ? 'target="_blank" rel="noopener noreferrer"' : ''}
-										class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+										class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium"
 									>
 										${item.buttonText}
 										<i class="fa-solid fa-chevron-right ml-1"></i>

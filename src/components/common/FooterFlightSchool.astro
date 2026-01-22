@@ -5,13 +5,13 @@ const { contact, address, hours, social, footer } = site;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-blue-900 text-white mt-auto">
+<footer class="bg-sky-900 text-white mt-auto">
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Contact Information -->
       <div>
         <h3 class="text-xl font-bold mb-4">Flight Department</h3>
-        <div class="space-y-3 text-blue-100">
+        <div class="space-y-3 text-sky-100">
           <p>
             {contact.flight.label}:
             <a href={`tel:${contact.flight.phone}`} class="hover:text-white transition-colors font-semibold">
@@ -30,7 +30,7 @@ const currentYear = new Date().getFullYear();
       <!-- Hours & Location -->
       <div>
         <h3 class="text-xl font-bold mb-4">Hours & Location</h3>
-        <div class="space-y-3 text-blue-100">
+        <div class="space-y-3 text-sky-100">
           <p>Open 7 days a week</p>
           <p>{hours.regular}</p>
           <p class="italic text-sm">{hours.altDisplay}</p>
@@ -42,7 +42,7 @@ const currentYear = new Date().getFullYear();
               href={`https://maps.google.com/?q=${encodeURIComponent(address.full)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-300 hover:text-white mt-2 inline-flex items-center transition-colors"
+              class="text-sky-300 hover:text-white mt-2 inline-flex items-center transition-colors"
             >
               Get directions
               <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
@@ -55,16 +55,16 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-xl font-bold mb-4">Quick Links</h3>
         <div class="space-y-2 mb-6">
-          <a href="/flight-school" class="block text-blue-100 hover:text-white transition-colors">Flight Training</a>
-          <a href="/flight-school/multi-engine" class="block text-blue-100 hover:text-white transition-colors">Multi-Engine</a>
-          <a href="/flight-school/scenic-flights" class="block text-blue-100 hover:text-white transition-colors">Scenic Flights</a>
-          <a href="/news" class="block text-blue-100 hover:text-white transition-colors">News</a>
-          <a href="/contact" class="block text-blue-100 hover:text-white transition-colors">Contact</a>
+          <a href="/flight-school" class="block text-sky-100 hover:text-white transition-colors">Flight Training</a>
+          <a href="/flight-school/multi-engine" class="block text-sky-100 hover:text-white transition-colors">Multi-Engine</a>
+          <a href="/flight-school/scenic-flights" class="block text-sky-100 hover:text-white transition-colors">Scenic Flights</a>
+          <a href="/news" class="block text-sky-100 hover:text-white transition-colors">News</a>
+          <a href="/contact" class="block text-sky-100 hover:text-white transition-colors">Contact</a>
           <a
             href="https://app.flightschedulepro.com/Account/Login/186067"
             target="_blank"
             rel="noopener noreferrer"
-            class="block text-blue-100 hover:text-white transition-colors"
+            class="block text-sky-100 hover:text-white transition-colors"
           >
             Scheduling
           </a>
@@ -80,7 +80,7 @@ const currentYear = new Date().getFullYear();
                 href={social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
               >
                 <i class="fa-brands fa-facebook text-2xl mr-2"></i>
                 Facebook
@@ -93,7 +93,7 @@ const currentYear = new Date().getFullYear();
               href={social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+              class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
             >
               <i class="fa-brands fa-instagram text-2xl mr-2"></i>
               Instagram
@@ -105,8 +105,8 @@ const currentYear = new Date().getFullYear();
 
         <!-- Switch to FBO -->
         <div class="mt-6 pt-6 border-t border-blue-800">
-          <p class="text-sm text-blue-200 mb-2">Looking for FBO services?</p>
-          <a href="/fbo-services" class="inline-flex items-center text-white hover:text-blue-200 font-medium transition-colors">
+          <p class="text-sm text-sky-200 mb-2">Looking for FBO services?</p>
+          <a href="/fbo-services" class="inline-flex items-center text-white hover:text-sky-200 font-medium transition-colors">
             Visit FBO Services
             <i class="fa-solid fa-chevron-right ml-1"></i>
           </a>
@@ -114,7 +114,7 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200">
+    <div class="border-t border-blue-800 mt-8 pt-8 text-center text-sky-200">
       <p>&copy; Copyright {currentYear} {footer.copyright.name}. All rights reserved.</p>
       <p class="mt-2 text-sm">
         Created by

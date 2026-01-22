@@ -13,10 +13,10 @@ const breadcrumbs = [
 <FlightSchoolLayout title="Contact Flight Training" description="Get in touch with Southern Maine Aviation's Flight Department for flight training, discovery flights, and aircraft rentals.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
-	<section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
+	<section class="bg-gradient-to-br from-slate-900 to-sky-800 text-white py-16">
 		<div class="container mx-auto px-4 text-center">
 			<h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Flight Training</h1>
-			<p class="text-xl text-blue-200 max-w-2xl mx-auto">
+			<p class="text-xl text-sky-200 max-w-2xl mx-auto">
 				Ready to start your aviation journey? Reach out to our Flight Department for training, discovery flights, or aircraft rentals.
 			</p>
 		</div>
@@ -30,18 +30,18 @@ const breadcrumbs = [
 				<div>
 					<h2 class="text-2xl font-bold text-gray-900 mb-6">Flight Department</h2>
 					<div class="space-y-6">
-						<a href={`tel:${site.contact.flight.phone}`} class="flex items-center text-gray-700 hover:text-blue-600 group">
-							<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors">
-								<i class="fa-solid fa-phone text-xl text-blue-600"></i>
+						<a href={`tel:${site.contact.flight.phone}`} class="flex items-center text-gray-700 hover:text-sky-600 group">
+							<div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4 group-hover:bg-sky-200 transition-colors">
+								<i class="fa-solid fa-phone text-xl text-sky-600"></i>
 							</div>
 							<div>
 								<p class="text-sm text-gray-500">Call or Text</p>
 								<p class="font-semibold text-lg">{site.contact.flight.phone}</p>
 							</div>
 						</a>
-						<a href={`mailto:${site.contact.flight.email}`} class="flex items-center text-gray-700 hover:text-blue-600 group">
-							<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 group-hover:bg-blue-200 transition-colors">
-								<i class="fa-solid fa-envelope text-xl text-blue-600"></i>
+						<a href={`mailto:${site.contact.flight.email}`} class="flex items-center text-gray-700 hover:text-sky-600 group">
+							<div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4 group-hover:bg-sky-200 transition-colors">
+								<i class="fa-solid fa-envelope text-xl text-sky-600"></i>
 							</div>
 							<div>
 								<p class="text-sm text-gray-500">Email</p>
@@ -49,8 +49,8 @@ const breadcrumbs = [
 							</div>
 						</a>
 						<div class="flex items-start text-gray-700">
-							<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-								<i class="fa-solid fa-location-dot text-xl text-blue-600"></i>
+							<div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+								<i class="fa-solid fa-location-dot text-xl text-sky-600"></i>
 							</div>
 							<div>
 								<p class="text-sm text-gray-500">Address</p>
@@ -59,8 +59,8 @@ const breadcrumbs = [
 							</div>
 						</div>
 						<div class="flex items-center text-gray-700">
-							<div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-								<i class="fa-solid fa-clock text-xl text-blue-600"></i>
+							<div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mr-4">
+								<i class="fa-solid fa-clock text-xl text-sky-600"></i>
 							</div>
 							<div>
 								<p class="text-sm text-gray-500">Hours</p>
@@ -75,7 +75,7 @@ const breadcrumbs = [
 						<p class="text-sm text-gray-500 mb-4">Follow Us</p>
 						<div class="flex gap-4">
 							{site.social.facebook && (
-								<a href={site.social.facebook} target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-blue-100 hover:text-blue-600 transition-colors" aria-label="Facebook">
+								<a href={site.social.facebook} target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-sky-100 hover:text-sky-600 transition-colors" aria-label="Facebook">
 									<i class="fa-brands fa-facebook text-xl"></i>
 								</a>
 							)}
@@ -103,7 +103,7 @@ const breadcrumbs = [
 	<!-- Back to Flight School -->
 	<section class="py-8 bg-white">
 		<div class="container mx-auto px-4 text-center">
-			<a href="/flight-school" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+			<a href="/flight-school" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
 				<i class="fa-solid fa-chevron-left mr-2"></i>
 				Back to Flight School
 			</a>

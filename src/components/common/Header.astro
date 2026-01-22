@@ -39,7 +39,7 @@ const externalLinks = navigation.external as ExternalLink[];
             href={link.href}
             target={link.newTab ? "_blank" : undefined}
             rel={link.newTab ? "noopener noreferrer" : undefined}
-            class="px-3 py-2 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors flex items-center"
+            class="px-3 py-2 text-sm text-sky-600 hover:text-sky-800 font-medium transition-colors flex items-center"
           >
             {link.icon && (
               <i class="fa-solid fa-calendar-days mr-1"></i>
@@ -53,7 +53,7 @@ const externalLinks = navigation.external as ExternalLink[];
         {navItems.map((item) => (
           item.children ? (
             <div class="relative group">
-              <button class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center">
+              <button class="px-3 py-2 text-gray-700 hover:text-sky-600 font-medium transition-colors flex items-center">
                 {item.label}
                 <i class="fa-solid fa-chevron-down text-xs ml-1 transition-transform group-hover:rotate-180"></i>
               </button>
@@ -64,7 +64,7 @@ const externalLinks = navigation.external as ExternalLink[];
                       href={child.href}
                       target={child.newTab ? "_blank" : undefined}
                       rel={child.newTab ? "noopener noreferrer" : undefined}
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-sky-50 hover:text-sky-600 transition-colors"
                     >
                       {child.label}
                     </a>
@@ -75,7 +75,7 @@ const externalLinks = navigation.external as ExternalLink[];
           ) : (
             <a
               href={item.href}
-              class="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              class="px-3 py-2 text-gray-700 hover:text-sky-600 font-medium transition-colors"
             >
               {item.label}
             </a>
@@ -102,7 +102,7 @@ const externalLinks = navigation.external as ExternalLink[];
           href={link.href}
           target={link.newTab ? "_blank" : undefined}
           rel={link.newTab ? "noopener noreferrer" : undefined}
-          class="block py-3 text-blue-600 hover:text-blue-800 font-medium border-b border-gray-100"
+          class="block py-3 text-sky-600 hover:text-sky-800 font-medium border-b border-gray-100"
         >
           {link.label}
         </a>
@@ -112,7 +112,7 @@ const externalLinks = navigation.external as ExternalLink[];
         item.children ? (
           <div class="mobile-dropdown">
             <button
-              class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100"
+              class="w-full flex items-center justify-between py-3 text-gray-700 hover:text-sky-600 font-medium border-b border-gray-100"
               data-dropdown-toggle
             >
               {item.label}
@@ -124,7 +124,7 @@ const externalLinks = navigation.external as ExternalLink[];
                   href={child.href}
                   target={child.newTab ? "_blank" : undefined}
                   rel={child.newTab ? "noopener noreferrer" : undefined}
-                  class="block py-2 text-gray-600 hover:text-blue-600 border-b border-gray-100 last:border-b-0"
+                  class="block py-2 text-gray-600 hover:text-sky-600 border-b border-gray-100 last:border-b-0"
                 >
                   {child.label}
                 </a>
@@ -134,7 +134,7 @@ const externalLinks = navigation.external as ExternalLink[];
         ) : (
           <a
             href={item.href}
-            class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b border-gray-100"
+            class="block py-3 text-gray-700 hover:text-sky-600 font-medium border-b border-gray-100"
           >
             {item.label}
           </a>

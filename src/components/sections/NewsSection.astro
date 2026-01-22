@@ -19,8 +19,8 @@ const {
   background = 'light'
 } = Astro.props;
 
-const linkColor = variant === 'fbo' ? 'text-slate-600 hover:text-slate-800' : 'text-blue-600 hover:text-blue-800';
-const buttonBg = variant === 'fbo' ? 'bg-slate-700 hover:bg-slate-800' : 'bg-blue-600 hover:bg-blue-700';
+const linkColor = variant === 'fbo' ? 'text-slate-600 hover:text-slate-800' : 'text-sky-600 hover:text-sky-800';
+const buttonBg = variant === 'fbo' ? 'bg-slate-700 hover:bg-slate-800' : 'bg-sky-600 hover:bg-sky-700';
 
 const bgClasses = {
   light: 'bg-white',
@@ -140,7 +140,7 @@ const isDark = background === 'dark' || background === 'darker';
     const viewAllEl = document.getElementById('news-view-all');
 
     const limit = gridEl?.dataset.limit ? parseInt(gridEl.dataset.limit) : 3;
-    const linkColor = gridEl?.dataset.linkColor || 'text-blue-600 hover:text-blue-800';
+    const linkColor = gridEl?.dataset.linkColor || 'text-sky-600 hover:text-sky-800';
 
     try {
       const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=news-events&order=-sys.updatedAt`;

@@ -38,7 +38,7 @@ const breadcrumbs = [
 	<!-- Intro Section -->
 	<section class="py-12 bg-white">
 		<div class="container mx-auto px-4 max-w-4xl">
-			<div class="bg-blue-50 rounded-xl p-8 text-center">
+			<div class="bg-sky-50 rounded-xl p-8 text-center">
 				<h2 class="text-2xl font-bold text-gray-900 mb-4">After Hours Service Available</h2>
 				<p class="text-gray-700 mb-4">
 					After hours available on request, <strong>$90/hour</strong>, with a 2-hour minimum.
@@ -46,13 +46,13 @@ const breadcrumbs = [
 				<div class="flex flex-wrap justify-center gap-6 text-sm">
 					<div>
 						<span class="text-gray-500">Business Hours:</span>
-						<a href={`tel:${site.contact.fbo.phone}`} class="ml-2 text-blue-600 font-semibold hover:underline">
+						<a href={`tel:${site.contact.fbo.phone}`} class="ml-2 text-sky-600 font-semibold hover:underline">
 							{site.contact.fbo.phone}
 						</a>
 					</div>
 					<div>
 						<span class="text-gray-500">After Hours:</span>
-						<a href={`tel:${site.contact.afterHours.phone}`} class="ml-2 text-blue-600 font-semibold hover:underline">
+						<a href={`tel:${site.contact.afterHours.phone}`} class="ml-2 text-sky-600 font-semibold hover:underline">
 							{site.contact.afterHours.phone}
 						</a>
 						<span class="text-gray-500 ml-1">- {site.contact.afterHours.name}</span>
@@ -75,11 +75,11 @@ const breadcrumbs = [
 					<div class="bg-white rounded-xl shadow-lg overflow-hidden">
 						<div class="p-6">
 							<h3 class="text-xl font-bold text-gray-900 mb-2">{hotel.name}</h3>
-							<p class="text-sm text-blue-600 mb-3">{hotel.description}</p>
+							<p class="text-sm text-sky-600 mb-3">{hotel.description}</p>
 							<div class="space-y-2 text-sm text-gray-600">
 								<p class="whitespace-pre-line">{hotel.address}</p>
 								<p>
-									<a href={`tel:${hotel.phone}`} class="text-blue-600 hover:underline font-medium">
+									<a href={`tel:${hotel.phone}`} class="text-sky-600 hover:underline font-medium">
 										{hotel.phone}
 									</a>
 								</p>
@@ -156,7 +156,7 @@ const breadcrumbs = [
 						</div>
 						<div>
 							<h3 class="font-semibold text-gray-900">{caterer.name}</h3>
-							<a href={`tel:${caterer.phone}`} class="text-sm text-blue-600 hover:underline">
+							<a href={`tel:${caterer.phone}`} class="text-sm text-sky-600 hover:underline">
 								{caterer.phone}
 							</a>
 						</div>
@@ -178,14 +178,14 @@ const breadcrumbs = [
 				<!-- Rental Cars -->
 				<div>
 					<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-						<i class="fa-solid fa-car text-blue-600 text-xl mr-2"></i>
+						<i class="fa-solid fa-car text-sky-600 text-xl mr-2"></i>
 						Rental Cars
 					</h3>
 					<div class="space-y-3">
 						{groundTransport.rentalCars.map((rental) => (
 							<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
 								<span class="font-medium text-gray-900">{rental.name}</span>
-								<a href={`tel:${rental.phone}`} class="text-blue-600 hover:underline">
+								<a href={`tel:${rental.phone}`} class="text-sky-600 hover:underline">
 									{rental.phone}
 								</a>
 							</div>
@@ -204,7 +204,7 @@ const breadcrumbs = [
 							<div class="p-4 bg-gray-50 rounded-lg">
 								<div class="flex items-center justify-between mb-1">
 									<span class="font-medium text-gray-900">{taxi.name}</span>
-									<a href={`tel:${taxi.phone}`} class="text-blue-600 hover:underline">
+									<a href={`tel:${taxi.phone}`} class="text-sky-600 hover:underline">
 										{taxi.phone}
 									</a>
 								</div>
