@@ -98,7 +98,7 @@ const breadcrumbs = [
 			<div class="flex flex-wrap justify-center items-center gap-6 mt-6 pt-6 border-t border-gray-200">
 				<div class="text-center">
 					<span class="text-sm text-gray-500">Hours:</span>
-					<span class="ml-2 font-medium text-gray-700">{site.hours.display}</span>
+					<span class="ml-2 font-medium text-gray-700">{site.hours.fullDisplay}</span>
 				</div>
 				<div class="flex items-center gap-4">
 					{site.social.facebook && (
@@ -329,7 +329,10 @@ const breadcrumbs = [
 						</div>
 						<div class="flex items-center text-gray-700">
 							<i class="fa-solid fa-clock w-5 mr-3 text-blue-600"></i>
-							<span>{site.hours.display}</span>
+							<div>
+								<div>{site.hours.display}</div>
+								<div class="italic">{site.hours.altDisplay}</div>
+							</div>
 						</div>
 					</div>
 					<div class="mt-6 pt-6 border-t border-gray-200">

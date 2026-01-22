@@ -40,7 +40,8 @@
     "regular": "7 AM - 5 PM",
     "summer": "7 AM - 7 PM (Memorial Day - Labor Day)",
     "display": "Open 7 days a week from 7 AM to 5 PM",
-    "altDisplay": "Open until 7 PM Memorial Day - Labor Day"
+    "altDisplay": "Open until 7 PM Memorial Day - Labor Day",
+    "fullDisplay": "Open 7 days a week from 7 AM to 5 PM and until 7 PM Memorial Day - Labor Day"
   },
   "social": {
     "facebook": "https://www.facebook.com/SouthernMaineAviation/",
