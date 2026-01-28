@@ -12,7 +12,7 @@
   ],
   "external": [
     {
-      "label": "Scheduling",
+      "label": "Scheduling for Current Cusomers",
       "href": "https://app.flightschedulepro.com/Account/Login/186067",
       "icon": "calendar",
       "newTab": true
