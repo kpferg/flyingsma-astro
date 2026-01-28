@@ -11,6 +11,7 @@
         { "label": "Scenic Flights", "href": "/flight-school/scenic-flights" },
         { "label": "Multi-Engine", "href": "/flight-school/multi-engine" },
         { "label": "Flight Release", "href": "https://flight-release-sma.netlify.app/", "newTab": true },
+        { "label": "Scheduling for Current Customers", "href": "https://app.flightschedulepro.com/Account/Login/186067", "newTab": true },
         { "label": "News", "href": "/flight-school/news" },
         { "label": "Contact", "href": "/flight-school/contact" }
       ]
@@ -24,14 +25,6 @@
         { "label": "News", "href": "/fbo-services/news" },
         { "label": "Contact", "href": "/fbo-services/contact" }
       ]
-    }
-  ],
-  "external": [
-    {
-      "label": "Scheduling",
-      "href": "https://app.flightschedulepro.com/Account/Login/186067",
-      "icon": "fa-calendar-alt",
-      "newTab": true
     }
   ]
 }

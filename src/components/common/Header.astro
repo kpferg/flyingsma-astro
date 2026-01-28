@@ -17,7 +17,7 @@ interface ExternalLink {
 }
 
 const navItems = navigation.main as NavItem[];
-const externalLinks = navigation.external as ExternalLink[];
+const externalLinks = (navigation.external as ExternalLink[]) || [];
 ---
 
 <header class="bg-white shadow-md sticky top-0 z-50">
@@ -34,21 +34,24 @@ const externalLinks = navigation.external as ExternalLink[];
 
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-1">
-        {externalLinks.map((link) => (
-          <a
-            href={link.href}
-            target={link.newTab ? "_blank" : undefined}
-            rel={link.newTab ? "noopener noreferrer" : undefined}
-            class="px-3 py-2 text-sm text-sky-600 hover:text-sky-800 font-medium transition-colors flex items-center"
-          >
-            {link.icon && (
-              <i class="fa-solid fa-calendar-days mr-1"></i>
-            )}
-            {link.label}
-          </a>
-        ))}
-
-        <div class="w-px h-6 bg-gray-300 mx-2"></div>
+        {externalLinks.length > 0 && (
+          <>
+            {externalLinks.map((link) => (
+              <a
+                href={link.href}
+                target={link.newTab ? "_blank" : undefined}
+                rel={link.newTab ? "noopener noreferrer" : undefined}
+                class="px-3 py-2 text-sm text-sky-600 hover:text-sky-800 font-medium transition-colors flex items-center"
+              >
+                {link.icon && (
+                  <i class="fa-solid fa-calendar-days mr-1"></i>
+                )}
+                {link.label}
+              </a>
+            ))}
+            <div class="w-px h-6 bg-gray-300 mx-2"></div>
+          </>
+        )}
 
         {navItems.map((item) => (
           item.children ? (
@@ -97,7 +100,7 @@ const externalLinks = navigation.external as ExternalLink[];
 
     <!-- Mobile Navigation -->
     <div class="hidden lg:hidden mt-4 pb-4 border-t border-gray-100 pt-4" id="mobile-menu">
-      {externalLinks.map((link) => (
+      {externalLinks.length > 0 && externalLinks.map((link) => (
         <a
           href={link.href}
           target={link.newTab ? "_blank" : undefined}

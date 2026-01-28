@@ -116,7 +116,7 @@ const breadcrumbs = [
 		const errorEl = document.getElementById('news-error');
 
 		try {
-			const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=news-events&order=-sys.updatedAt`;
+			const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=fboNewsEvents&order=-sys.updatedAt`;
 			const response = await fetch(url);
 			if (!response.ok) throw new Error('Failed to fetch');
 
