@@ -1,5 +1,7 @@
 ---
 import site from '../../data/site.json';
+
+const social = site.social;
 ---
 
 <header class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-slate-700">
@@ -52,6 +54,45 @@ import site from '../../data/site.json';
             </div>
           </div>
         </div>
+
+        <!-- Social Media Links -->
+        {(social.facebook || social.instagram || (social.linkedin && social.linkedin.trim())) && (
+          <div class="flex items-center gap-2 ml-2 border-l border-gray-200 pl-3">
+            {social.facebook && (
+              <a
+                href={social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-slate-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <i class="fa-brands fa-facebook text-xl"></i>
+              </a>
+            )}
+            {social.instagram && (
+              <a
+                href={social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-slate-600 transition-colors"
+                aria-label="Instagram"
+              >
+                <i class="fa-brands fa-instagram text-xl"></i>
+              </a>
+            )}
+            {social.linkedin && social.linkedin.trim() && (
+              <a
+                href={social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-gray-600 hover:text-slate-600 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <i class="fa-brands fa-linkedin text-xl"></i>
+              </a>
+            )}
+          </div>
+        )}
 
         <!-- Call Button -->
         <a
@@ -110,6 +151,47 @@ import site from '../../data/site.json';
             Switch to Flight School →
           </a>
         </div>
+
+        <!-- Social Media Links -->
+        {(social.facebook || social.instagram || (social.linkedin && social.linkedin.trim())) && (
+          <div class="pt-3 mt-3 border-t border-gray-100">
+            <div class="flex items-center gap-4 px-3">
+              {social.facebook && (
+                <a
+                  href={social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-600 hover:text-slate-600 transition-colors"
+                  aria-label="Facebook"
+                >
+                  <i class="fa-brands fa-facebook text-2xl"></i>
+                </a>
+              )}
+              {social.instagram && (
+                <a
+                  href={social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-600 hover:text-slate-600 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <i class="fa-brands fa-instagram text-2xl"></i>
+                </a>
+              )}
+              {social.linkedin && social.linkedin.trim() && (
+                <a
+                  href={social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-600 hover:text-slate-600 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fa-brands fa-linkedin text-2xl"></i>
+                </a>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   </nav>
