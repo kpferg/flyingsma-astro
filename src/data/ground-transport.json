@@ -1,10 +1,6 @@
 {
   "rentalCars": [
     {
-      "name": "Enterprise",
-      "phone": "207-324-8122"
-    },
-    {
       "name": "Hertz",
       "phone": "207-797-7156"
     },
