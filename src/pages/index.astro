@@ -6,23 +6,17 @@ import ContactSection from "../components/sections/ContactSection.astro";
 import OrganizationSchema from "../components/seo/OrganizationSchema.astro";
 import WebsiteSchema from "../components/seo/WebsiteSchema.astro";
 import site from "../data/site.json";
-
-// Available hero images
-const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 ---
 
 <BaseLayout title="Southern Maine Aviation" hideHeader>
 	<OrganizationSchema slot="head" />
 	<WebsiteSchema slot="head" />
-	<!-- Preload all hero images for instant display -->
-	{heroImages.map((image) => (
-		<link slot="head" rel="preload" as="image" href={`/images/hero/${image}`} />
-	))}
+	<link slot="head" rel="preload" as="image" href="/images/hero/3.jpg" />
 	<div class="min-h-screen relative bg-sky-950 z-10">
-		<!-- Background Image with Overlay -->
+		<!-- Background Image -->
 		<div
-			id="hero-background"
-			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 opacity-0 transition-opacity duration-500"
+			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
+			style="background-image: url('/images/hero/3.jpg');"
 			aria-hidden="true"
 		></div>
 
@@ -34,9 +28,11 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 			<!-- Hero Section -->
 			<div class="container mx-auto px-4 py-12 md:py-20">
 			<div class="text-center mb-12 md:mb-16">
-				<h1 class="mb-4">
+				<h1 class="mb-4 flex justify-center">
 					<span class="sr-only">Southern Maine Aviation</span>
-					<img src="/images/logo/SMALogo.png" alt="Southern Maine Aviation" class="mx-auto h-24 md:h-32 lg:h-40 w-auto drop-shadow-lg" />
+					<span class="inline-block bg-white/90 rounded-full px-8 py-4 md:px-10 md:py-5 shadow-lg backdrop-blur-sm">
+						<img src="/images/logo/SMALogo_transparent.png" alt="Southern Maine Aviation" class="w-full max-w-xs md:max-w-sm lg:max-w-lg h-auto" />
+					</span>
 				</h1>
 			</div>
 
@@ -133,27 +129,6 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 	</div>
 
 	<script>
-		// Randomly select hero image on each page load (client-side)
-		// Images are preloaded, so this will be instant
-		const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
-		const randomHeroImage = heroImages[Math.floor(Math.random() * heroImages.length)];
-		const heroBackground = document.getElementById('hero-background');
-		if (heroBackground) {
-			// Create new image object to ensure it's loaded before switching
-			const img = new Image();
-			img.src = `/images/hero/${randomHeroImage}`;
-			img.onload = () => {
-				heroBackground.style.backgroundImage = `url('/images/hero/${randomHeroImage}')`;
-				// Fade in the image once loaded
-				heroBackground.style.opacity = '1';
-			};
-			// If image is already cached (from preload), show it immediately
-			if (img.complete) {
-				heroBackground.style.backgroundImage = `url('/images/hero/${randomHeroImage}')`;
-				heroBackground.style.opacity = '1';
-			}
-		}
-
 		// Track clicks on main landing page CTAs
 		document.getElementById('cta-flight-training-center')?.addEventListener('click', () => {
 			if (typeof gtag === 'function') {
