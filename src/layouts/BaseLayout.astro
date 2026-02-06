@@ -12,13 +12,15 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  hideHeader?: boolean;
 }
 
 const {
   title = site.title,
   description = site.description,
   image,
-  noindex = false
+  noindex = false,
+  hideHeader = false
 } = Astro.props;
 
 const fullTitle = title === site.title ? title : `${title} | ${site.name}`;
@@ -73,7 +75,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyi
     <!-- Google Tag Manager (noscript) -->
     <GTMNoScript />
 
-    <Header />
+    {!hideHeader && <Header />}
 
     <main class="flex-grow">
       <slot />

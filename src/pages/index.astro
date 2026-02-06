@@ -11,7 +11,7 @@ import site from "../data/site.json";
 const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 ---
 
-<BaseLayout title="Southern Maine Aviation">
+<BaseLayout title="Southern Maine Aviation" hideHeader>
 	<OrganizationSchema slot="head" />
 	<WebsiteSchema slot="head" />
 	<!-- Preload all hero images for instant display -->
@@ -20,27 +20,24 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 	))}
 	<div class="min-h-screen relative bg-sky-950 z-10">
 		<!-- Background Image with Overlay -->
-		<div 
+		<div
 			id="hero-background"
 			class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 opacity-0 transition-opacity duration-500"
 			aria-hidden="true"
 		></div>
-		
+
 		<!-- Dark Overlay for Readability -->
 		<div class="fixed inset-0 bg-gradient-to-b from-black/85 via-black/40 to-black/60 -z-10" aria-hidden="true"></div>
-		
+
 		<!-- Content Layer -->
 		<div class="relative z-10">
 			<!-- Hero Section -->
 			<div class="container mx-auto px-4 py-12 md:py-20">
 			<div class="text-center mb-12 md:mb-16">
-				<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
-					Welcome to
-					<span class="block text-[#f98a14] mt-2 drop-shadow-md">Southern Maine Aviation</span>
+				<h1 class="mb-4">
+					<span class="sr-only">Southern Maine Aviation</span>
+					<img src="/images/logo/SMALogo.png" alt="Southern Maine Aviation" class="mx-auto h-24 md:h-32 lg:h-40 w-auto drop-shadow-lg" />
 				</h1>
-				<p class="text-xl md:text-2xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
-					Choose your path to the skies
-				</p>
 			</div>
 
 			<!-- Split Choice Cards -->
