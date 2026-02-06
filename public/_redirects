@@ -2,15 +2,22 @@
 # Redirects from old Hugo site URLs to new Astro URLs
 # Note: Netlify's Pretty URLs handles trailing slash variations automatically
 
-# Flight School / Fly section
-/pages/redbird_simulator.html    /flight-school    301
-/pages/our_instructors.html      /flight-school#instructors    301
-/pages/flight_training.html      /flight-school    301
-/pages/our_fleet.html            /flight-school    301
-/pages/pricing.html              /flight-school    301
-/pages/accelerated_courses.html  /flight-school    301
-/pages/pilot_accomplishments.html /flight-school   301
-/fly                             /flight-school    301
+# Flight Training Center / Fly section
+/pages/redbird_simulator.html    /flight-training-center    301
+/pages/our_instructors.html      /flight-training-center#instructors    301
+/pages/flight_training.html      /flight-training-center    301
+/pages/our_fleet.html            /flight-training-center    301
+/pages/pricing.html              /flight-training-center    301
+/pages/accelerated_courses.html  /flight-training-center    301
+/pages/pilot_accomplishments.html /flight-training-center   301
+/fly                             /flight-training-center    301
+
+# Legacy /flight-school URLs
+/flight-school                   /flight-training-center    301
+/flight-school/contact           /flight-training-center/contact    301
+/flight-school/multi-engine      /flight-training-center/multi-engine    301
+/flight-school/scenic-flights    /flight-training-center/scenic-flights    301
+/flight-school/news              /flight-training-center/news    301
 
 # Corporate Arrivals
 /pages/airport_FBO.html          /services/corporate-arrivals    301
@@ -31,7 +38,7 @@
 /aircraft-maintenance            /services/maintenance    301
 
 # Multi-engine
-/multi-engine                    /flight-school/multi-engine    301
+/multi-engine                    /flight-training-center/multi-engine    301
 
 # Handle old dashboard URL
 /dashboard                       /    301

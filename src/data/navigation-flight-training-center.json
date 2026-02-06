@@ -1,12 +1,12 @@
 {
   "brand": {
     "logo": "/images/logo/SMALogo.png",
-    "alt": "Southern Maine Aviation - Flight School"
+    "alt": "Southern Maine Aviation - Flight Training Center"
   },
   "main": [
-    { "label": "Flight Training", "href": "/flight-school" },
-    { "label": "Scenic Flights", "href": "/flight-school/scenic-flights" },
-    { "label": "Multi-Engine", "href": "/flight-school/multi-engine" },
+    { "label": "Flight Training", "href": "/flight-training-center" },
+    { "label": "Scenic Flights", "href": "/flight-training-center/scenic-flights" },
+    { "label": "Multi-Engine", "href": "/flight-training-center/multi-engine" },
     { "label": "News", "href": "/news" },
     { "label": "Contact", "href": "/contact" }
   ],

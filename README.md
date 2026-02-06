@@ -16,9 +16,9 @@ Astro-based website for Southern Maine Aviation, featuring separate sub-sites fo
 │   │   └── ui/          # UI components (cards, buttons, etc.)
 │   ├── content/         # Content collections (FAQ, services)
 │   ├── data/            # JSON data files (site config, services, etc.)
-│   ├── layouts/         # Page layouts (Base, FlightSchool, FBO)
+│   ├── layouts/         # Page layouts (Base, FlightTrainingCenter, FBO)
 │   ├── pages/           # Route pages
-│   │   ├── flight-school/   # Flight training sub-site
+│   │   ├── flight-training-center/   # Flight training sub-site
 │   │   └── services/        # FBO sub-site
 │   └── styles/          # Global CSS
 └── package.json
@@ -78,5 +78,5 @@ Dynamic content (instructors, fleet, news) is fetched from Contentful CMS at run
 ## Layouts
 
 - **BaseLayout**: Used for the main landing page
-- **FlightSchoolLayout**: Used for `/flight-school/*` pages (blue theme)
+- **FlightTrainingCenterLayout**: Used for `/flight-training-center/*` pages (blue theme)
 - **FBOLayout**: Used for `/services/*` pages (slate theme)

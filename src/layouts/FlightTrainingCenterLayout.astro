@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
-import HeaderFlightSchool from '../components/common/HeaderFlightSchool.astro';
-import FooterFlightSchool from '../components/common/FooterFlightSchool.astro';
+import HeaderFlightTrainingCenter from '../components/common/HeaderFlightTrainingCenter.astro';
+import FooterFlightTrainingCenter from '../components/common/FooterFlightTrainingCenter.astro';
 import Analytics from '../components/common/Analytics.astro';
 import GTMNoScript from '../components/common/GTMNoScript.astro';
 import ScrollToTop from '../components/common/ScrollToTop.astro';
@@ -15,13 +15,13 @@ interface Props {
 }
 
 const {
-  title = 'Flight School',
+  title = 'Flight Training Center',
   description = 'Learn to fly at Southern Maine Aviation. Private pilot, instrument, commercial, multi-engine, and tailwheel training.',
   image,
   noindex = false
 } = Astro.props;
 
-const fullTitle = `${title} | ${site.name} Flight School`;
+const fullTitle = `${title} | ${site.name} Flight Training Center`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyingsma.com');
 ---
 
@@ -54,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyi
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={`${site.name} Flight School`} />
+    <meta property="og:site_name" content={`${site.name} Flight Training Center`} />
     {image && <meta property="og:image" content={image} />}
 
     <!-- Twitter -->
@@ -73,13 +73,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.flyi
     <!-- Google Tag Manager (noscript) -->
     <GTMNoScript />
 
-    <HeaderFlightSchool />
+    <HeaderFlightTrainingCenter />
 
     <main class="flex-grow">
       <slot />
     </main>
 
-    <FooterFlightSchool />
+    <FooterFlightTrainingCenter />
 
     <ScrollToTop />
 

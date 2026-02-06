@@ -42,8 +42,8 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 
 			<!-- Split Choice Cards -->
 			<div class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
-				<!-- Flight School Card (Left) -->
-				<a href="/flight-school" id="cta-flight-school" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
+				<!-- Flight Training Center Card (Left) -->
+				<a href="/flight-training-center" id="cta-flight-training-center" class="group relative overflow-hidden rounded-2xl text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-2">
 					<!-- Left-Directional Background Gradient -->
 					<div class="absolute inset-0 bg-gradient-to-r from-sky-700 to-sky-600"></div>
 
@@ -59,7 +59,7 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 							</div>
 
 							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-								Flight School
+								Flight Training Center
 							</h2>
 							<p class="text-sky-100 text-lg md:text-xl mb-6 leading-relaxed">
 								Learn To Fly Today!
@@ -155,7 +155,7 @@ const heroImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
 		}
 
 		// Track clicks on main landing page CTAs
-		document.getElementById('cta-flight-school')?.addEventListener('click', () => {
+		document.getElementById('cta-flight-training-center')?.addEventListener('click', () => {
 			if (typeof gtag === 'function') {
 				gtag('event', 'subsite_selection', {
 					'event_category': 'Navigation',

@@ -1,5 +1,5 @@
 ---
-import FlightSchoolLayout from "../../layouts/FlightSchoolLayout.astro";
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
 import ContactSection from "../../components/sections/ContactSection.astro";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
 import ServiceSchema from "../../components/seo/ServiceSchema.astro";
@@ -7,18 +7,18 @@ import site from "../../data/site.json";
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://www.flyingsma.com/' },
-  { name: 'Flight School', url: 'https://www.flyingsma.com/flight-school/' },
-  { name: 'Multi-Engine Training', url: 'https://www.flyingsma.com/flight-school/multi-engine/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Multi-Engine Training', url: 'https://www.flyingsma.com/flight-training-center/multi-engine/' },
 ];
 ---
 
-<FlightSchoolLayout title="Multi-Engine Training" description="Multi-engine flight training now available at Southern Maine Aviation. Learn to fly twin-engine aircraft.">
+<FlightTrainingCenterLayout title="Multi-Engine Training" description="Multi-engine flight training now available at Southern Maine Aviation. Learn to fly twin-engine aircraft.">
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<ServiceSchema
 		slot="head"
 		name="Multi-Engine Flight Training"
 		description="Learn to fly twin-engine aircraft with our multi-engine rating program. Professional instruction in our twin engine trainer."
-		url="https://www.flyingsma.com/flight-school/multi-engine/"
+		url="https://www.flyingsma.com/flight-training-center/multi-engine/"
 		serviceType="Flight Training"
 	/>
 	<!-- Page Header -->
@@ -158,9 +158,9 @@ const breadcrumbs = [
 					</div>
 				</div>
 
-				<!-- Back to Flight School -->
+				<!-- Back to Flight Training Center -->
 				<div class="text-center">
-					<a href="/flight-school" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
+					<a href="/flight-training-center" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
 						<i class="fa-solid fa-chevron-left mr-2"></i>
 						Back to All Training Programs
 					</a>
@@ -176,4 +176,4 @@ const breadcrumbs = [
 		variant="default"
 		showMap={false}
 	/>
-</FlightSchoolLayout>
+</FlightTrainingCenterLayout>

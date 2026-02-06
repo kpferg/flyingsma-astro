@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import FlightSchoolLayout from "../../layouts/FlightSchoolLayout.astro";
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
 import InstructorsSection from "../../components/sections/InstructorsSection.astro";
 import FleetSection from "../../components/sections/FleetSection.astro";
 import FAQSection from "../../components/sections/FAQSection.astro";
@@ -22,11 +22,11 @@ const faqItems = faqCollection
 
 const breadcrumbs = [
   { name: 'Home', url: 'https://www.flyingsma.com/' },
-  { name: 'Flight School', url: 'https://www.flyingsma.com/flight-school/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
 ];
 ---
 
-<FlightSchoolLayout title="Flight Training" description="Learn to fly at Southern Maine Aviation. Private pilot, instrument, commercial, multi-engine, and tailwheel training.">
+<FlightTrainingCenterLayout title="Flight Training" description="Learn to fly at Southern Maine Aviation. Private pilot, instrument, commercial, multi-engine, and tailwheel training.">
 	<FAQSchema slot="head" faqs={faqItems} />
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
@@ -200,7 +200,7 @@ const breadcrumbs = [
 							Our beautiful twin engine trainer has arrived! Learn to fly multi-engine aircraft.
 						</p>
 						<a
-							href="/flight-school/multi-engine"
+							href="/flight-training-center/multi-engine"
 							class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium"
 						>
 							Learn More
@@ -266,8 +266,8 @@ const breadcrumbs = [
 
 	<!-- News Section -->
 	<NewsSection
-		title="Flight School News"
-		description="Stay up to date with the latest happenings at our flight school."
+		title="Flight Training Center News"
+		description="Stay up to date with the latest happenings at our flight training center."
 		limit={3}
 		showViewAll={true}
 		background="dark"
@@ -362,4 +362,4 @@ const breadcrumbs = [
 			</div>
 		</div>
 	</section>
-</FlightSchoolLayout>
+</FlightTrainingCenterLayout>

@@ -5,7 +5,7 @@ interface Props {
   limit?: number;
   showViewAll?: boolean;
   viewAllLink?: string;
-  variant?: 'flight-school' | 'fbo';
+  variant?: 'flight-training-center' | 'fbo';
   background?: 'light' | 'gray' | 'dark' | 'darker';
 }
 
@@ -14,8 +14,8 @@ const {
   description,
   limit = 3,
   showViewAll = true,
-  viewAllLink = '/flight-school/news',
-  variant = 'flight-school',
+  viewAllLink = '/flight-training-center/news',
+  variant = 'flight-training-center',
   background = 'light'
 } = Astro.props;
 
