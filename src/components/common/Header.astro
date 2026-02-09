@@ -33,7 +33,7 @@ const externalLinks = (navigation.external as ExternalLink[]) || [];
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex items-center space-x-1">
+      <div class="hidden nav:flex items-center space-x-1">
         {externalLinks.length > 0 && (
           <>
             {externalLinks.map((link) => (
@@ -88,18 +88,18 @@ const externalLinks = (navigation.external as ExternalLink[]) || [];
 
       <!-- Mobile Menu Button -->
       <button
-        class="lg:hidden text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        class="nav:hidden text-gray-700 focus:outline-none p-2 hover:bg-gray-100 rounded-lg transition-colors"
         id="mobile-menu-button"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <i class="fa-solid fa-bars text-xl menu-icon"></i>
-        <i class="fa-solid fa-xmark text-xl close-icon hidden"></i>
+        <span class="menu-icon"><i class="fa-solid fa-bars text-xl"></i></span>
+        <span class="close-icon hidden"><i class="fa-solid fa-xmark text-xl"></i></span>
       </button>
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="hidden lg:hidden mt-4 pb-4 border-t border-gray-100 pt-4" id="mobile-menu">
+    <div class="hidden nav:hidden mt-4 pb-4 border-t border-gray-100 pt-4" id="mobile-menu">
       {externalLinks.length > 0 && externalLinks.map((link) => (
         <a
           href={link.href}

@@ -21,7 +21,7 @@ const social = site.social;
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-1">
+      <div class="hidden nav:flex items-center gap-1">
         <!-- Primary Links -->
         <a
           href="https://app.flightschedulepro.com/Account/Login/186067"
@@ -118,25 +118,25 @@ const social = site.social;
           class="ml-3 px-4 py-2 bg-sky-600 text-white text-sm font-medium rounded-lg hover:bg-sky-700 transition-colors flex items-center gap-2"
         >
           <i class="fa-solid fa-phone"></i>
-          <span class="hidden lg:inline">{site.contact.flight.phone}</span>
-          <span class="lg:hidden">Call</span>
+          <span class="hidden nav:inline">{site.contact.flight.phone}</span>
+          <span class="nav:hidden">Call</span>
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
-        class="md:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+        class="nav:hidden text-gray-700 p-2 hover:bg-gray-100 rounded-lg transition-colors"
         id="mobile-menu-button-fs"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <i class="fa-solid fa-bars text-xl menu-icon"></i>
-        <i class="fa-solid fa-xmark text-xl close-icon hidden"></i>
+        <span class="menu-icon"><i class="fa-solid fa-bars text-xl"></i></span>
+        <span class="close-icon hidden"><i class="fa-solid fa-xmark text-xl"></i></span>
       </button>
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="hidden md:hidden pb-4" id="mobile-menu-fs">
+    <div class="hidden nav:hidden pb-4" id="mobile-menu-fs">
       <div class="pt-4 border-t border-gray-100 space-y-1">
         <a
           href="https://app.flightschedulepro.com/Account/Login/186067"
