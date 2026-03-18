@@ -1,0 +1,539 @@
+---
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import site from "../../data/site.json";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Formation Academy', url: 'https://www.flyingsma.com/flight-training-center/formation-academy/' },
+];
+
+const faqs = [
+  {
+    question: "When does the next cohort start?",
+    answer: "Formation Academy cohorts launch several times per year, typically in spring, summer, and fall. Each cohort is kept intentionally small — usually 4 to 6 students — so every member gets meaningful instructor attention while still benefiting from the group dynamic. Contact us to find out when the next intake opens and reserve your spot."
+  },
+  {
+    question: "Do I need any flying experience to join?",
+    answer: "No prior flight experience is required. Formation Academy is designed for aspiring pilots starting from zero. All you need is a desire to learn, the ability to obtain a student pilot certificate (which we'll help you with), and a third-class medical. If you've already taken a discovery flight or have a few hours in your logbook, that's a bonus — but it's not a prerequisite."
+  },
+  {
+    question: "How is Formation Academy different from regular flight training?",
+    answer: "Traditional flight training at most schools is entirely self-paced and individual — you schedule when you can, progress at your own rate, and train in isolation. Formation Academy structures your training around a cohort of students who start together, hit milestones together, and support each other through the process. You get a set curriculum, a defined schedule, shared ground school sessions, and the built-in motivation of flying alongside classmates who are working toward the same goal."
+  },
+  {
+    question: "What certificate will I earn at the end?",
+    answer: "Formation Academy is structured to take you all the way through your FAA Private Pilot Certificate (single-engine land). That's your wings — the certificate that allows you to fly yourself, family, and friends to destinations across the country. Graduates are also well-positioned to continue directly into instrument rating training."
+  },
+  {
+    question: "What if my schedule doesn't allow me to keep up with the cohort?",
+    answer: "Life happens, and we build flexibility into the program. If a student needs extra time on a particular skill or has to miss a week, our instructors work with them individually to keep progress on track. In cases of extended absence, we can bridge a student into the next cohort rather than let them fall too far behind. We want every student to finish — we're not going to leave anyone behind."
+  },
+  {
+    question: "How long does the program take?",
+    answer: "Most Formation Academy students earn their private pilot certificate within 4 to 6 months of their cohort start date. The exact timeline depends on weather, individual progression, and how consistently you can fly each week. The FAA minimum is 40 hours of flight time, though the national average is closer to 65–70 hours. Our structured approach helps students avoid the common pitfall of slow, sporadic training that stretches the process out for years."
+  },
+  {
+    question: "How much does the program cost?",
+    answer: "Flight training costs are driven primarily by hours in the aircraft, so final cost varies by student. That said, Formation Academy's structured progression and consistent scheduling typically means students reach checkride-ready status with fewer total hours than students training sporadically — which can make it more cost-effective overall. We'll give you a detailed cost estimate during your intake consultation based on our current aircraft rates and typical completion timelines."
+  },
+  {
+    question: "What aircraft will I train in?",
+    answer: "Formation Academy students train in aircraft from our carefully maintained fleet, which includes Cessna 172s and other trainers suited to the full private pilot curriculum — from first flight through solo, cross-country, and checkride. Your instructor will match you to the right aircraft for each stage of training."
+  }
+];
+---
+
+<FlightTrainingCenterLayout
+  title="SMA Formation Academy"
+  description="Learn to fly as part of a structured class cohort at Southern Maine Aviation. Formation Academy takes aspiring pilots from zero experience through their FAA Private Pilot Certificate."
+>
+  <BreadcrumbSchema slot="head" items={breadcrumbs} />
+  <ServiceSchema
+    slot="head"
+    name="SMA Formation Academy"
+    description="Cohort-based private pilot training at Southern Maine Aviation. A structured, community-driven program that takes aspiring pilots from first flight through FAA Private Pilot Certificate."
+    url="https://www.flyingsma.com/flight-training-center/formation-academy/"
+    serviceType="Flight Training"
+  />
+
+  <!-- Hero Section -->
+  <section class="relative text-white py-24 md:py-36 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-sky-900 to-slate-800"></div>
+
+    <!-- Decorative plane silhouettes -->
+    <div class="absolute inset-0 overflow-hidden opacity-10" aria-hidden="true">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-end gap-16">
+        <i class="fa-solid fa-plane text-[14rem] -rotate-12 translate-y-6 translate-x-4"></i>
+        <i class="fa-solid fa-plane text-[18rem] -rotate-6"></i>
+        <i class="fa-solid fa-plane text-[14rem] rotate-12 translate-y-6 -translate-x-4"></i>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40"></div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <span class="inline-block bg-amber-400 text-amber-900 text-sm font-bold px-4 py-1 rounded-full mb-6 shadow-lg tracking-wide uppercase">
+        Cohort Program
+      </span>
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg leading-tight">
+        SMA Formation<br class="hidden md:block" /> Academy
+      </h1>
+      <p class="text-xl md:text-2xl text-sky-200 max-w-3xl mx-auto mb-4 drop-shadow leading-relaxed">
+        Learn to fly alongside a class of fellow students — a structured, community-driven path from zero experience to your FAA Private Pilot Certificate.
+      </p>
+      <p class="text-sky-300 text-base md:text-lg max-w-xl mx-auto mb-10">
+        More than training. A shared experience. Small cohorts, defined milestones, and instructors who are with you every step of the way.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href={`tel:${site.contact.flight.phone}`}
+          class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg"
+        >
+          <i class="fa-solid fa-phone mr-2"></i>
+          Reserve Your Spot: {site.contact.flight.phone}
+        </a>
+        <a
+          href="#program"
+          class="inline-flex items-center px-8 py-4 border-2 border-white/70 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+        >
+          See the Program
+          <i class="fa-solid fa-chevron-down ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Is Formation Academy -->
+  <section class="py-16 bg-white" id="program">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">A Different Way to Learn to Fly</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+              Most flight training is a solo journey — you schedule when you can, show up, fly, and hope the momentum carries you through to your checkride. It works for some, but for many aspiring pilots, the lack of structure leads to slow progress, long gaps between flights, and a certificate that never quite gets finished.
+            </p>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+              Formation Academy was built to change that. The name says it all: you train in <em>formation</em> — as a cohort, a class, a team. A small group of students with aligned start dates, shared milestones, and instructors holding the whole thing together.
+            </p>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              You still fly individually with your instructor. But the curriculum is structured, the schedule is consistent, and you'll have classmates who are working through the same challenges at the same time. That changes everything.
+            </p>
+          </div>
+          <!-- Placeholder image card -->
+          <div class="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-sky-700 to-slate-800 h-72 md:h-96 flex flex-col items-center justify-center relative p-8">
+            <div class="flex justify-center items-end gap-8 mb-6" aria-hidden="true">
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-user text-white text-lg"></i>
+                </div>
+                <div class="w-1 h-6 bg-white/30"></div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-16 h-16 rounded-full bg-amber-400/80 flex items-center justify-center">
+                  <i class="fa-solid fa-plane text-white text-2xl"></i>
+                </div>
+                <div class="w-1 h-6 bg-amber-400/50"></div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-user text-white text-lg"></i>
+                </div>
+                <div class="w-1 h-6 bg-white/30"></div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fa-solid fa-user text-white text-lg"></i>
+                </div>
+                <div class="w-1 h-6 bg-white/30"></div>
+              </div>
+            </div>
+            <p class="text-sky-300 text-sm font-medium text-center">Your cohort, flying together</p>
+            <p class="text-sky-400/60 text-xs text-center mt-1">Photo Coming Soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Is This For -->
+  <section class="py-16 bg-sky-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Who Is Formation Academy For?</h2>
+        <p class="text-gray-600 text-lg">If you want to learn to fly and want more than an open-ended, unstructured experience — this program was built for you.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-rocket text-sky-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">First-Time Flyers</h3>
+          <p class="text-gray-600 text-sm">You've always wanted to fly but never knew how to start. Formation Academy provides the structure, the community, and the accountability to finally get it done.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-briefcase text-amber-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Career Changers</h3>
+          <p class="text-gray-600 text-sm">Pursuing a career in aviation starts with a private pilot certificate. Formation Academy's structured timeline helps you plan around your transition with a clear finish line in sight.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-calendar-check text-green-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Structure Seekers</h3>
+          <p class="text-gray-600 text-sm">Self-paced training drifts. If you're the kind of person who performs better with a schedule, shared deadlines, and a team around you, Formation Academy is your match.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-graduation-cap text-purple-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Recent Graduates</h3>
+          <p class="text-gray-600 text-sm">Gap year or starting a new chapter? Formation Academy moves at a pace that lets you earn your wings in months, not years — without putting the rest of your life on hold.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-users text-red-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Community-Minded Learners</h3>
+          <p class="text-gray-600 text-sm">Some people learn best when they're learning with others. Cohort members debrief together, encourage each other through solo milestones, and celebrate checkride passes as a group.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md text-center">
+          <div class="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-plane-departure text-sky-600 text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Future Aviation Professionals</h3>
+          <p class="text-gray-600 text-sm">Every airline captain, charter pilot, and flight instructor started with a private pilot certificate. Formation Academy is the right foundation — and the right habits — to build a career on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three-Phase Program -->
+  <section class="py-16 bg-slate-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">The Three Phases</h2>
+        <p class="text-sky-300 text-lg max-w-2xl mx-auto">From your first flight to your checkride — a clear, progressive curriculum your entire cohort moves through together.</p>
+      </div>
+
+      <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Phase 1 -->
+        <div class="relative">
+          <div class="bg-slate-800 rounded-2xl p-8 h-full border border-slate-700 hover:border-sky-500 transition-colors">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center font-bold text-lg flex-shrink-0">1</span>
+              <h3 class="text-xl font-bold">Foundations</h3>
+            </div>
+            <p class="text-sky-200 text-sm mb-6 leading-relaxed">
+              Ground school, aircraft systems, and your first hours in the air. The cohort begins together — shared classroom sessions, weather theory, regulations, and the fundamentals of flight — while each student logs hours with their instructor toward solo readiness.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-sky-500 text-xs mt-1.5 flex-shrink-0"></i>FAA written exam preparation</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-sky-500 text-xs mt-1.5 flex-shrink-0"></i>Aircraft systems & preflight</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-sky-500 text-xs mt-1.5 flex-shrink-0"></i>Basic maneuvers & airspace</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-sky-500 text-xs mt-1.5 flex-shrink-0"></i>First solo milestone</li>
+            </ul>
+          </div>
+          <div class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-10">
+            <i class="fa-solid fa-chevron-right text-sky-500 text-2xl"></i>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="relative">
+          <div class="bg-slate-800 rounded-2xl p-8 h-full border border-slate-700 hover:border-amber-500 transition-colors">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-bold text-lg flex-shrink-0">2</span>
+              <h3 class="text-xl font-bold">Building Proficiency</h3>
+            </div>
+            <p class="text-sky-200 text-sm mb-6 leading-relaxed">
+              Post-solo cross-country training, night flying, and instrument familiarization. The cohort shares group debrief sessions and milestone reviews while individual instruction continues to develop precision and aeronautical decision making.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 text-xs mt-1.5 flex-shrink-0"></i>Solo & dual cross-countries</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 text-xs mt-1.5 flex-shrink-0"></i>Night flight requirements</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 text-xs mt-1.5 flex-shrink-0"></i>Weather & aeronautical decision making</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-amber-400 text-xs mt-1.5 flex-shrink-0"></i>FAA written exam</li>
+            </ul>
+          </div>
+          <div class="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-10">
+            <i class="fa-solid fa-chevron-right text-amber-400 text-2xl"></i>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div>
+          <div class="bg-slate-800 rounded-2xl p-8 h-full border border-slate-700 hover:border-green-500 transition-colors">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center font-bold text-lg flex-shrink-0">3</span>
+              <h3 class="text-xl font-bold">Checkride Ready</h3>
+            </div>
+            <p class="text-sky-200 text-sm mb-6 leading-relaxed">
+              Polishing maneuvers, mock oral exams, and stage check flights with a designated pilot examiner. The cohort finishes together — each student completing their FAA practical test and earning their private pilot certificate.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-green-400 text-xs mt-1.5 flex-shrink-0"></i>Mock oral & practical exams</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-green-400 text-xs mt-1.5 flex-shrink-0"></i>Maneuver polish flights</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-green-400 text-xs mt-1.5 flex-shrink-0"></i>Stage check with DPE</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-green-400 text-xs mt-1.5 flex-shrink-0"></i>FAA Private Pilot checkride</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-slate-400 text-sm mt-8 max-w-2xl mx-auto">
+        Most cohort students earn their private pilot certificate within 4–6 months. Progression is milestone-based — we advance together, with no student left behind.
+      </p>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">What You'll Learn</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-wind text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Aerodynamics & Aircraft Systems</h4>
+              <p class="text-gray-600 text-sm">How flight works, how your aircraft works, and how to manage both confidently from preflight through shutdown.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-cloud-sun text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Weather & Go/No-Go Decision Making</h4>
+              <p class="text-gray-600 text-sm">Reading METARs, TAFs, and weather charts. Building the judgment to make smart decisions before and during every flight.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-map-location-dot text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Navigation & Cross-Country Planning</h4>
+              <p class="text-gray-600 text-sm">Pilotage, dead reckoning, and modern GPS navigation. Plan and fly cross-country routes with confidence, from first leg to landing.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-headset text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Radio Communication</h4>
+              <p class="text-gray-600 text-sm">Standard phraseology, ATC coordination, and the confidence to communicate in busy airspace — one of the biggest barriers for new pilots, solved early.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-triangle-exclamation text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Emergency Procedures</h4>
+              <p class="text-gray-600 text-sm">Engine-out landings, systems failures, and distraction management — trained to reflex so you're never caught unprepared.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fa-solid fa-brain text-sky-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-900 mb-1">Aeronautical Decision Making</h4>
+              <p class="text-gray-600 text-sm">The judgment that separates good pilots from great ones. We build ADM habits from day one — because aircraft control is only half of flying.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements & What You Get -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-2xl p-8 shadow-md">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-clipboard-check text-sky-600"></i>
+              What You Need to Join
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                <span><strong>Be at least 16 years old</strong> to solo; 17 to hold your private pilot certificate</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                <span><strong>Third-class FAA medical certificate</strong> — we'll point you to an AME if you need one</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                <span><strong>Student pilot certificate</strong> — we help you apply through IACRA at intake</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                <span><strong>Commitment to the schedule</strong> — cohort training works because the whole group shows up</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-check text-sky-600 mt-1 flex-shrink-0"></i>
+                <span><strong>No prior flight experience required</strong> — we start from the very beginning</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-md">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-award text-amber-500"></i>
+              What You'll Walk Away With
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-star text-amber-400 mt-1 flex-shrink-0"></i>
+                <span><strong>FAA Private Pilot Certificate</strong> — no expiration, yours for life</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-star text-amber-400 mt-1 flex-shrink-0"></i>
+                <span><strong>A complete, well-documented logbook</strong> ready for your next rating</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-star text-amber-400 mt-1 flex-shrink-0"></i>
+                <span><strong>A cohort of fellow pilots</strong> — people who flew alongside you and will fly with you for years</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-star text-amber-400 mt-1 flex-shrink-0"></i>
+                <span><strong>SMA Formation Academy completion certificate</strong> and alumni status</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-star text-amber-400 mt-1 flex-shrink-0"></i>
+                <span><strong>A clear path forward</strong> — instrument rating, commercial, and beyond</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-sky-900 to-slate-900"></div>
+    <div class="absolute inset-0 opacity-5" aria-hidden="true">
+      <div class="flex items-end justify-center h-full gap-20 pb-0">
+        <i class="fa-solid fa-plane text-[20rem] -rotate-6 translate-y-12"></i>
+        <i class="fa-solid fa-plane text-[28rem] -rotate-3"></i>
+        <i class="fa-solid fa-plane text-[20rem] rotate-6 translate-y-12"></i>
+      </div>
+    </div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Your Cohort Is Forming Now</h2>
+      <p class="text-sky-300 text-xl max-w-2xl mx-auto mb-8">
+        Cohorts are kept small by design. If you're ready to stop thinking about learning to fly and actually do it — now is the time to reach out.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href={`tel:${site.contact.flight.phone}`}
+          class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg text-lg"
+        >
+          <i class="fa-solid fa-phone mr-2"></i>
+          Call: {site.contact.flight.phone}
+        </a>
+        <a
+          href={`mailto:${site.contact.flight.email}`}
+          class="inline-flex items-center px-8 py-4 border-2 border-white/70 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors text-lg"
+        >
+          <i class="fa-solid fa-envelope mr-2"></i>
+          Email Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-slate-900 text-white" id="faq">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p class="text-sky-300 text-lg">Everything you want to know before you call.</p>
+        </div>
+
+        <div class="space-y-3" id="formation-faq-list">
+          {faqs.map((faq, index) => (
+            <div class="faq-item bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+              <button
+                class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-slate-700/50 transition-colors"
+                aria-expanded="false"
+                data-index={index}
+              >
+                <span class="font-semibold text-white">{faq.question}</span>
+                <i class="fa-solid fa-chevron-down text-sky-400 flex-shrink-0 transition-transform duration-300 faq-chevron"></i>
+              </button>
+              <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                <div class="px-6 pb-6 text-sky-100 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back Link -->
+  <div class="py-8 bg-white text-center">
+    <a href="/flight-training-center" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
+      <i class="fa-solid fa-chevron-left mr-2"></i>
+      Back to All Training Programs
+    </a>
+  </div>
+
+  <!-- Contact Section -->
+  <ContactSection
+    title="Ready to Learn More About Formation Academy?"
+    description="Our instructors are happy to walk you through the program, upcoming cohort dates, and what to expect on day one."
+    variant="default"
+    showMap={false}
+  />
+
+  <script>
+    const triggers = document.querySelectorAll('.faq-trigger');
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const answer = item?.querySelector('.faq-answer') as HTMLElement | null;
+        const chevron = trigger.querySelector('.faq-chevron') as HTMLElement | null;
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all others
+        triggers.forEach((other) => {
+          if (other !== trigger) {
+            other.setAttribute('aria-expanded', 'false');
+            const otherAnswer = other.closest('.faq-item')?.querySelector('.faq-answer') as HTMLElement | null;
+            const otherChevron = other.querySelector('.faq-chevron') as HTMLElement | null;
+            if (otherAnswer) otherAnswer.style.maxHeight = '0';
+            if (otherChevron) otherChevron.style.transform = '';
+          }
+        });
+
+        // Toggle this one
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+        if (answer) {
+          answer.style.maxHeight = isOpen ? '0' : `${answer.scrollHeight}px`;
+        }
+        if (chevron) {
+          chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+        }
+      });
+    });
+  </script>
+</FlightTrainingCenterLayout>
