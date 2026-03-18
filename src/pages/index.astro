@@ -21,7 +21,7 @@ import site from "../data/site.json";
 		></div>
 
 		<!-- Dark Overlay for Readability -->
-		<div class="fixed inset-0 bg-gradient-to-b from-black/85 via-black/40 to-black/60 -z-10" aria-hidden="true"></div>
+		<div class="fixed inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/35 -z-10" aria-hidden="true"></div>
 
 		<!-- Content Layer -->
 		<div class="relative z-10">
@@ -49,17 +49,17 @@ import site from "../data/site.json";
 					<!-- Content -->
 					<div class="relative p-8 md:p-12 h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
 						<div>
+							<!-- Click here instruction -->
+							<p class="text-sky-200 text-sm font-medium uppercase tracking-widest mb-6 text-center">Click here for</p>
+
 							<!-- Icon -->
-							<div class="mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+							<div class="mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 text-center">
 								<i class="fa-solid fa-plane text-6xl md:text-7xl"></i>
 							</div>
 
 							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
 								Flight Training Center
 							</h2>
-							<p class="text-sky-100 text-lg md:text-xl mb-6 leading-relaxed">
-								Learn To Fly Today!
-							</p>
 							<p class="text-sky-50 text-base md:text-lg leading-relaxed">
 								Whether you are a beginner or advanced, just starting out on your aviation journey or looking to enhance your skills, we can work with you to create the perfect program.
 							</p>
@@ -71,9 +71,6 @@ import site from "../data/site.json";
 								<i class="fa-solid fa-chevron-left mr-2 transform group-hover:-translate-x-1 transition-transform"></i>
 								Start Your Journey
 							</span>
-							<div class="mt-2 text-sm text-sky-200">
-								Call or Text: <span class="font-semibold">{site.contact.flight.phone}</span>
-							</div>
 						</div>
 					</div>
 
@@ -92,31 +89,28 @@ import site from "../data/site.json";
 					<!-- Content -->
 					<div class="relative p-8 md:p-12 h-full min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
 						<div>
+							<!-- Click here instruction -->
+							<p class="text-slate-300 text-sm font-medium uppercase tracking-widest mb-6 text-center">Click here for</p>
+
 							<!-- Icon -->
-							<div class="mb-6 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+							<div class="mb-6 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 text-center">
 								<i class="fa-solid fa-gears text-6xl md:text-7xl"></i>
 							</div>
 
-							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+							<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-right">
 								FBO & Maintenance
 							</h2>
-							<p class="text-slate-300 text-lg md:text-xl mb-6 leading-relaxed">
-								We're Here For You!
-							</p>
-							<p class="text-slate-200 text-base md:text-lg leading-relaxed">
-								Full-service FBO providing corporate arrivals, aircraft maintenance, storage, and service for General Aviation and corporate aircraft, including Air Force One!
+							<p class="text-slate-200 text-base md:text-lg leading-relaxed text-right">
+								Full-service FBO providing corporate arrivals, aircraft maintenance, storage, and service for General Aviation and corporate aircraft.
 							</p>
 						</div>
 
 						<!-- CTA Button -->
-						<div class="mt-8">
+						<div class="mt-8 flex justify-end">
 							<span class="inline-flex items-center text-lg md:text-xl font-semibold group-hover:translate-x-2 transition-transform duration-300">
 								Explore Services
 								<i class="fa-solid fa-chevron-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
 							</span>
-							<div class="mt-2 text-sm text-slate-300">
-								Desk Phone: <span class="font-semibold">{site.contact.fbo.phone}</span>
-							</div>
 						</div>
 					</div>
 
