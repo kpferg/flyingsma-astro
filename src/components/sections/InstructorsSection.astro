@@ -81,7 +81,9 @@ const textClasses = {
       const getAssetUrl = (assetRef: { sys: { id: string } } | undefined) => {
         if (!assetRef) return null;
         const asset = assets.find((a: { sys: { id: string } }) => a.sys.id === assetRef.sys.id);
-        return asset ? `https:${asset.fields.file.url}` : null;
+        // Use Contentful Image API to serve correctly sized images for the card container (h-64, 4-col grid).
+        // w=600&h=512 covers retina displays; fit=fill crops to exact ratio; fm=webp&q=80 optimizes file size.
+        return asset ? `https:${asset.fields.file.url}?w=600&h=512&fit=fill&fm=webp&q=80` : null;
       };
 
       let instructors = data.items.map((item: any) => ({
