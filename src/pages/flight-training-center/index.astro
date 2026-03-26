@@ -31,13 +31,18 @@ const breadcrumbs = [
 	<BreadcrumbSchema slot="head" items={breadcrumbs} />
 	<!-- Page Header -->
 	<section class="relative text-white py-20 md:py-28 overflow-hidden">
-		<!-- Background Image -->
-		<div
-			class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-			style="background-image: url('/images/fly/instrument-training.jpg');"
-		></div>
+		<!-- Background Video -->
+		<video
+			id="hero-video"
+			class="absolute inset-0 w-full h-full object-cover"
+			autoplay
+			muted
+			playsinline
+		>
+			<source src="/images/Sequence_03.mp4" type="video/mp4" />
+		</video>
 		<!-- Gradient Overlay for readability -->
-		<div class="absolute inset-0 bg-gradient-to-br from-slate-950/99 via-sky-800/80 to-sky-400/75"></div>
+		<div class="absolute inset-0 bg-black/40"></div>
 
 		<div class="container mx-auto px-4 text-center relative z-10">
 			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Learn To Fly Today!</h1>
@@ -397,4 +402,29 @@ const breadcrumbs = [
 			</div>
 		</div>
 	</section>
+
+<script>
+	const video = document.getElementById('hero-video') as HTMLVideoElement | null;
+	if (video) {
+		const PAUSE_MS = 60_000;  // hold on last frame for 1 minute
+		const FADE_IN_MS = 2500;  // fade in duration
+
+		function restart() {
+			video!.style.opacity = '0';
+			video!.currentTime = 0;
+			video!.play();
+			const startTime = performance.now();
+			function fadeIn(now: number) {
+				const opacity = Math.min(1, (now - startTime) / FADE_IN_MS);
+				video!.style.opacity = String(opacity);
+				if (opacity < 1) requestAnimationFrame(fadeIn);
+			}
+			requestAnimationFrame(fadeIn);
+		}
+
+		video.addEventListener('ended', () => {
+			setTimeout(restart, PAUSE_MS);
+		});
+	}
+</script>
 </FlightTrainingCenterLayout>
