@@ -23,4 +23,4 @@ We can make sure everything you need is here waiting upon your arrival. Our full
 After hours available on request, $90/hour, with a 2-hour minimum.
 
 - Call **207-324-8919** during business hours
-- Call **207-651-9308** after hours emergency for Mark Damuth - General Manager
+- Call **207-850-8814** after hours emergency for Brian Westover
