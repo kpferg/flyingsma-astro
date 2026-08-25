@@ -1,8 +1,9 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 // Services collection
 const services = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -15,7 +16,7 @@ const services = defineCollection({
 
 // FAQ collection (data type)
 const faq = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/faq' }),
   schema: z.object({
     question: z.string(),
     answer: z.string(),
@@ -26,7 +27,7 @@ const faq = defineCollection({
 
 // Hero slides collection (data type)
 const heroSlides = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/hero-slides' }),
   schema: z.object({
     slogan: z.string(),
     subtitle: z.string(),

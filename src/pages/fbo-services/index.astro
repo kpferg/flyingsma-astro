@@ -14,11 +14,11 @@ const servicesCollection = await getCollection('services');
 const services = servicesCollection
 	.sort((a, b) => a.data.order - b.data.order)
 	.map((service) => ({
-		slug: service.slug,
+		slug: service.id,
 		title: service.data.title,
 		description: service.data.description,
 		icon: service.data.icon,
-		href: service.data.href || `/fbo-services/${service.slug}`,
+		href: service.data.href || `/fbo-services/${service.id}`,
 	}));
 
 const breadcrumbs = [
