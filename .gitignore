@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw camera/source footage — commit the web-optimised export instead
+*.MOV
+*.mov
+
+# raw source footage, kept out of public/ so it never reaches dist/
+media-src/
