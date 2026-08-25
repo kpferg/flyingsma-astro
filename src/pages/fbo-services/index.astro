@@ -231,8 +231,10 @@ const breadcrumbs = [
 	</section>
 
 	<script>
+		import { contentfulEntryUrl } from '../../lib/contentful';
+
 		async function loadFuelPrices() {
-			const FUEL_API_URL = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master/entries/4lhawuLvFfPQRZ9eGC7uiH?access_token=hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+			const FUEL_API_URL = contentfulEntryUrl('4lhawuLvFfPQRZ9eGC7uiH');
 
 			const loadingEl = document.getElementById('fuel-loading');
 			const tableEl = document.getElementById('fuel-table');

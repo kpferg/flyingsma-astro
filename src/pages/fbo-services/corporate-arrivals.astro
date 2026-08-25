@@ -9,6 +9,10 @@ import catering from "../../data/catering.json";
 import groundTransport from "../../data/ground-transport.json";
 import site from "../../data/site.json";
 
+// `note` is optional per restaurant and currently unused by the data, but the
+// listing renders it when present — declare it so the template type-checks.
+const restaurantList = restaurants as { name: string; url: string; note?: string }[];
+
 const breadcrumbs = [
   { name: 'Home', url: 'https://www.flyingsma.com/' },
   { name: 'FBO Services', url: 'https://www.flyingsma.com/fbo-services/' },
@@ -75,7 +79,7 @@ const breadcrumbs = [
 					<div class="bg-white rounded-xl shadow-lg overflow-hidden">
 						<div class="p-6">
 							<h3 class="text-xl font-bold text-gray-900 mb-2">{hotel.name}</h3>
-							<p class="text-sm text-sky-600 mb-3">{hotel.description}</p>
+							<p class="text-sm text-sky-600 mb-3">{hotel.distance}</p>
 							<div class="space-y-2 text-sm text-gray-600">
 								<p class="whitespace-pre-line">{hotel.address}</p>
 								<p>
@@ -88,10 +92,10 @@ const breadcrumbs = [
 								)}
 							</div>
 						</div>
-						{hotel.mapsEmbedUrl && (
+						{hotel.mapUrl && (
 							<div class="h-48">
 								<iframe
-									src={hotel.mapsEmbedUrl}
+									src={hotel.mapUrl}
 									width="100%"
 									height="100%"
 									style="border:0;"
@@ -117,7 +121,7 @@ const breadcrumbs = [
 			</div>
 
 			<div class="grid gap-4 md:grid-cols-3 max-w-3xl mx-auto">
-				{restaurants.map((restaurant) => (
+				{restaurantList.map((restaurant) => (
 					<a
 						href={restaurant.url}
 						target="_blank"

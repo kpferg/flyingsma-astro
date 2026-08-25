@@ -98,8 +98,7 @@ const isDark = background === 'dark' || background === 'darker';
 </style>
 
 <script>
-  const CONTENTFUL_BASE = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master';
-  const ACCESS_TOKEN = 'hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+  import { contentfulEntriesUrl } from '../../lib/contentful';
 
   // Convert rich text to plain text
   function richTextToPlainText(richText: any): string {
@@ -143,7 +142,7 @@ const isDark = background === 'dark' || background === 'darker';
     const linkColor = gridEl?.dataset.linkColor || 'text-sky-600 hover:text-sky-800';
 
     try {
-      const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=news-events&order=-sys.updatedAt`;
+      const url = contentfulEntriesUrl({ content_type: 'news-events', order: '-sys.updatedAt' });
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch');
 

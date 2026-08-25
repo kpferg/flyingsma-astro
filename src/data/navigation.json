@@ -7,24 +7,63 @@
     {
       "label": "Flight Training Center",
       "children": [
-        { "label": "Flight Training", "href": "/flight-training-center" },
-        { "label": "Scenic Flights", "href": "/flight-training-center/scenic-flights" },
-        { "label": "Multi-Engine", "href": "/flight-training-center/multi-engine" },
-        { "label": "Flight Release", "href": "https://flightrelease.clearpropsoftware.com/2ea9ce91-8e5b-4fd5-b397-251b43772c00", "newTab": true },
-        { "label": "Scheduling for Current Customers", "href": "https://app.flightschedulepro.com/Account/Login/186067", "newTab": true },
-        { "label": "News", "href": "/flight-training-center/news" },
-        { "label": "Contact", "href": "/flight-training-center/contact" }
+        {
+          "label": "Flight Training",
+          "href": "/flight-training-center"
+        },
+        {
+          "label": "Scenic Flights",
+          "href": "/flight-training-center/scenic-flights"
+        },
+        {
+          "label": "Multi-Engine",
+          "href": "/flight-training-center/multi-engine"
+        },
+        {
+          "label": "Flight Release",
+          "href": "https://flightrelease.clearpropsoftware.com/2ea9ce91-8e5b-4fd5-b397-251b43772c00",
+          "newTab": true
+        },
+        {
+          "label": "Scheduling for Current Customers",
+          "href": "https://app.flightschedulepro.com/Account/Login/186067",
+          "newTab": true
+        },
+        {
+          "label": "News",
+          "href": "/flight-training-center/news"
+        },
+        {
+          "label": "Contact",
+          "href": "/flight-training-center/contact"
+        }
       ]
     },
     {
       "label": "FBO Services",
       "children": [
-        { "label": "All Services", "href": "/fbo-services" },
-        { "label": "Corporate Arrivals", "href": "/fbo-services/corporate-arrivals" },
-        { "label": "Aircraft Maintenance", "href": "/fbo-services/maintenance" },
-        { "label": "News", "href": "/fbo-services/news" },
-        { "label": "Contact", "href": "/fbo-services/contact" }
+        {
+          "label": "All Services",
+          "href": "/fbo-services"
+        },
+        {
+          "label": "Corporate Arrivals",
+          "href": "/fbo-services/corporate-arrivals"
+        },
+        {
+          "label": "Aircraft Maintenance",
+          "href": "/fbo-services/maintenance"
+        },
+        {
+          "label": "News",
+          "href": "/fbo-services/news"
+        },
+        {
+          "label": "Contact",
+          "href": "/fbo-services/contact"
+        }
       ]
     }
-  ]
+  ],
+  "external": []
 }

@@ -51,8 +51,7 @@ const textClasses = {
 </section>
 
 <script>
-  const CONTENTFUL_BASE = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master';
-  const ACCESS_TOKEN = 'hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+  import { contentfulEntriesUrl } from '../../lib/contentful';
 
   // Convert rich text to HTML
   function richTextToHtml(richText: any): string {
@@ -96,7 +95,7 @@ const textClasses = {
     const errorEl = document.getElementById('fleet-error');
 
     try {
-      const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=aircraft&order=fields.order`;
+      const url = contentfulEntriesUrl({ content_type: 'aircraft', order: 'fields.order' });
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch');
 

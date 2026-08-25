@@ -61,8 +61,7 @@ const textClasses = {
 </section>
 
 <script>
-  const CONTENTFUL_BASE = 'https://cdn.contentful.com/spaces/gf6i9onr9mz0/environments/master';
-  const ACCESS_TOKEN = 'hx8ZbAb984moIf6MxQ_3ZmqvbtEiENQt5tqh_E846EM';
+  import { contentfulEntriesUrl } from '../../lib/contentful';
 
   async function loadInstructors() {
     const loadingEl = document.getElementById('instructors-loading');
@@ -71,7 +70,7 @@ const textClasses = {
     const limit = gridEl?.dataset.limit ? parseInt(gridEl.dataset.limit) : null;
 
     try {
-      const url = `${CONTENTFUL_BASE}/entries?access_token=${ACCESS_TOKEN}&content_type=instructor&order=fields.order`;
+      const url = contentfulEntriesUrl({ content_type: 'instructor', order: 'fields.order' });
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch');
 
