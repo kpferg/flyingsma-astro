@@ -145,6 +145,7 @@ const displaySlides = single ? [slides[0]] : slides;
     private currentIndex: number = 0;
     private interval: ReturnType<typeof setInterval> | null = null;
     private autoPlayDelay: number = 6000;
+    private reduceMotion: MediaQueryList = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     constructor(container: HTMLElement) {
       this.container = container;
@@ -169,8 +170,16 @@ const displaySlides = single ? [slides[0]] : slides;
       prevBtn?.addEventListener('click', () => this.prev());
       nextBtn?.addEventListener('click', () => this.next());
 
-      // Auto-play
+      // Auto-play. Advancing on a timer is motion the visitor did not ask for,
+      // so it stays off entirely when reduced motion is preferred — the dots,
+      // arrows, and swipe still work for stepping through slides by hand.
       this.startAutoPlay();
+
+      // Follow the preference if it changes while the page is open.
+      this.reduceMotion.addEventListener('change', () => {
+        if (this.reduceMotion.matches) this.stopAutoPlay();
+        else this.startAutoPlay();
+      });
 
       // Pause on hover
       this.container.addEventListener('mouseenter', () => this.stopAutoPlay());
@@ -219,6 +228,7 @@ const displaySlides = single ? [slides[0]] : slides;
 
     private startAutoPlay() {
       this.stopAutoPlay();
+      if (this.reduceMotion.matches) return;
       this.interval = setInterval(() => this.next(), this.autoPlayDelay);
     }
 

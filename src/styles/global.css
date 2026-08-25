@@ -3,3 +3,23 @@
 @theme {
   --breakpoint-nav: 1300px;
 }
+
+/*
+  Honour the operating system's "reduce motion" setting.
+
+  Movement the visitor did not ask for is cut to a single frame rather than
+  removed outright, so anything that depends on a transition finishing still
+  fires its completion event. Motion that is the point of the control — the
+  hero video and the carousel — is handled in their own scripts instead, since
+  those need to stop rather than merely shorten.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -32,18 +32,37 @@ const breadcrumbs = [
 	<link slot="head" href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
 	<!-- Page Header -->
 	<section class="relative text-white py-20 md:py-28 overflow-hidden">
-		<!-- Background Video -->
+		<!--
+			Background Video
+
+			Decorative, so it is hidden from assistive tech. Playback is started by
+			script rather than the autoplay attribute, so that a reduced-motion
+			preference can hold it on its first frame instead. The toggle below is
+			required by WCAG 2.2.2 (Pause, Stop, Hide) either way.
+		-->
 		<video
 			id="hero-video"
 			class="absolute inset-0 w-full h-full object-cover"
-			autoplay
 			muted
 			playsinline
+			preload="auto"
+			aria-hidden="true"
+			tabindex="-1"
 		>
 			<source src="/images/Sequence_03.mp4" type="video/mp4" />
 		</video>
 		<!-- Gradient Overlay for readability -->
 		<div class="absolute inset-0 bg-black/40"></div>
+
+		<!-- Playback toggle -->
+		<button
+			id="hero-video-toggle"
+			type="button"
+			class="absolute bottom-4 right-4 z-20 hidden h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+			aria-label="Pause background video"
+		>
+			<i id="hero-video-toggle-icon" class="fa-solid fa-pause" aria-hidden="true"></i>
+		</button>
 
 		<div class="container mx-auto px-4 text-center relative z-10">
 			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Learn To Fly Today!</h1>
@@ -446,26 +465,145 @@ var $mcj = jQuery.noConflict(true);
 
 <script>
 	const video = document.getElementById('hero-video') as HTMLVideoElement | null;
-	if (video) {
+	const toggle = document.getElementById('hero-video-toggle') as HTMLButtonElement | null;
+	const toggleIcon = document.getElementById('hero-video-toggle-icon');
+
+	if (video && toggle && toggleIcon) {
 		const PAUSE_MS = 60_000;  // hold on last frame for 1 minute
 		const FADE_IN_MS = 2500;  // fade in duration
 
-		function restart() {
-			video!.style.opacity = '0';
-			video!.currentTime = 0;
-			video!.play();
-			const startTime = performance.now();
-			function fadeIn(now: number) {
-				const opacity = Math.min(1, (now - startTime) / FADE_IN_MS);
-				video!.style.opacity = String(opacity);
-				if (opacity < 1) requestAnimationFrame(fadeIn);
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+		let restartTimer: ReturnType<typeof setTimeout> | null = null;
+		let fadeFrame: number | null = null;
+		// Whether the loop as a whole is running — playing or resting between
+		// plays. This, not video.paused, is what the button reports, since the
+		// clip spends most of each cycle paused on its last frame by design.
+		let loopRunning = false;
+		// Tracks an explicit choice by the user, which outranks both the loop
+		// timer and any later change to the motion preference.
+		let pausedByUser = false;
+
+		// The control is only useful with script running, so it ships hidden and
+		// is revealed here.
+		toggle.classList.remove('hidden');
+		toggle.classList.add('flex');
+
+		function cancelPendingRestart() {
+			if (restartTimer !== null) {
+				clearTimeout(restartTimer);
+				restartTimer = null;
 			}
-			requestAnimationFrame(fadeIn);
 		}
 
-		video.addEventListener('ended', () => {
-			setTimeout(restart, PAUSE_MS);
+		function cancelFade() {
+			if (fadeFrame !== null) {
+				cancelAnimationFrame(fadeFrame);
+				fadeFrame = null;
+			}
+		}
+
+		function reflectState(playing: boolean) {
+			toggle!.setAttribute('aria-label', playing ? 'Pause background video' : 'Play background video');
+			toggleIcon!.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+		}
+
+		function fadeIn() {
+			cancelFade();
+			// A fade is itself motion, so skip straight to full opacity when the
+			// user has asked for less of it.
+			if (reduceMotion.matches) {
+				video!.style.opacity = '1';
+				return;
+			}
+			const startTime = performance.now();
+			video!.style.opacity = '0';
+			function step(now: number) {
+				const opacity = Math.min(1, (now - startTime) / FADE_IN_MS);
+				video!.style.opacity = String(opacity);
+				fadeFrame = opacity < 1 ? requestAnimationFrame(step) : null;
+			}
+			fadeFrame = requestAnimationFrame(step);
+		}
+
+		function play(withFade: boolean) {
+			if (withFade) fadeIn();
+			else video!.style.opacity = '1';
+			video!.play().catch(() => {
+				// A hidden tab refuses playback, so treat that as "not yet" and
+				// leave the loop armed for the visibilitychange handler to start.
+				// A refusal on a visible page is the autoplay policy talking, and
+				// the control should honestly offer to play instead.
+				if (document.visibilityState === 'visible') {
+					loopRunning = false;
+					reflectState(false);
+				}
+			});
+		}
+
+		function startLoop(withFade: boolean) {
+			loopRunning = true;
+			reflectState(true);
+			// The clip ends well before the hold does, so a click during the hold
+			// should begin again rather than resume an already-finished element.
+			if (video!.ended) video!.currentTime = 0;
+			play(withFade);
+		}
+
+		function stopLoop() {
+			loopRunning = false;
+			cancelPendingRestart();
+			cancelFade();
+			video!.pause();
+			video!.style.opacity = '1';
+			reflectState(false);
+		}
+
+		toggle.addEventListener('click', () => {
+			if (loopRunning) {
+				pausedByUser = true;
+				stopLoop();
+			} else {
+				pausedByUser = false;
+				startLoop(false);
+			}
 		});
+
+		video.addEventListener('ended', () => {
+			if (!loopRunning) return;
+			// The clip is a few seconds long and then rests on its last frame for
+			// a minute. That hold is still part of the loop, so the control keeps
+			// offering "pause" rather than flipping to "play" for most of the cycle.
+			cancelPendingRestart();
+			restartTimer = setTimeout(() => {
+				video!.currentTime = 0;
+				play(true);
+			}, PAUSE_MS);
+		});
+
+		// Browsers pause hidden tabs and may not resume on return, which would
+		// otherwise strand the loop paused while the button still said "pause".
+		document.addEventListener('visibilitychange', () => {
+			if (document.visibilityState !== 'visible') return;
+			if (loopRunning && video!.paused && !video!.ended && restartTimer === null) {
+				play(false);
+			}
+		});
+
+		// Follow the preference if it changes while the page is open.
+		reduceMotion.addEventListener('change', () => {
+			if (reduceMotion.matches) stopLoop();
+			else if (!pausedByUser) startLoop(false);
+		});
+
+		// Initial state: hold on the first frame when reduced motion is preferred,
+		// leaving the user to opt in with the toggle.
+		if (reduceMotion.matches) {
+			video.style.opacity = '1';
+			reflectState(false);
+		} else {
+			startLoop(false);
+		}
 	}
 </script>
 </FlightTrainingCenterLayout>
