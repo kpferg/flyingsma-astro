@@ -103,14 +103,13 @@ const { contact, address, hours, maps } = site;
             <p class="text-gray-700">{address.street1}</p>
             <p class="text-gray-700">{address.city}, {address.state} {address.zip}</p>
             <p class="text-gray-600 text-sm mt-2">{hours.display}</p>
-            <p class="text-gray-500 text-xs italic">{hours.altDisplay}</p>
           </div>
         </div>
 
         <!-- After Hours -->
         {contact.afterHours && (
           <div class="mt-6 p-4 bg-red-50 border border-red-100 rounded-lg">
-            <h4 class="font-semibold text-red-800 mb-1">After Hours Emergency</h4>
+            <h4 class="font-semibold text-red-800 mb-1">After Hours</h4>
             <p class="text-red-700">
               <a href={`tel:${contact.afterHours.phone}`} class="hover:text-red-900 font-medium">
                 {contact.afterHours.phone}

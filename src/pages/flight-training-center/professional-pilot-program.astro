@@ -1,0 +1,96 @@
+---
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import site from "../../data/site.json";
+
+// NOTE: This program is paused pending launch. The full program page — hero,
+// curriculum, cohort details, FAQs — is preserved at
+// src/_archive/formation-academy-full.astro. To bring the program back, move
+// that file into this directory and update its copy to the new program name.
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Professional Pilot Program', url: 'https://www.flyingsma.com/flight-training-center/professional-pilot-program/' },
+];
+---
+
+<FlightTrainingCenterLayout
+  title="SMA Professional Pilot Program"
+  description="The SMA Professional Pilot Program is coming soon to Southern Maine Aviation. Contact our flight department to be first to hear when enrollment opens."
+>
+  <BreadcrumbSchema slot="head" items={breadcrumbs} />
+
+  <!-- Coming Soon Hero -->
+  <section class="relative text-white py-24 md:py-36 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-sky-900 to-slate-800"></div>
+
+    <!-- Decorative plane silhouettes -->
+    <div class="absolute inset-0 overflow-hidden opacity-10" aria-hidden="true">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-end gap-16">
+        <i class="fa-solid fa-plane text-[14rem] -rotate-12 translate-y-6 translate-x-4"></i>
+        <i class="fa-solid fa-plane text-[18rem] -rotate-6"></i>
+        <i class="fa-solid fa-plane text-[14rem] rotate-12 translate-y-6 -translate-x-4"></i>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40"></div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <span class="inline-block bg-amber-400 text-amber-900 text-sm font-bold px-4 py-1 rounded-full mb-6 shadow-lg tracking-wide uppercase">
+        Coming Soon
+      </span>
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 drop-shadow-lg leading-tight">
+        SMA Professional<br class="hidden md:block" /> Pilot Program
+      </h1>
+      <p class="text-xl md:text-2xl text-sky-200 max-w-3xl mx-auto mb-4 drop-shadow leading-relaxed">
+        We're building a structured, career-focused training path for pilots serious about flying professionally.
+      </p>
+      <p class="text-sky-300 text-base md:text-lg max-w-xl mx-auto mb-10">
+        Details are being finalized now. Get in touch and we'll make sure you're the first to know when enrollment opens.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href={`tel:${site.contact.flight.phone}`}
+          class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg"
+        >
+          <i class="fa-solid fa-phone mr-2"></i>
+          Call or Text: {site.contact.flight.phone}
+        </a>
+        <a
+          href="/flight-training-center/contact"
+          class="inline-flex items-center px-8 py-4 border-2 border-white/70 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+        >
+          Keep Me Posted
+          <i class="fa-solid fa-chevron-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meanwhile -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">In the Meantime</h2>
+        <p class="text-gray-700 text-lg leading-relaxed mb-8">
+          You don't have to wait to start flying. Our full range of flight training — from your first
+          discovery flight through private, instrument, commercial, and multi-engine — is available today.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="/flight-training-center"
+            class="inline-flex items-center px-6 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition-colors"
+          >
+            Explore Flight Training
+          </a>
+          <a
+            href="/flight-training-center/contact"
+            class="inline-flex items-center px-6 py-3 border-2 border-sky-600 text-sky-600 font-semibold rounded-lg hover:bg-sky-50 transition-colors"
+          >
+            Contact the Flight Department
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</FlightTrainingCenterLayout>
