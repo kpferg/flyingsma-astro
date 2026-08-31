@@ -1,0 +1,166 @@
+---
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import site from "../../data/site.json";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Instrument Rating', url: 'https://www.flyingsma.com/flight-training-center/instrument-rating/' },
+];
+---
+
+<FlightTrainingCenterLayout
+	title="Instrument Rating"
+	description="Earn your instrument rating at Southern Maine Aviation. Train to fly in clouds and low visibility, with a motion-equipped Redbird simulator for weather days."
+>
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<ServiceSchema
+		slot="head"
+		name="Instrument Rating Training"
+		description="Instrument rating flight training at Southern Maine Aviation, including a motion-equipped Redbird simulator for procedural training."
+		url="https://www.flyingsma.com/flight-training-center/instrument-rating/"
+		serviceType="Flight Training"
+	/>
+	<!-- Page Header -->
+	<section class="relative text-white py-20 md:py-28 overflow-hidden">
+		<div
+			class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+			style="background-image: url('/images/fly/instrument-training.jpg');"
+		></div>
+		<div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-indigo-900/85 to-sky-800/75"></div>
+
+		<div class="container mx-auto px-4 text-center relative z-10">
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Instrument Rating</h1>
+			<p class="text-xl md:text-2xl text-sky-100 max-w-3xl mx-auto mb-8 drop-shadow">
+				Fly safely in clouds and low visibility. The single biggest step up in skill, safety and usefulness after your private certificate.
+			</p>
+			<div class="flex flex-wrap justify-center gap-4">
+				<a
+					href={`tel:${site.contact.flight.phone}`}
+					class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg"
+				>
+					<i class="fa-solid fa-phone mr-2"></i>
+					Call or Text: {site.contact.flight.phone}
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Content -->
+	<section class="py-16 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto">
+				<p class="text-xl text-gray-700 leading-relaxed mb-8">
+					An instrument rating teaches you to fly by reference to instruments alone, in cloud and in weather
+					that would otherwise keep you on the ground. It enhances your skills, your safety and your experience
+					level, and for most pilots it is the rating that turns an aircraft from a fair-weather toy into
+					genuine transportation.
+				</p>
+
+				<div class="grid md:grid-cols-2 gap-8 my-12">
+					<div class="bg-sky-50 rounded-xl p-8">
+						<h3 class="text-2xl font-bold text-gray-900 mb-4">Why Fly Instruments?</h3>
+						<ul class="space-y-4 text-gray-700">
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Fewer cancelled trips:</strong> A layer of cloud stops being a reason to stay home</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Sharper flying:</strong> Precision and discipline that carry over to everything else</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Real safety margin:</strong> Confidence and training if weather closes in unexpectedly</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>A career prerequisite:</strong> Essential for anyone heading toward commercial flying</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bg-indigo-50 rounded-xl p-8">
+						<h3 class="text-2xl font-bold text-gray-900 mb-4">Train in the Redbird</h3>
+						<p class="text-gray-700 mb-4">
+							Our motion-equipped Redbird simulator means bad weather does not have to stop your progress.
+							It is ideal for instrument work: you can fly approaches repeatedly, pause to talk something
+							through, and reposition instantly rather than burning time in the air.
+						</p>
+						<p class="text-gray-700">
+							Simulator time is a cost-effective complement to flying, not a replacement for it — expect to
+							use both throughout your training.
+						</p>
+					</div>
+				</div>
+
+				<div class="grid sm:grid-cols-3 gap-4 my-12">
+					<img src="/images/fly/instrument-commercial-training/1.jpg" alt="Instrument training at Southern Maine Aviation" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+					<img src="/images/fly/instrument-commercial-training/2.jpg" alt="Instrument panel during training" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+					<img src="/images/fly/instrument-commercial-training/3.jpg" alt="Flying in instrument conditions" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+				</div>
+
+				<!-- Prerequisites -->
+				<div class="bg-gray-50 rounded-xl p-8 my-12">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">Prerequisites</h3>
+					<p class="text-gray-700 mb-4">To begin instrument training you'll need:</p>
+					<ul class="space-y-2 text-gray-700">
+						<li class="flex items-center">
+							<i class="fa-solid fa-chevron-right text-gray-500 mr-3"></i>
+							Private Pilot Certificate
+						</li>
+						<li class="flex items-center">
+							<i class="fa-solid fa-chevron-right text-gray-500 mr-3"></i>
+							Current medical certificate
+						</li>
+					</ul>
+					<p class="text-gray-600 text-sm mt-4">
+						Hours, scheduling and cost depend on your experience and how often you can fly. Give us a call and
+						we'll map out a realistic plan for you.
+					</p>
+				</div>
+
+				<!-- CTA -->
+				<div class="bg-gradient-to-r from-indigo-600 to-sky-600 rounded-2xl p-8 md:p-12 text-white text-center my-12">
+					<h2 class="text-3xl font-bold mb-4">Ready to Fly in the Clouds?</h2>
+					<p class="text-sky-100 text-lg mb-6">
+						Call for details on scheduling, simulator time and what your training plan would look like.
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a
+							href={`tel:${site.contact.flight.phone}`}
+							class="inline-flex items-center px-8 py-4 bg-white text-sky-700 font-semibold rounded-lg hover:bg-sky-50 transition-colors"
+						>
+							<i class="fa-solid fa-phone mr-2"></i>
+							Call: {site.contact.flight.phone}
+						</a>
+						<a
+							href={`mailto:${site.contact.flight.email}`}
+							class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+						>
+							<i class="fa-solid fa-envelope mr-2"></i>
+							Email Us
+						</a>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<a href="/flight-training-center" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
+						<i class="fa-solid fa-chevron-left mr-2"></i>
+						Back to All Training Programs
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ContactSection
+		title="Questions About the Instrument Rating?"
+		description="Our instructors can talk through timelines, simulator use and what to expect from the checkride."
+		variant="default"
+		showMap={false}
+	/>
+</FlightTrainingCenterLayout>

@@ -1,0 +1,222 @@
+---
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import site from "../../data/site.json";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Private Pilot Certificate', url: 'https://www.flyingsma.com/flight-training-center/private-pilot/' },
+];
+---
+
+<FlightTrainingCenterLayout
+	title="Private Pilot Certificate"
+	description="Earn your FAA Private Pilot Certificate at Southern Maine Aviation in Sanford, Maine. Flexible scheduling, syllabus-structured training, and an on-site FAA testing center."
+>
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<ServiceSchema
+		slot="head"
+		name="Private Pilot Training"
+		description="Private pilot certificate training at Southern Maine Aviation, with flexible scheduling, structured syllabus training, ground school options and an on-site FAA testing center."
+		url="https://www.flyingsma.com/flight-training-center/private-pilot/"
+		serviceType="Flight Training"
+	/>
+	<!-- Page Header -->
+	<section class="relative text-white py-20 md:py-28 overflow-hidden">
+		<div
+			class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+			style="background-image: url('/images/fly/private-pilot-training.jpg');"
+		></div>
+		<div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-sky-900/85 to-sky-700/75"></div>
+
+		<div class="container mx-auto px-4 text-center relative z-10">
+			<span class="inline-block bg-sky-400 text-sky-950 text-sm font-bold px-4 py-1 rounded-full mb-6 shadow-lg uppercase tracking-wide">
+				Start Here
+			</span>
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Private Pilot Certificate</h1>
+			<p class="text-xl md:text-2xl text-sky-100 max-w-3xl mx-auto mb-8 drop-shadow">
+				Your first step into aviation — and the certificate that lets you fly yourself, family and friends anywhere in the country.
+			</p>
+			<div class="flex flex-wrap justify-center gap-4">
+				<a
+					href={`tel:${site.contact.flight.phone}`}
+					class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg"
+				>
+					<i class="fa-solid fa-phone mr-2"></i>
+					Call or Text: {site.contact.flight.phone}
+				</a>
+				<a
+					href="/flight-training-center/scenic-flights"
+					class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+				>
+					Start With a Discovery Flight
+					<i class="fa-solid fa-chevron-right ml-2"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Content -->
+	<section class="py-16 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto">
+				<p class="text-xl text-gray-700 leading-relaxed mb-8">
+					Everyone arrives with a different schedule, budget and goal. We'll work out a feasible and effective
+					way for you to earn your private pilot certificate, whether that means flying several times a week or
+					fitting lessons around a full-time job. Students can begin training at any age and may fly solo from
+					age 16.
+				</p>
+
+				<!-- What's Included -->
+				<div class="grid md:grid-cols-2 gap-8 my-12">
+					<div class="bg-sky-50 rounded-xl p-8">
+						<h3 class="text-2xl font-bold text-gray-900 mb-4">What's Included</h3>
+						<ul class="space-y-4 text-gray-700">
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Syllabus-structured training</strong> so every lesson builds on the last</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Modern, immaculate fleet</strong> with an iPad and charts in every aircraft</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Ground school options</strong> — self-study online or formal classroom</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>On-site FAA testing center</strong> so you take your written exam here</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-sky-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Convenient online scheduling</strong> and pilot supplies available on site</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="bg-green-50 rounded-xl p-8">
+						<h3 class="text-2xl font-bold text-gray-900 mb-4">How the Training Works</h3>
+						<ul class="space-y-4 text-gray-700">
+							<li class="flex items-start">
+								<i class="fa-solid fa-circle-check text-green-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span>A lesson is usually about an hour of flying, plus briefing time</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-circle-check text-green-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span>We recommend 2 to 3 lessons a week, but you can go at your own pace</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-circle-check text-green-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span>Most students solo after 12 to 20 hours of instruction</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-circle-check text-green-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span>Training happens mostly in our Cessna 172 Skyhawks</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-circle-check text-green-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span>No bookwork required before your first flight — just show up and fly</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Hours & Cost -->
+				<div class="bg-gray-50 rounded-xl p-8 my-12">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">Hours and Cost</h3>
+					<p class="text-gray-700 mb-6">
+						The FAA requires a minimum of 40 hours of instruction and experience. In practice most pilots need
+						60 or more hours to be ready for the practical test, so we estimate on that basis rather than on
+						the legal minimum:
+					</p>
+					<div class="bg-white rounded-lg overflow-hidden border border-gray-200">
+						<table class="w-full text-left">
+							<tbody class="divide-y divide-gray-200">
+								<tr>
+									<td class="px-6 py-3 text-gray-700">Aircraft rental — 60 hrs @ $220/hr</td>
+									<td class="px-6 py-3 text-right font-semibold text-gray-900">$13,200</td>
+								</tr>
+								<tr>
+									<td class="px-6 py-3 text-gray-700">Flight instructor — 40 hrs @ $80/hr</td>
+									<td class="px-6 py-3 text-right font-semibold text-gray-900">$3,000</td>
+								</tr>
+								<tr>
+									<td class="px-6 py-3 text-gray-700">Books, test fees, miscellaneous</td>
+									<td class="px-6 py-3 text-right font-semibold text-gray-900">$1,000</td>
+								</tr>
+								<tr class="bg-sky-50">
+									<td class="px-6 py-3 font-bold text-gray-900">Estimated total</td>
+									<td class="px-6 py-3 text-right font-bold text-sky-700">$17,200</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="text-sm text-gray-500 mt-4">
+						Costs shown are estimates based on typical hours rather than minimum requirements, and are subject
+						to change. You pay as you go, lesson by lesson — there is no large payment up front.
+					</p>
+				</div>
+
+				<!-- Gallery -->
+				<div class="grid sm:grid-cols-3 gap-4 my-12">
+					<img src="/images/fly/private-pilot-training/1.jpg" alt="Private pilot training at Southern Maine Aviation" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+					<img src="/images/fly/private-pilot-training/2.jpg" alt="Student pilot preparing for a lesson" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+					<img src="/images/fly/private-pilot-training/3.jpg" alt="Cessna 172 Skyhawk trainer on the ramp" class="w-full h-48 object-cover rounded-xl shadow" loading="lazy" />
+				</div>
+
+				<!-- What You Can Do -->
+				<div class="bg-gray-50 rounded-xl p-8 my-12">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">What You Can Do With It</h3>
+					<p class="text-gray-700">
+						A private pilot certificate lets you fly yourself, your family and your friends. Our aircraft are
+						available to rent to licensed pilots for anything from a quick flight along the coast to a month-long
+						trip out west. There are thousands of public airports in the United States hoping you'll stop by.
+						Graduates are also well placed to continue straight into an instrument rating.
+					</p>
+				</div>
+
+				<!-- CTA -->
+				<div class="bg-gradient-to-r from-sky-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white text-center my-12">
+					<h2 class="text-3xl font-bold mb-4">Ready to Start Flying?</h2>
+					<p class="text-sky-100 text-lg mb-6">
+						A discovery flight is the easiest way to begin — it counts as your first lesson.
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a
+							href={`tel:${site.contact.flight.phone}`}
+							class="inline-flex items-center px-8 py-4 bg-white text-sky-700 font-semibold rounded-lg hover:bg-sky-50 transition-colors"
+						>
+							<i class="fa-solid fa-phone mr-2"></i>
+							Call: {site.contact.flight.phone}
+						</a>
+						<a
+							href={`mailto:${site.contact.flight.email}`}
+							class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+						>
+							<i class="fa-solid fa-envelope mr-2"></i>
+							Email Us
+						</a>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<a href="/flight-training-center" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
+						<i class="fa-solid fa-chevron-left mr-2"></i>
+						Back to All Training Programs
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ContactSection
+		title="Questions About Learning to Fly?"
+		description="Our instructors are happy to talk through scheduling, cost and what your first few lessons look like."
+		variant="default"
+		showMap={false}
+	/>
+</FlightTrainingCenterLayout>

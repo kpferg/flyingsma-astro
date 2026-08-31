@@ -1,0 +1,165 @@
+---
+import FlightTrainingCenterLayout from "../../layouts/FlightTrainingCenterLayout.astro";
+import ContactSection from "../../components/sections/ContactSection.astro";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema.astro";
+import ServiceSchema from "../../components/seo/ServiceSchema.astro";
+import site from "../../data/site.json";
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://www.flyingsma.com/' },
+  { name: 'Flight Training Center', url: 'https://www.flyingsma.com/flight-training-center/' },
+  { name: 'Tailwheel Endorsement', url: 'https://www.flyingsma.com/flight-training-center/tailwheel/' },
+];
+---
+
+<FlightTrainingCenterLayout
+	title="Tailwheel Endorsement"
+	description="Earn your tailwheel endorsement in a 2004 Citabria at Southern Maine Aviation. True stick and rudder flying with fantastic visibility."
+>
+	<BreadcrumbSchema slot="head" items={breadcrumbs} />
+	<ServiceSchema
+		slot="head"
+		name="Tailwheel Training"
+		description="Tailwheel endorsement training at Southern Maine Aviation in a 2004 Citabria."
+		url="https://www.flyingsma.com/flight-training-center/tailwheel/"
+		serviceType="Flight Training"
+	/>
+	<!-- Page Header -->
+	<section class="relative text-white py-20 md:py-28 overflow-hidden">
+		<div
+			class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+			style="background-image: url('/images/fly/tailwheel-training.jpg');"
+		></div>
+		<div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-amber-900/80 to-sky-800/75"></div>
+
+		<div class="container mx-auto px-4 text-center relative z-10">
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">Tailwheel Endorsement</h1>
+			<p class="text-xl md:text-2xl text-amber-50 max-w-3xl mx-auto mb-8 drop-shadow">
+				Stick and rudder flying in our Citabria — the endorsement that makes you a better pilot in everything else you fly.
+			</p>
+			<div class="flex flex-wrap justify-center gap-4">
+				<a
+					href={`tel:${site.contact.flight.phone}`}
+					class="inline-flex items-center px-8 py-4 bg-white text-sky-900 font-semibold rounded-lg hover:bg-sky-50 transition-colors shadow-lg"
+				>
+					<i class="fa-solid fa-phone mr-2"></i>
+					Call or Text: {site.contact.flight.phone}
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main Content -->
+	<section class="py-16 bg-white">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto">
+				<p class="text-xl text-gray-700 leading-relaxed mb-8">
+					Some pilots really love to fly tailwheel airplanes, and for them we have a Citabria. Ours was built in
+					2004, though the design dates back to Grandpa's time. It is truly stick and rudder flying, with
+					fantastic visibility — and it is honest about your feet in a way a nosewheel trainer never is.
+				</p>
+
+				<div class="grid md:grid-cols-2 gap-8 my-12">
+					<div class="bg-amber-50 rounded-xl p-8">
+						<h3 class="text-2xl font-bold text-gray-900 mb-4">Why Fly Tailwheel?</h3>
+						<ul class="space-y-4 text-gray-700">
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-amber-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Better rudder work:</strong> A tailwheel does not forgive lazy feet, so yours get educated fast</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-amber-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Sharper landings:</strong> Skills that carry straight back to whatever else you fly</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-amber-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Opens up more aircraft:</strong> Classics, cubs, and much of the backcountry fleet</span>
+							</li>
+							<li class="flex items-start">
+								<i class="fa-solid fa-check text-amber-600 mr-3 mt-1 flex-shrink-0"></i>
+								<span><strong>Simply good fun:</strong> Great visibility and flying at its most direct</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="rounded-xl overflow-hidden shadow-lg">
+						<img src="/images/fly/tailwheel-training/1.jpg" alt="Citabria tailwheel trainer at Southern Maine Aviation" class="w-full h-full object-cover" loading="lazy" />
+					</div>
+				</div>
+
+				<!-- Prerequisites -->
+				<div class="bg-gray-50 rounded-xl p-8 my-12">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">Prerequisites</h3>
+					<p class="text-gray-700 mb-4">
+						A tailwheel endorsement is a logbook endorsement rather than a rating, so there is no written test
+						and no checkride — you train until your instructor is satisfied you're proficient. You'll need:
+					</p>
+					<ul class="space-y-2 text-gray-700">
+						<li class="flex items-center">
+							<i class="fa-solid fa-chevron-right text-gray-500 mr-3"></i>
+							A pilot certificate (private or higher)
+						</li>
+						<li class="flex items-center">
+							<i class="fa-solid fa-chevron-right text-gray-500 mr-3"></i>
+							Current medical certificate
+						</li>
+					</ul>
+					<p class="text-gray-600 text-sm mt-4">
+						How long it takes varies with your background and how recently you've flown. Give us a call and
+						we'll give you a realistic idea.
+					</p>
+				</div>
+
+				<!-- Related -->
+				<div class="bg-white border border-gray-200 rounded-xl p-8 my-12">
+					<h3 class="text-xl font-bold text-gray-900 mb-3">Pairs Well With</h3>
+					<p class="text-gray-700 mb-4">
+						Tailwheel skills are the natural precursor to getting off pavement altogether.
+					</p>
+					<a href="/flight-training-center/backcountry" class="inline-flex items-center px-5 py-3 bg-sky-50 text-sky-700 font-medium rounded-lg hover:bg-sky-100 transition-colors">
+						Backcountry Experience
+						<i class="fa-solid fa-chevron-right text-xs ml-2"></i>
+					</a>
+				</div>
+
+				<!-- CTA -->
+				<div class="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-8 md:p-12 text-white text-center my-12">
+					<h2 class="text-3xl font-bold mb-4">Ready to Fly the Citabria?</h2>
+					<p class="text-amber-50 text-lg mb-6">
+						Get in touch to check availability and book your first lesson.
+					</p>
+					<div class="flex flex-wrap justify-center gap-4">
+						<a
+							href={`tel:${site.contact.flight.phone}`}
+							class="inline-flex items-center px-8 py-4 bg-white text-orange-700 font-semibold rounded-lg hover:bg-orange-50 transition-colors"
+						>
+							<i class="fa-solid fa-phone mr-2"></i>
+							Call: {site.contact.flight.phone}
+						</a>
+						<a
+							href={`mailto:${site.contact.flight.email}`}
+							class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+						>
+							<i class="fa-solid fa-envelope mr-2"></i>
+							Email Us
+						</a>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<a href="/flight-training-center" class="inline-flex items-center text-sky-600 hover:text-sky-800 font-medium">
+						<i class="fa-solid fa-chevron-left mr-2"></i>
+						Back to All Training Programs
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ContactSection
+		title="Questions About Tailwheel Training?"
+		description="Ask us about Citabria availability and what your endorsement would involve."
+		variant="default"
+		showMap={false}
+	/>
+</FlightTrainingCenterLayout>
