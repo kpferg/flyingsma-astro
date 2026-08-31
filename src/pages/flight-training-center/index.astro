@@ -39,6 +39,15 @@ const breadcrumbs = [
 			script rather than the autoplay attribute, so that a reduced-motion
 			preference can hold it on its first frame instead. The toggle below is
 			required by WCAG 2.2.2 (Pause, Stop, Hide) either way.
+
+			Two clips are kept in the repo; swap the src below to change which one
+			runs. Both are muted, silent-encoded and safe to use as-is.
+
+			  /images/Sequence_03.mp4                  aerial of the new building
+			                                           under construction (in use)
+			  /images/hero/flight-training-hero.mp4    cockpit POV in flight, half
+			                                           speed, encoded from
+			                                           media-src/DSC_0602.MOV
 		-->
 		<video
 			id="hero-video"
@@ -49,7 +58,7 @@ const breadcrumbs = [
 			aria-hidden="true"
 			tabindex="-1"
 		>
-			<source src="/images/hero/flight-training-hero.mp4" type="video/mp4" />
+			<source src="/images/Sequence_03.mp4" type="video/mp4" />
 		</video>
 		<!-- Gradient Overlay for readability -->
 		<div class="absolute inset-0 bg-black/40"></div>
