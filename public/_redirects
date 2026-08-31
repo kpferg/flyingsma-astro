@@ -20,22 +20,22 @@
 /flight-school/news              /flight-training-center/news    301
 
 # Corporate Arrivals
-/pages/airport_FBO.html          /services/corporate-arrivals    301
-/pages/FBO_Service_Fees.html     /services/corporate-arrivals#fees    301
-/corporate-arrivals              /services/corporate-arrivals    301
+/pages/airport_FBO.html          /fbo-services/corporate-arrivals    301
+/pages/FBO_Service_Fees.html     /fbo-services/corporate-arrivals#fees    301
+/corporate-arrivals              /fbo-services/corporate-arrivals    301
 
 # Scenic Flights
-/pages/scenic_flights.html       /services/scenic-flights    301
-/pages/discovery_flights.html    /services/scenic-flights    301
-/scenic-flights                  /services/scenic-flights    301
+/pages/scenic_flights.html       /flight-training-center/scenic-flights    301
+/pages/discovery_flights.html    /flight-training-center/scenic-flights    301
+/scenic-flights                  /flight-training-center/scenic-flights    301
 
 # Home / Contact
-/pages/contact_us.html           /contact    301
-/pages/events.html               /news       301
+/pages/contact_us.html           /flight-training-center/contact    301
+/pages/events.html               /flight-training-center/news       301
 
 # Maintenance
-/pages/maintenance.html          /services/maintenance    301
-/aircraft-maintenance            /services/maintenance    301
+/pages/maintenance.html          /fbo-services/maintenance    301
+/aircraft-maintenance            /fbo-services/maintenance    301
 
 # Multi-engine
 /multi-engine                    /flight-training-center/multi-engine    301

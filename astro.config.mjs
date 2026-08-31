@@ -29,22 +29,22 @@ export default defineConfig({
     '/flight-school/news': '/flight-training-center/news',
 
     // Corporate Arrivals redirects
-    '/pages/airport_FBO.html': '/services/corporate-arrivals',
-    '/pages/FBO_Service_Fees.html': '/services/corporate-arrivals#fees',
-    '/corporate-arrivals': '/services/corporate-arrivals',
+    '/pages/airport_FBO.html': '/fbo-services/corporate-arrivals',
+    '/pages/FBO_Service_Fees.html': '/fbo-services/corporate-arrivals#fees',
+    '/corporate-arrivals': '/fbo-services/corporate-arrivals',
 
     // Scenic Flights redirects
-    '/pages/scenic_flights.html': '/services/scenic-flights',
-    '/pages/discovery_flights.html': '/services/scenic-flights',
-    '/scenic-flights': '/services/scenic-flights',
+    '/pages/scenic_flights.html': '/flight-training-center/scenic-flights',
+    '/pages/discovery_flights.html': '/flight-training-center/scenic-flights',
+    '/scenic-flights': '/flight-training-center/scenic-flights',
 
     // Home / Contact redirects
-    '/pages/contact_us.html': '/contact',
-    '/pages/events.html': '/news',
+    '/pages/contact_us.html': '/flight-training-center/contact',
+    '/pages/events.html': '/flight-training-center/news',
 
     // Maintenance redirects
-    '/pages/maintenance.html': '/services/maintenance',
-    '/aircraft-maintenance': '/services/maintenance',
+    '/pages/maintenance.html': '/fbo-services/maintenance',
+    '/aircraft-maintenance': '/fbo-services/maintenance',
 
     // Multi-engine redirects
     '/multi-engine': '/flight-training-center/multi-engine',
