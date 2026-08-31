@@ -422,7 +422,12 @@ const breadcrumbs = [
 						</div>
 					</div>
 					<div class="mt-4 pt-4 border-t border-slate-600 space-y-1 text-sm text-slate-400">
-						<p>* Multiple day discount for 3+ days</p>
+						<p>
+							{/* Explicit spaces: Astro 7 strips whitespace between inline elements (JSX rules). */}
+							* Limited availability. Contact Brian Westover at{' '}
+							<a href={`tel:${site.contact.fbo.phone}`} class="underline hover:text-white">{site.contact.fbo.phone}</a>{' '}
+							for more information.
+						</p>
 						<p>* Monthly hangar rates available</p>
 						<p>* Currently no hangar space for turbo props or jet aircraft</p>
 					</div>
