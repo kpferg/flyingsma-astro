@@ -33,7 +33,18 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Only fires when the host is exactly the apex, so it cannot loop.
+  # One rule handles both http->https and apex->www, so any combination
+  # reaches https://www.flyingsma.com/ in a single hop.
+  #
+  # The two HTTPS conditions are both required. %{HTTPS} is what Apache sets
+  # when it terminates TLS itself; X-Forwarded-Proto is what a TLS-terminating
+  # proxy sets instead. Testing only the first would send every request into an
+  # infinite redirect loop on a proxied host.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://www.flyingsma.com/$1 [R=301,L]
+
+  # Already on https, but on the apex rather than www.
   RewriteCond %{HTTP_HOST} ^flyingsma\.com$ [NC]
   RewriteRule ^(.*)$ https://www.flyingsma.com/$1 [R=301,L]
 </IfModule>
