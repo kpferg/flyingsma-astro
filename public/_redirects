@@ -46,3 +46,6 @@
 
 # Handle old dashboard URL
 /dashboard                       /    301
+
+# Old Hugo URL found in a recovered sitemap
+/pilot-pathway                   /flight-training-center    301

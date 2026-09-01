@@ -48,3 +48,22 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^flyingsma\.com$ [NC]
   RewriteRule ^(.*)$ https://www.flyingsma.com/$1 [R=301,L]
 </IfModule>
+
+
+# ---------------------------------------------------------------------------
+# Upgrade insecure subresource requests
+# ---------------------------------------------------------------------------
+# Restored from the .htaccess this file replaced, which an SSL tool had
+# generated (recovered from .easyssl_backup on the server).
+#
+# The original attached this header only to the redirect response, via
+# `env=UPGRADE` set by the rewrite. A CSP on a 301 has no content to govern,
+# so it is set on every response here instead, which is what actually protects
+# the pages.
+#
+# Safe for this site: no page loads an http:// subresource. The few plain-http
+# links in the markup are outbound <a href> links, which this does not affect.
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "upgrade-insecure-requests;"
+</IfModule>

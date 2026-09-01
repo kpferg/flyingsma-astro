@@ -57,6 +57,11 @@ const redirects = {
 
   // Multi-engine redirects
   '/multi-engine': '/flight-training-center/multi-engine',
+
+  // Old Hugo URLs found in a sitemap recovered from the server's
+  // .easyssl_backup directory. Both 404'd until now.
+  '/pilot-pathway': '/flight-training-center',
+  '/dashboard': '/',
 };
 
 /**
