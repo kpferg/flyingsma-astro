@@ -1,0 +1,39 @@
+# Apache configuration for flyingsma.com
+#
+# This file is served from the site root. Astro copies it from public/ into
+# dist/ at build time, so it deploys over FTP like any other file.
+#
+# NOTE: if the host does not permit these directives, Apache returns 500 for
+# the whole site. Upload it, load the site immediately, and delete the file if
+# anything breaks — removing it fully reverts the change.
+
+
+# ---------------------------------------------------------------------------
+# Custom error page
+# ---------------------------------------------------------------------------
+# Without this, an unknown URL returns a bare "404 Not Found" with no styling
+# and no way back into the site. The built 404 page is at /404.html.
+
+ErrorDocument 404 /404.html
+
+
+# ---------------------------------------------------------------------------
+# Canonical host: send flyingsma.com to www.flyingsma.com
+# ---------------------------------------------------------------------------
+# Both hostnames serve the same document root, so without a redirect every page
+# exists at two addresses and search engines have to guess which is canonical.
+#
+# www is the canonical form: it is what astro.config.mjs declares as `site`,
+# what every <link rel="canonical"> and structured-data URL in the pages says,
+# and what the sitemap lists.
+#
+# Wrapped in IfModule so a host without mod_rewrite ignores this rather than
+# failing the whole site.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Only fires when the host is exactly the apex, so it cannot loop.
+  RewriteCond %{HTTP_HOST} ^flyingsma\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.flyingsma.com/$1 [R=301,L]
+</IfModule>
