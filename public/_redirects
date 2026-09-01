@@ -33,6 +33,10 @@
 /pages/contact_us.html           /flight-training-center/contact    301
 /pages/events.html               /flight-training-center/news       301
 
+# Pre-split section indexes (no page of their own; /news is still indexed)
+/news                            /flight-training-center/news       301
+/contact                         /flight-training-center/contact    301
+
 # Maintenance
 /pages/maintenance.html          /fbo-services/maintenance    301
 /aircraft-maintenance            /fbo-services/maintenance    301

@@ -42,6 +42,14 @@ export default defineConfig({
     '/pages/contact_us.html': '/flight-training-center/contact',
     '/pages/events.html': '/flight-training-center/news',
 
+    // Pre-split section indexes. These have no page of their own since the
+    // site was divided into /fbo-services and /flight-training-center, but
+    // Google still has /news indexed and /contact is a URL people type.
+    // Both point at the flight training side: the indexed /news content is
+    // the flight training feed, and the FBO news collection is empty.
+    '/news': '/flight-training-center/news',
+    '/contact': '/flight-training-center/contact',
+
     // Maintenance redirects
     '/pages/maintenance.html': '/fbo-services/maintenance',
     '/aircraft-maintenance': '/fbo-services/maintenance',
